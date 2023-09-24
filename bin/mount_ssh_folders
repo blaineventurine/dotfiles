@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh 
+set -euxo pipefail
+
+if [ ! -d "$HOME/remotePaths/navidrome" ]; then
+  mkdir -p "$HOME/remotePaths/navidrome"
+fi
+
+sshfs -o idmap=user -o cache=no "$NAVIDROME:~" "$HOME/remotePaths/navidrome"
+
+if [ ! -d "$HOME/remotePaths/mediaserve" ]; then
+  mkdir -p "$HOME/remotePaths/mediaserve"
+fi
+
+sshfs -o idmap=user -o cache=no "$MEDIASERVE:~" "$HOME/remotePaths/mediaserve"

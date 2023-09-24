@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+wget https://raw.github.com/xwmx/nb/master/nb -O "$HOME/.local/bin/nb" && chmod +x "$HOME/.local/bin/nb"
+sudo nb env install

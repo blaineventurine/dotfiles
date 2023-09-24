@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+printf '\e[1mUpdating dotfiles and submodules packages\e[0m\n'
+# TODO: this needs to be run first, before updates can happen
+# dotfiles submodule update --init --recursive
+# bat cache --build
+/usr/bin/git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" pull --recurse-submodules
+
+if is_mac; then
+  # update_mac_app_store_apps
+  update_homebrew_packages
+else
+  update_apt_packages
+fi
+
+update_tmux_plugins
+update_global_npm_packages
+update_global_yarn_packages
+update_ruby_gems
+update_cargo_crates
+update_golang_packages
+update_vale_packages

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh 
+set -euxo pipefail
+
+# Changes the current working directory to the running script.
+cd "$(dirname "$(readlink -f "$0")")" || return

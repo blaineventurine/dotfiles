@@ -17,7 +17,7 @@ return {
     end
 
     dashboard.section.header.val = {}
-
+   -- TODO: fix icons here to use icons table
     dashboard.section.buttons.val = {
       button('e', '  New file', ':ene <BAR> startinsert <CR>'),
       button('o', 'ﭯ  Recently opened files', ':Telescope oldfiles<CR>'),

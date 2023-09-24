@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+git rev-parse HEAD > /dev/null 2>&1 || return
+
+branch=$(show_branches)
+if [[ "$branch" = "" ]]; then
+    echo "No branch selected."
+    return
+fi
+
+if [[ "$branch" = 'remotes/'* ]]; then
+    git checkout --track "$branch"
+else
+    git checkout "$branch";
+fi

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+curl -s https://api.github.com/repos/dandavison/delta/releases/latest | grep "musl.*amd64.*deb" | cut -d : -f 2,3 | tr -d \" | wget -qi - -O /tmp/git-delta.deb
+sudo dpkg -i /tmp/git-delta.deb && rm /tmp/git-delta.deb

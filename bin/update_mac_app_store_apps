@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+if command_exists mas; then
+  printf '\e[1mUpdating App Store apps\e[0m\n'
+  mas upgrade
+fi

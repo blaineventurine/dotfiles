@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+printf '\e[1mUpdating Cargo crates\e[0m\n'
+sed 's/#.*//' "$HOME"/.default-cargo-crates | xargs cargo install

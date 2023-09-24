@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# override built-in mkdir to create directory and change into it
+mkdir -p "$@" && cd "$@" || exit

@@ -1,0 +1,9 @@
+@azure/static-web-apps-cli
+@withgraphite/graphite-cli
+cspell
+diagnostic-languageserver
+eslint
+eslint-plugin-prettier
+markdownlint-cli
+neovim
+prettier

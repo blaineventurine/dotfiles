@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+curl -s https://api.github.com/repos/errata-ai/vale/releases/latest | grep "Linux.*64-bit.*gz" | cut -d : -f 2,3 | tr -d \" | wget -i - -O /tmp/vale.tar.gz; tar -xzf /tmp/vale.tar.gz -C /tmp; mv /tmp/vale "$HOME/.local/bin" && rm /tmp/vale.tar.gz
+
+vale sync
+

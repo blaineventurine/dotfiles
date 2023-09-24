@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh 
+set -euo pipefail
+
+if command_exists yarn; then
+  printf '\e[1mUpdating globally installed Yarn packages\e[0m\n'
+  (yarn global upgrade >/dev/null) &
+fi

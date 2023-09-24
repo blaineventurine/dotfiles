@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh 
+set -euo pipefail
+
+sed 's/#.*//' "$HOME"/.default-npm-packages | xargs npm install -g
+sed 's/#.*//' "$HOME"/.default-gems | xargs gem install
+sed 's/#.*//' "$HOME"/.default-cargo-crates | xargs cargo install --force
+# sed 's/#.*//' "$HOME"/.default-golang-pkgs | xargs go install

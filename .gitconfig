@@ -1,0 +1,125 @@
+[user]
+	name = Blaine Venturine
+	email = blaineventurine@gmail.com
+	signingkey = 374B4D04
+
+; [includeIf "gitdir:/Users/blaineventurine/"]
+[include]
+	path = ~/.gitconfig.local
+
+[merge]
+  tool = nvimdiff
+  conflictstyle = zdiff3
+
+; TODO: maybe update this to use diffview.nvim
+[mergetool "nvimdiff"]
+  ; cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
+  ; cmd = nvim -f -c \"DiffviewOpen\" \"$MERGED\"
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
+[mergetool]
+    prompt = false 
+
+[diff]
+  tool = nvimdiff
+  colorMoved = zebra
+
+[difftool]
+  prompt = false
+
+[difftool "nvimdiff"]
+  cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+
+[alias]
+	addtolast = !git add . && git commit --amend --no-edit
+	b = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+	difflatest = diff HEAD^ HEAD
+	difftoollatest = difftool HEAD^ HEAD
+  diffstash = !git stash show -p stash@{0}
+	ff = !git fetch && git merge --ff-only origin/master #$1 $2
+	history = !git log -- ${GIT_PREFIX:-.}
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=15
+  lf = log %1 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=15
+  myclean = stash save --keep-index
+	s = status
+	uncommit = reset HEAD~
+	nc = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
+	diffmaster = !git fetch && git difftool --dir-diff origin/master..HEAD
+  c = checkout
+  cb = checkout -b
+  psuo = push --set-upstream origin
+  #mo = merge origin/master
+  pud = pull upstream develop
+  pum = pull upstream master
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  commit = green bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+  newMoved = cyan dim
+  oldMoved = blue dim
+  newMovedAlternative = cyan italic
+  oldMovedAlternative = blue italic
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[core]
+  pager = delta --side-by-side --width ${COLUMNS} --wrap-max-lines unlimited
+  editor = nvim
+	excludesfile = ~/.gitignore_global
+
+[push]
+	default = current
+  folowTags = true
+
+[pull]
+  ff = only
+  default = current
+	rebase = true
+
+[delta]
+  hyperlinks = true
+  syntax-theme = Enki-Tokyo-Night 
+  navigate = true
+  line-numbers = true
+  side-by-side = true
+  true-color = always
+
+[interactive]
+  diffFilter = delta --color-only
+
+[fetch]
+  prune = true
+
+[tag]
+	gpgSign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[rebase]
+  autosquash = true
+[rerere]
+	enabled = true

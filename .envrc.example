@@ -1,0 +1,8 @@
+eval "$(rtx env)"
+export MEDIASERVE=
+export NAVIDROME=
+export NPM_TOKEN=
+export OPENMEDIAVAULT=
+export VAULT_ADDR=
+export VAULT_PASSWORD=
+export VAULT_USERNAME=

@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh 
+set -euo pipefail
+
+ssh-copy-id "$NAVIDROME"
+ssh-copy-id "$MEDIASERVE"
+ssh-copy-id "$OPENMEDIAVAULT"

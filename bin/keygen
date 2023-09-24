@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+set -euxo pipefail
+
+if [ "$1" = "" ]; then
+  echo "Please pass a comment as the first argument."
+  return 1
+fi
+ssh-keygen -o -a 100 -t ed25519 -C "$1"

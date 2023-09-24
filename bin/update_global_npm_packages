@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh 
+set -euo pipefail
+
+if command_exists npm; then
+  printf '\e[1mUpdating globally installed npm packages\e[0m\n'
+  npm update -g
+fi

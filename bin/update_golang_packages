@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+printf '\e[1mUpdating Golang packages\e[0m\n'
+go-global-update

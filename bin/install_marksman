@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+wget https://github.com/artempyanykh/marksman/releases/latest/download/marksman-linux
+mv marksman-linux marksman && chmod +x marksman
+mv marksman "$HOME/.local/bin"

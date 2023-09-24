@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+set -euxo pipefail
+
+# see what is listening on a given port
+lsof -n -i:"$1" | grep LISTEN

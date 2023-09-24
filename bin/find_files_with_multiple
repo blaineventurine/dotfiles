@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# finds files that have any occurence of all the strings you specify
+# usage: find-files-with-multiple button div test
+# will find files where all three words exist somewhere
+results="rg -0 -l $1"
+if [ $# -gt 2 ]; then
+  for arg in "${@:2: -1}"; do
+    results="$results | xargs -r0 -I % rg -l -0 $arg %"
+  done
+  results="$results | xargs -r0 -I % rg -H -l ${@: -1} %"
+fi
+if [ $# -eq 2 ]; then
+  results="$results | xargs -r0 -I % rg -H -l ${@:2} %"
+fi
+if [ $# -eq 1 ]; then
+  results="rg -H -l $1"
+fi
+
+eval "$results" | fzf

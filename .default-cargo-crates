@@ -1,0 +1,2 @@
+ripgrep --features 'pcre2'
+bat
