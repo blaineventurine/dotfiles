@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# find a subfolder and cd into it - requires 'tree' is installed
+DIR=$(find * -maxdepth 3 -type d -print 2> /dev/null | fzf) \
+  && cd "$DIR" || exit

@@ -39,6 +39,8 @@
 !.config/zsh/**/*
 # Ignore all completions
 .config/zsh/.zcompdump*
+# I don't want to share history across computers
+.config/zsh/.zsh_history
 
 !.tmux/
 !.tmux/**/*
