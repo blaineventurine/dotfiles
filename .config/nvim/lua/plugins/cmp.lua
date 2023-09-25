@@ -27,6 +27,13 @@ return {
         'saadparwaiz1/cmp_luasnip',
       },
     },
+    {
+      'zbirenbaum/copilot-cmp',
+      after = { 'copilot.lua' },
+      config = function()
+        require('copilot_cmp').setup()
+      end,
+    },
   },
   event = 'InsertEnter',
   config = function()
