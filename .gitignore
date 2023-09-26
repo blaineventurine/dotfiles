@@ -8,6 +8,10 @@
 
 !.config/bat/
 !.config/bat/config
+!.config/bat/themes/
+!.config/bat/themes/**/*
+!.config/bat/themes/enki-theme/
+!.config/bat/themes/enki-theme/**/*
 
 !.config/direnv/
 !.config/direnv/**/*
