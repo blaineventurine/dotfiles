@@ -60,21 +60,22 @@
 !bin/
 !bin/**/*
 
-!.default-gems
-!.default-npm-packages
 !.default-cargo-crates
+!.default-gems
 !.default-golang-pkgs
+!.default-npm-packages
 !.default-python-packages
 
+!.bashrc
 !.envrc.example
 !.fzf.zsh
-!.bashrc
 !.nbrc
 !.pryrc
+!.rubocop.yml
 !.taskrc
-!.vimrc
 !.tool-versions
 !.vale.ini
+!.vimrc
 !.zshenv
 
 !Brewfile
