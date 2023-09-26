@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# TODO: make this work better
+red=$(tput setaf 1)
+yellow=$(tput setaf 3)
+reset=$(tput sgr0)
+div="\n${yellow}******************${reset}\n"
+
+if [ -f Gemfile ] && command -v bundle >/dev/null &&
+  git diff --name-only HEAD@{1} HEAD| grep -e -q '^Gemfile|\.gemspec$'
+then
+  msg="${red}YOUR RUBY BUNDLES COULD BE OUT OF DATE. RUN \"bundle install\".${reset}"
+  (echo "$div$msg$div")
+  # (unset GIT_DIR; exec bundle check || exec bundle install)
+  true
+fi
+
+node_msg="${red}YOUR NODE MODULES COULD BE OUT OF DATE. RUN ${reset}"
+
+if [ -f yarn.lock ] && [ -f package.json ] &&
+  command yarn help >/dev/null &&
+  git diff --name-only HEAD@{1} HEAD | grep -q -e '^package\.json$'
+then
+  msg="${yellow}\"yarn install\".${reset}"
+  (echo "$div$node_msg$msg$div")
+  true
+elif [ -f package.json ] && command -v npm >/dev/null &&
+  git diff --name-only HEAD@{1} HEAD | grep -q -e '^package\.json$'
+then
+  msg="${yellow}\"npm install\".${reset}"
+  (echo "$div$node_msg$msg$div")
+  true
+fi

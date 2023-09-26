@@ -20,6 +20,10 @@
 !.config/gh/**/*
 .config/gh/hosts.yml
 
+!.config/git_template/
+!.config/git_template/hooks
+!.config/git_template/hooks/**/*
+
 !.config/kitty/
 !.config/kitty/**/*
 

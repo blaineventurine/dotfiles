@@ -87,6 +87,7 @@
   pager = delta --side-by-side --width ${COLUMNS} --wrap-max-lines unlimited
   editor = nvim
 	excludesfile = ~/.gitignore_global
+	hooksPath = /home/blaine/.config/git_template/hooks
 
 [push]
 	default = current
