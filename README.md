@@ -2,7 +2,7 @@
 
 ## Installs
 
-### set up bare git repo
+### Set up bare git repo
 
 ```shell
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -10,11 +10,13 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 git clone --bare git@github.com:blaineventurine/dotfiles.git $HOME/.dotfiles
 dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
+
+dotfiles submodule update --remote
 ```
 
-### zsh setup
+### Zsh setup
 
-Get fonts from [here](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k)
+Install fonts from `.fonts/`
 
 ```shell
 chsh -s $(which zsh)
@@ -29,19 +31,16 @@ p10k configure
 #### packages
 
 ```shell
-sudo apt install curl
-add-pkg-repos
+sudo apt update; sudo apt install curl
+add_pkg_repos
 sudo apt update; sudo apt updgrade; xargs sudo apt -y install < packages.txt;
 install_zsh_plugins
-install-tools
-update-submodules
+install_tools
 bat cache --build
+vale sync
+install_kitty
+setup_tmux
 ```
-
-#### vale
-
-Install based on directions on website
-run `vale sync` to download packages
 
 ### MacOS
 
@@ -49,16 +48,6 @@ Get FZF from step above
 Install homebrew
 
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-### asdf
-
-If asdf is causing solargraph issues, do
-
-```shell
-GEM_HOME="$HOME/.local/share/nvim/lsp_servers/solargraph" GEM_PATH="$HOME/.local/share/nvim/lsp_servers/solargraph" bundle install
-```
-
-from within project dir and also make sure `~/.tool-versions` specifies the proper version of Ruby
 
 ### misc tools
 
@@ -80,7 +69,7 @@ TODO
 
 TODO
 
-## Keybindings
+### Keybindings
 
 | C-a +  | Action                                                                           |
 | ------ | -------------------------------------------------------------------------------- |
@@ -137,9 +126,6 @@ No Prefix:
 
 ## Vim setup
 
-TODO: set these as post-install hooks:
+Check if language servers are installed via `:Mason`
+`:Copilot auth` to sign in
 
-`:PackerSync`
-`:MasonInstall`
-`:GoInstallBinaries`
-`:GlowInstall`
