@@ -1,6 +1,6 @@
 . "$HOME/.cargo/env"
 # export UPDATE_ZSH_DAYS=1
-# export TERM="xterm-256color" # This sets up colors properly
+export TERM="xterm-256color" # This sets up colors properly
 export CARGOPATH="$HOME/.cargo/bin"
 export COLUMNS
 export COMPLETION_WAITING_DOTS="true"
@@ -49,7 +49,7 @@ export FORGIT_FZF_DEFAULT_OPTS="
 "
 if [[ is_mac ]]; then
     export PATH="/usr/local/sbin:$PATH"
-    export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+    # export PATH="$PATH:$HOME/Library/Python/3.9/bin"
     export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
     # vault login -method=userpass username=$VAULT_USERNAME password=$VAULT_PASSWORD
     # source $HOME/jira-vars.zsh

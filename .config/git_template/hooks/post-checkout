@@ -1,14 +1,15 @@
 #!/bin/sh
 
 # TODO: make this work better
-#
+
 # red=$(tput setaf 1)
 # yellow=$(tput setaf 3)
 # reset=$(tput sgr0)
 # div="\n${yellow}******************${reset}\n"
-# echo "running post-merge hook"
+# echo 'running post-checkout hook'
 # grep_diff() {
 #   git diff --name-only HEAD@{1} HEAD| rg '$1'
+#   echo 'found it '
 # }
 #
 # gemfile=$(fd --max-depth 2 Gemfile)
@@ -28,8 +29,8 @@
 # package_lock=$(fd package-lock.json --max-depth 2)
 # yarn_lock=$(fd yarn.lock  --max-depth 1)
 #
-# # if [ -n "$package_json" ] &&
-# if  grep_diff 'package.json'
+# if [ -n "$package_json" ] &&
+#   grep_diff 'package.json'
 #   # git diff --name-only HEAD@{1} HEAD | rg 'package.json'
 # then
 #   (echo "$div$node_msg$msg$div")

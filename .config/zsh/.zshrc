@@ -15,6 +15,9 @@ if [[ -r "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
   source "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
+eval "$(rtx hook-env)"
+eval "$(direnv hook zsh)" &> /dev/null
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle
 
 plugins=(
@@ -64,8 +67,13 @@ bindkey -v
 # This turns off direnv printing variables on every directory change
 export DIRENV_LOG_FORMAT=""
 
-eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
-eval "$(rtx hook-env)"
-eval "$(direnv hook zsh)" &> /dev/null
+# eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
+# eval "$(rtx hook-env)"
+# eval "$(direnv hook zsh)" &> /dev/null
+
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   echo "test"
+# #  exec tmux
+# fi
 
 # zprof

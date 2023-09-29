@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-FORBIDDEN.freeze = [
+FORBIDDEN = [
   /\bconsole\.log\b/,
   /\bconsole\.debug\b/,
   /\bbinding\.irb\b/,
@@ -8,7 +8,6 @@ FORBIDDEN.freeze = [
 ]
 
 full_diff = `git diff --cached --`.force_encoding('ASCII-8BIT')
-
 full_diff.scan(%r{^\+\+\+ b/(.+)\n@@.*\n([\s\S]*?)(?:^diff|\z)}).each do |file, diff|
   added = diff.split("\n").select { |x| x.start_with?('+') }.join("\n")
   next unless FORBIDDEN.any? { |re| added.match(re) }
