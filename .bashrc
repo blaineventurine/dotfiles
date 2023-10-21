@@ -87,6 +87,8 @@ alias la='ls -A'
 alias l='ls -lah --color=auto'
 alias cat='batcat'
 alias grep='rg'
+alias sudo='sudo '
+alias shutdown='sudo shutdown -h now'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
