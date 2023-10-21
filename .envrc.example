@@ -6,3 +6,4 @@ export OPENMEDIAVAULT=
 export VAULT_ADDR=
 export VAULT_PASSWORD=
 export VAULT_USERNAME=
+export PI_TABLET

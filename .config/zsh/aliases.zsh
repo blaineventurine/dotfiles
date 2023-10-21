@@ -31,6 +31,7 @@ alias pip="pip3"
 alias py="python3"
 alias python="python3"
 alias rm='rm -v'
+alias shutdown='sudo shutdown -h now'
 alias sudo="sudo "
 alias tf='terraform'
 alias tx='tmuxinator'

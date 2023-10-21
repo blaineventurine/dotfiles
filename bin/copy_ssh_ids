@@ -4,3 +4,4 @@ set -euo pipefail
 ssh-copy-id "$NAVIDROME"
 ssh-copy-id "$MEDIASERVE"
 ssh-copy-id "$OPENMEDIAVAULT"
+ssh-copy-id "$PI_TABLET"
