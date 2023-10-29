@@ -5,8 +5,8 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       if vim.fn.has('termguicolors') == 1 then
-        vim.go.t_8f = '[[38;2;%lu;%lu;%lum'
-        vim.go.t_8b = '[[48;2;%lu;%lu;%lum'
+        -- vim.go.t_8f = '[[38;2;%lu;%lu;%lum'
+        -- vim.go.t_8b = '[[48;2;%lu;%lu;%lum'
         vim.opt.termguicolors = true
       end
       vim.cmd([[colorscheme tokyonight]])
