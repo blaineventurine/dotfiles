@@ -11,6 +11,7 @@ alias cp='cp -v'
 alias dev='npm run dev'
 alias dirs='dirs -v'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dots='dotfiles'
 alias f="fzf | xargs -I{} vim {}"
 alias fif='find-in-file'
 alias fim="find_files_with_multiple"
