@@ -21,7 +21,7 @@ root: ~/repos/AlgoliaWeb
 # on_project_restart: command
 
 # Run on project exit ( detaching from tmux session )
-on_project_exit: spring stop; kill $(lsof -wni tcp:3000)
+on_project_exit: kill $(lsof -wni tcp:3000)
 
 # Run on project stop
 # on_project_stop: command
@@ -82,4 +82,8 @@ windows:
         - rails_console:
           - printf '\033]2;%s\033\\' 'rails_console'
           - cd backend; bin/rails c
-
+  - console:
+      layout: main-vertical
+      panes:
+        - console:
+          - cd backend
