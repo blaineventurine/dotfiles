@@ -6,4 +6,7 @@ ssh-copy-id "$MEDIASERVE"
 ssh-copy-id "$OPENMEDIAVAULT"
 ssh-copy-id "$PI_TABLET"
 ssh-copy-id "$PI_KITCHEN"
+ssh-copy-id "$DUPLICATI"
+ssh-copy-id "$FRIGATE"
+ssh-copy-id "$PAPERLESS"
 
