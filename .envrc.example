@@ -12,3 +12,4 @@ export PAPERLESS=
 export VAULT_ADDR=
 export VAULT_PASSWORD=
 export VAULT_USERNAME=
+export ALGOLIA_USER_EMAIL=

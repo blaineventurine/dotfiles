@@ -63,6 +63,8 @@ o.diffopt = { -- Option settings for diff mode.
 }
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
+g.skip_ts_context_commentstring_module = true
+
 if vim.fn.has('nvim-0.9.0') == 1 then
   o.splitkeep = 'screen'
   o.shortmess:append({ C = true })
