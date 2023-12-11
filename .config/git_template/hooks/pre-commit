@@ -1,21 +1,42 @@
-#!/bin/bash
-
-# Runs all executable pre-commit-* hooks and exits after,
-# if any of them was not successful.
-data=$(cat)
-exitcodes=()
-hookname=$(basename "$0")
-
-# Run each hook, passing through STDIN and storing the exit code.
-# We don't want to bail at the first failure, as the user might
-# then bypass the hooks without knowing about additional issues.
-for hook in ~/.config/git_template/hooks/"$hookname"-*; do
-  test -x "$hook" || continue
-  echo "$data" | "$hook"
-  exitcodes+=($?)
-done
-
-# If any exit code isn't 0, bail.
-for i in "${exitcodes[@]}"; do
-  [ "$i" == 0 ] || exit "$i"
-done
+# #!/bin/sh
+#
+# if [ "$LEFTHOOK" = "0" ]; then
+#   exit 0
+# fi
+#
+# call_lefthook()
+# {
+#   dir="$(git rev-parse --show-toplevel)"
+#   osArch=$(echo "$(uname)" | tr '[:upper:]' '[:lower:]')
+#   cpuArch=$(echo "$(uname -m)" | sed 's/aarch64/arm64/')
+#
+#   if lefthook -h >/dev/null 2>&1
+#   then
+#     eval lefthook "$@"
+#   elif test -f "$dir/node_modules/lefthook/bin/index.js"
+#   then
+#     eval "\"$dir/node_modules/lefthook/bin/index.js\" $@"
+#   elif test -f "$dir/node_modules/@evilmartians/lefthook/bin/lefthook_${osArch}_${cpuArch}/lefthook"
+#   then
+#     eval "\"$dir/node_modules/@evilmartians/lefthook/bin/lefthook_${osArch}_${cpuArch}/lefthook\" $@"
+#   elif test -f "$dir/node_modules/@evilmartians/lefthook-installer/bin/lefthook_${osArch}_${cpuArch}/lefthook"
+#   then
+#     eval "\"$dir/node_modules/@evilmartians/lefthook-installer/bin/lefthook_${osArch}_${cpuArch}/lefthook\" $@"
+#   elif bundle exec lefthook -h >/dev/null 2>&1
+#   then
+#     bundle exec lefthook "$@"
+#   elif yarn lefthook -h >/dev/null 2>&1
+#   then
+#     yarn lefthook "$@"
+#   elif pnpm lefthook -h >/dev/null 2>&1
+#   then
+#     pnpm lefthook "$@"
+#   elif npx @evilmartians/lefthook -h >/dev/null 2>&1
+#   then
+#     npx @evilmartians/lefthook "$@"
+#   else
+#     echo "Can't find lefthook in PATH"
+#   fi
+# }
+#
+# call_lefthook "run pre-commit $@"
