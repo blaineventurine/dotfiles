@@ -12,6 +12,8 @@ return {
   },
   config = function()
     local actions = require('telescope.actions')
+    local lga_actions = require("telescope-live-grep-args.actions")
+
     require('telescope').setup({
       defaults = {
         mappings = {
@@ -85,15 +87,20 @@ return {
         }
       },
       extensions = {
-        -- fzy_native = {
-        --   override_generic_sorter = false,
-        --   override_file_sorter = true,
-        -- },
+        live_grep_args = {
+          auto_quoting = true,
+          mappings = {
+            i = {
+              ["<C-k>"] = lga_actions.quote_prompt(),
+              ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+            },
+          },
+        },
         fzf = {
-          fuzzy = true, -- false will only do exact matching
+          fuzzy = true,                   -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
           -- the default case_mode is "smart_case"
         },
         project = {

@@ -81,6 +81,7 @@ wk.register({
     l = { '<cmd>CybuNext<CR>', 'Switch to next buffer in list' },
     m = { "<cmd>lua require('telescope.builtin').marks()<CR>", 'Find marks' },
     n = { "<cmd>lua require('utils.custom-telescope-commands').my_note()<CR>", 'Search notes' },
+    -- TODO: update this, which-key doesn't like two letter mappings
     ni = { "<cmd>lua require('package-info').install()<cr>", 'Install package' },
     nm = { '<cmd>Dispatch npm start', 'Run NPM' },
     np = { "<cmd>lua require('package-info').change_version()<cr>", 'Change package version' },
@@ -94,7 +95,7 @@ wk.register({
     t = { "<cmd>lua require('FTerm').toggle()<CR>", 'Toggle terminal' },
     to = { '<cmd>TodoTelescope<CR>', 'Show all TODOs' },
     v = { '<cmd>vsplit<CR>', 'Vertical split' },
-    vc = { '<cmd>close<CR>', 'Close current window' },
+    -- vc = { '<cmd>close<CR>', 'Close current window' },
     y = { '<cmd>Telescope neoclip<CR>', 'Search clipboard, <C-p> to paste' },
     -- l = { "", "" },
     -- l = { "", "" },
