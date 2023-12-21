@@ -1,5 +1,4 @@
 # Dotfiles Info
-
 ## Installs
 
 ### Set up bare git repo
@@ -55,21 +54,7 @@ Install homebrew
 dotnet tool install --global dotnet-ef
 ```
 
-### clone tasks
-
-```shell
-git clone git@github.com:blaineventurine/tasks.git
-```
-
-### clone notes
-
-TODO
-
-## Tmux
-
-TODO
-
-### Keybindings
+### Tmux Keybindings
 
 | C-a +  | Action                                                                           |
 | ------ | -------------------------------------------------------------------------------- |
