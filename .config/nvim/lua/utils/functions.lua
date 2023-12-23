@@ -1,7 +1,7 @@
 local M = {}
 
 -- This will print the contents of a table instead
--- print(trint(table_to_print))
+-- print(tprint(table_to_print))
 function M.tprint(tbl, indent)
   if not indent then
     indent = 0
