@@ -1,4 +1,10 @@
 # Dotfiles Info
+* Install homebrew
+* Install keepassxc
+* Set up new ssh key for GitHub
+* Set up bare git repo
+* `brew bundle`
+
 ## Installs
 
 ### Set up bare git repo
