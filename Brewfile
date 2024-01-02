@@ -39,6 +39,7 @@ brew "packer"
 brew "pandoc"
 brew "pass"
 brew "poppler"
+brew "postman"
 brew "postgresql@14", restart_service: true
 brew "puma/puma/puma-dev"
 brew "qt"

@@ -1,4 +1,4 @@
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 # export UPDATE_ZSH_DAYS=1
 export TERM="xterm-256color" # This sets up colors properly
 export CARGOPATH="$HOME/.cargo/bin"

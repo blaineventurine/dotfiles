@@ -1,9 +1,14 @@
 # Dotfiles Info
+
 * Install homebrew
 * Install keepassxc
 * Set up new ssh key for GitHub
 * Set up bare git repo
+* Install `oh-my-zsh`
 * `brew bundle`
+* `fzf` completions: `$(breww --prefix)/opt/fzf/install`
+* `rtx_install`
+* `setup_tmux`
 
 ## Installs
 
