@@ -90,7 +90,24 @@ wk.register({
       'Search within open files',
     },
     p = { "<cmd>lua require('telescope').extensions.project.project{}<CR>", 'Find file in different project' },
-    r = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", 'Find inside files' },
+    r = {
+      function()
+        require('telescope').extensions.live_grep_args.live_grep_args({
+          vimgrep_arguments = {
+            'rg',
+            '--hidden',
+            '-L',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+          },
+        })
+      end,
+      'Find inside files',
+    },
     s = { "<cmd>lua require('sessionable').SearchSession()<CR>", 'Find a session' },
     t = { "<cmd>lua require('FTerm').toggle()<CR>", 'Toggle terminal' },
     to = { '<cmd>TodoTelescope<CR>', 'Show all TODOs' },

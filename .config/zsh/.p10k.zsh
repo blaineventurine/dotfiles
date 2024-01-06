@@ -46,7 +46,7 @@
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
-    # rtx
+    # mise - this prompt is ridiculously large
     # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     #anaconda                # conda environment (https://conda.io/)
@@ -241,6 +241,7 @@
     .perl-version
     .php-version
     .tool-version
+    .tool-versions
     .shorten_folder_marker
     .svn
     .terraform
@@ -1549,8 +1550,8 @@
 
   typeset -g POWERLEVEL9K_NB_FOREGROUND=69
 
-  function prompt_rtx() {
-    local plugins=("${(@f)$(rtx current 2>/dev/null)}")
+  function prompt_mise() {
+    local plugins=("${(@f)$(mise current 2>/dev/null)}")
     local plugin
     for plugin in ${(k)plugins}; do
       local parts=("${(@s/ /)plugin}")
@@ -1579,7 +1580,7 @@
   typeset -g POWERLEVEL9K_RTX_RUST_FOREGROUND=37
 
   # Substitute the default asdf prompt element
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=("${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[@]/asdf/rtx}")
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=("${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[@]/asdf/mise}")
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
