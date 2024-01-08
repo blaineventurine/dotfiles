@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+if [ ! -d "$HOME/.local/bin/mise" ]; then
+  curl https://mise.jdx.dev/install.sh | sh
+fi
+"$HOME/.local/bin/mise" activate -s zsh

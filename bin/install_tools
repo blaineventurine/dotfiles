@@ -9,7 +9,7 @@ fi
 install_nb
 install_git_delta
 install_fzf
-install_rtx
+install_mise
 install_ripgrep_all
 install_marksman
 install_vale

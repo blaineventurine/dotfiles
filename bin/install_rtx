@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-set -euo pipefail
-
-if [ ! -d "$HOME/.local/share/rtx" ]; then
-  curl https://rtx.pub/install.sh | sh
-fi
-"$HOME/.local/share/rtx/bin/rtx" activate -s zsh
