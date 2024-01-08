@@ -8,6 +8,7 @@ return {
     end
 
     local dashboard = require('alpha.themes.dashboard')
+    local icons = require('utils.icons').general
 
     local function button(sc, txt, keybind, keybind_opts)
       local b = dashboard.button(sc, txt, keybind, keybind_opts)
@@ -17,20 +18,14 @@ return {
     end
 
     dashboard.section.header.val = {}
-   -- TODO: fix icons here to use icons table
     dashboard.section.buttons.val = {
-      button('e', '  New file', ':ene <BAR> startinsert <CR>'),
-      button('o', 'ﭯ  Recently opened files', ':Telescope oldfiles<CR>'),
-      button('f', '  Find file', ":lua require('plugins.telescope').project_files()<CR>"),
-      button('p', '  Find project', ":lua require('telescope').extensions.project.project{}<CR>"),
-      button('r', '󰀬  Find word', ":lua require('telescope.builtin').live_grep()<CR>"),
-      button('g', '  Find modified file', ":lua require('plugins.telescope').my_git_status()<CR>"),
-      button('t', '  Show todo', ':TodoTelescope<CR>'),
-      -- button("s", "  Show plugins", ":e ~/.config/nvim/lua/plugins.lua<CR>"),
-      -- button("u", "  Sync plugins", ":PackerSync<CR>"),
-      -- button("l", "λ  Update laguage servers", ":LspUpdate<CR>"),
-      -- button("i", "  Install Language servers", ":LspInstall<CR>"),
-      button('q', '  Quit', '<Cmd>qa<CR>'),
+      button('e', icons.NewFile .. ' New file', ':ene <BAR> startinsert <CR>'),
+      button('o', icons.History .. ' Recently opened files', ':Telescope oldfiles<CR>'),
+      button('f', icons.Search .. ' Find file', ":lua require('plugins.telescope').project_files()<CR>"),
+      button('p', icons.FolderFilled .. ' Find project', ":lua require('telescope').extensions.project.project{}<CR>"),
+      button('g', icons.Octocat .. ' Find modified file', ":lua require('plugins.telescope').my_git_status()<CR>"),
+      button('t', icons.Todo .. ' Show todo', ':TodoTelescope<CR>'),
+      button('q', icons.Close .. ' Quit', '<Cmd>qa<CR>'),
     }
 
     local v = vim.version()
