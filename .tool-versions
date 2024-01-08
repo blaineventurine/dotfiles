@@ -1,7 +1,0 @@
-direnv latest
-golang 1.20.4
-nodejs 20 
-python latest
-ruby   latest
-rust   latest
-yarn   1.22.19

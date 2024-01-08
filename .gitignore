@@ -34,8 +34,8 @@
 !.config/nvim/
 !.config/nvim/**/*
 
-!.config/rtx/
-!.config/rtx/**/*
+!.config/mise/
+!.config/mise/**/*
 
 !.config/tmuxinator/
 !.config/tmuxinator/**/*
