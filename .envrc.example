@@ -1,4 +1,4 @@
-eval "$(rtx env)"
+eval "$(mise env)"
 export MEDIASERVE=
 export NAVIDROME=
 export NPM_TOKEN=
