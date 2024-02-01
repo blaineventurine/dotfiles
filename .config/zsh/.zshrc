@@ -26,7 +26,7 @@ plugins=(
   zsh-autosuggestions
   extract
   zsh-syntax-highlighting
-  tmux
+  # tmux
   fzf-tab
   autoupdate
   taskwarrior

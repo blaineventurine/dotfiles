@@ -22,7 +22,7 @@ export VISUAL='nvim' # editor to be opened from $PAGER
 export VI_MODE_SET_CURSOR=true
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="powerlevel10k/powerlevel10k"
-export ZSH_TMUX_AUTOSTART="true"
+# export ZSH_TMUX_AUTOSTART="true"
 
 # Path is searched beginning to end, with first match being used - set my bin folders first so any
 # overrides I have are used
