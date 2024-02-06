@@ -50,6 +50,7 @@ export FORGIT_FZF_DEFAULT_OPTS="
 if [[ is_mac ]]; then
     export PATH="/usr/local/sbin:$PATH"
     # export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+    export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
     export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
     # vault login -method=userpass username=$VAULT_USERNAME password=$VAULT_PASSWORD
     # source $HOME/jira-vars.zsh
