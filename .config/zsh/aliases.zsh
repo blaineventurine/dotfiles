@@ -23,7 +23,7 @@ alias grep='rga'
 alias ip='ip --color=auto'
 alias rg='rga'
 alias k='kubectl'
-alias l='eza -lbFha --icons --group-directories-first' # list, size, type, git
+alias l='eza -lbha --icons --group-directories-first' # list, size, type, git
 alias less='bat'
 alias lg='lazygit'
 alias lt='eza -TlbFha --git --icons --group-directories-first --level=2'

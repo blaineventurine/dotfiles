@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+# set -euo pipefail
+
+[ -z "$1" ] && "No argument supplied" && exit 1
+[ ! -f "${HOME}.config/kitty/sessions/${1}.conf" ] && echo "Session not found" && exit
+
+kitty --session sessions/"${1}".conf </dev/null &>/dev/null &
