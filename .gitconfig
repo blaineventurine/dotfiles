@@ -105,6 +105,8 @@
   line-numbers = true
   side-by-side = true
   true-color = always
+  line-numbers-right-format = "│ "
+
 
 [interactive]
   diffFilter = delta --color-only
