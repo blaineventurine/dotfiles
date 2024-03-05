@@ -1,7 +1,7 @@
 [user]
 	name = Blaine Venturine
 	email = blaineventurine@gmail.com
-	signingkey = 374B4D04
+	; signingkey = 374B4D04
 
 ; [includeIf "gitdir:/Users/blaineventurine/"]
 [include]
@@ -23,6 +23,8 @@
 [diff]
   tool = nvimdiff
   colorMoved = zebra
+  context = 10
+  algorithm = histogram
 
 [difftool]
   prompt = false
@@ -96,7 +98,7 @@
 [pull]
   ff = only
   default = current
-	rebase = true
+	; rebase = true
 
 [delta]
   hyperlinks = true
@@ -116,13 +118,25 @@
 
 [tag]
 	gpgSign = true
+
+[gpg]
+  format = ssh
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
+  clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 
 [rebase]
   autosquash = true
+  autostash = true
+
 [rerere]
 	enabled = true
+
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
+
+[log]
+  date = iso
