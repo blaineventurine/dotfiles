@@ -83,6 +83,12 @@ return {
       -- },
     })
   end,
+  sorbet = function()
+    lspconfig.sorbet.setup({
+      capabilities = default_config.capabilities,
+      on_attach = default_config.on_attach,
+    })
+  end,
   yamlls = function()
     lspconfig.yamlls.setup({
       capabilities = default_config.capabilities,
