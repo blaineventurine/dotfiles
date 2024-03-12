@@ -5,7 +5,9 @@ return {
     'mihyaeru21/nvim-lspconfig-bundler',
     'b0o/schemastore.nvim',
     'folke/neodev.nvim',
-    { 'jose-elias-alvarez/null-ls.nvim', build = ':NullLsInstall' },
+    { 'nvimtools/none-ls.nvim',
+      dependencies = { 'nvimtools/none-ls-extras.nvim' },
+    },
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'jay-babu/mason-null-ls.nvim',
@@ -47,23 +49,14 @@ return {
     local nls = require('null-ls')
     nls.setup({
       sources = {
-        nls.builtins.code_actions.shellcheck,
-
-        -- nls.builtins.completion.spell,
-
         nls.builtins.diagnostics.haml_lint,
-        nls.builtins.diagnostics.jsonlint,
         nls.builtins.diagnostics.markdownlint,
         nls.builtins.diagnostics.rubocop,
-        nls.builtins.diagnostics.shellcheck,
-        -- nls.builtins.diagnostics.misspell.with({
-        --     filetypes = { "html", "json", "yaml", "markdown", "haml", "ruby" },
-        -- }),
         nls.builtins.diagnostics.vale,
 
         nls.builtins.formatting.gofumpt,
         nls.builtins.formatting.goimports,
-        nls.builtins.formatting.jq,
+        require('none-ls.formatting.jq'),
         nls.builtins.formatting.markdownlint,
         nls.builtins.formatting.prettier,
         nls.builtins.formatting.rubocop,
