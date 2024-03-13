@@ -252,3 +252,4 @@ key('n', '<leader>db', ":lua require'dap'.toggle_breakpoint()<CR>", { silent = t
 -- key('n', '<leader>dv', '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
 -- key('n', '<leader>df', '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
 key('c', 'bd', 'Bdelete', { silent = true })
+key('c', 'bw', 'Bdelete', { silent = true })
