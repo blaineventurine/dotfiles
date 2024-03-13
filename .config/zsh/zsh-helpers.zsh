@@ -6,24 +6,6 @@ light-mode() {
 dark-mode() {
   kitty +kitten themes --reload-in=all Tokyo Night Moon
 }
-# this will clone a remote notebook
-# `clone-notebook canary` will clone the canary notebook
-clone-notebook() {
-  nb notebooks add "$1" git@github.com:blaineventurine/notes.git "$1"
-}
-
-nb-list() {
-  nb list -t note --no-color |  sed -r 's/\[//' | sed -r 's/\]//' |
-  fzf --height 50% \
-    --preview "nb show -p {1} | head -n 200 | bat -l md" \
-    --bind "alt-j:preview-down,alt-k:preview-up,alt-d:preview-page-down,alt-u:preview-page-up" \
-    --preview-window=right:70% |
-  cut -d$' ' -f1
-}
-
-nb-edit() {
-  nb e "$(nb-list)"
-}
 
 # # stdio encryption and decryption
 # encrypt() {

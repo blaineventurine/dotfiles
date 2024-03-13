@@ -6,7 +6,7 @@
 # Keep this near the top otherwise there's an non-zero exit code for some reason
 [[ ! -f "$HOME"/.envrc ]] && printf '\e[1mYou forgot your .envrc\e[0m\n'
 
-[[ is_mac ]] && ssh-add -K 2>/dev/null
+ssh-add -K 2>/dev/null
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of "$HOME"/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
