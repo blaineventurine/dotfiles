@@ -15,6 +15,7 @@ wk.register({
       p = { '<cmd>BufferPick<CR>', 'Pick buffer' },
     },
     c = { "<cmd>lua require('telescope.builtin').commands()<CR>", 'Find command' },
+    d = { "<cmd>lua require('dbee').toggle()<CR>", "Toggle DBee" },
     e = { "<cmd>lua require('telescope.builtin').resume()<CR>", 'Resume last Telescope search' },
     f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", 'Find file by name' },
     g = {
