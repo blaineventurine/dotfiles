@@ -1,5 +1,6 @@
 return {
   'norcalli/nvim-colorizer.lua',
+  event = 'VeryLazy',
   config = function()
     require('colorizer').setup(
       -- it slows down telescope's live_grep the point of unusability

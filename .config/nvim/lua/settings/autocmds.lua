@@ -1,16 +1,19 @@
 local function augroup(name)
   return vim.api.nvim_create_augroup('group_' .. name, { clear = true })
 end
+local aucmd = vim.api.nvim_create_autocmd
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = {'*.tsx', '*.ts'},
+-- Format typescript files on save
+aucmd('BufWritePre', {
+  pattern = { '*.tsx', '*.ts' },
   group = augroup('typsecript_format'),
   callback = function()
     vim.lsp.buf.format({ timeout_ms = 2000 })
-  end
+  end,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
+-- Format go files on save
+aucmd('BufWritePre', {
   pattern = '*.go',
   callback = function()
     require('go.format').goimport()
@@ -18,26 +21,26 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   group = augroup('go_format'),
 })
 
-vim.api.nvim_create_autocmd('BufEnter', {
+aucmd('BufEnter', {
   pattern = { '*.sh', '*.zsh' },
   group = augroup('zsh_as_bash'),
   command = 'silent! set filetype=sh',
 })
 
-vim.api.nvim_create_autocmd('FileType', {
+aucmd('FileType', {
   pattern = { 'eruby.yaml' },
   group = augroup('eruby_as_yaml'),
   command = 'silent! set filetype=yaml',
 })
 
 -- Check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+aucmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
   group = augroup('checktime'),
   command = 'checktime',
 })
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
+aucmd('TextYankPost', {
   group = augroup('highlight_yank'),
   callback = function()
     vim.highlight.on_yank()
@@ -45,7 +48,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- resize splits if window got resized
-vim.api.nvim_create_autocmd({ 'VimResized' }, {
+aucmd({ 'VimResized' }, {
   group = augroup('resize_splits'),
   callback = function()
     local current_tab = vim.fn.tabpagenr()
@@ -54,8 +57,8 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
   end,
 })
 
--- go to last loc when opening a buffer
-vim.api.nvim_create_autocmd('BufReadPost', {
+-- go to last location when opening a buffer
+aucmd('BufReadPost', {
   group = augroup('last_loc'),
   callback = function()
     local exclude = { 'gitcommit' }
@@ -72,7 +75,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 -- close some filetypes with <q>
-vim.api.nvim_create_autocmd('FileType', {
+aucmd('FileType', {
   group = augroup('close_with_q'),
   pattern = {
     'PlenaryTestPopup',
@@ -96,7 +99,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd('FileType', {
+aucmd('FileType', {
   group = augroup('wrap_spell'),
   pattern = { 'gitcommit', 'markdown' },
   callback = function()
@@ -106,7 +109,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+aucmd({ 'BufWritePre' }, {
   group = augroup('auto_create_dir'),
   callback = function(event)
     if event.match:match('^%w%w+://') then
@@ -117,9 +120,34 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
+-- Disable diagnostics in a .env file
+aucmd({ 'BufRead' }, {
+  pattern = '.env',
+  callback = function()
+    vim.diagnostic.disable(0)
+  end,
+})
+
+-- Disable next line comments
+aucmd({ 'BufEnter' }, {
+  callback = function()
+    vim.cmd('set formatoptions-=cro')
+    vim.cmd('setlocal formatoptions-=cro')
+  end,
+})
+
+-- Disable eslint on node_modules
+aucmd({ 'BufNewFile', 'BufRead' }, {
+  group = augroup('DisableEslintOnNodeModules'),
+  pattern = { '**/node_modules/**', 'node_modules', '/node_modules/*' },
+  callback = function()
+    vim.diagnostic.disable(0)
+  end,
+})
+
 -- local jqx = vim.api.nvim_create_augroup("Jqx", {})
 -- vim.api.nvim_clear_autocmds({ group = jqx })
--- vim.api.nvim_create_autocmd("BufWinEnter", {
+-- aucmd("BufWinEnter", {
 --   pattern = { "*.json", "*.yaml" },
 --   desc = "preview json and yaml files on open",
 --   group = jqx,
