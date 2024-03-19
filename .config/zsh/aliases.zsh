@@ -22,7 +22,7 @@ alias grep='rga --hyperlink-format=kitty'
 alias ip='ip --color=auto'
 alias rg='rga --hyperlink-format=kitty'
 alias k='kubectl'
-alias l='eza -lbha --icons --group-directories-first --hyperlink' # list, size, type, git
+alias l='eza -lbha -o --icons --group-directories-first --hyperlink --color-scale=size' # list, size, type, git
 alias less='bat'
 alias lg='lazygit'
 alias lt='eza -TlbFha --git --icons --group-directories-first --level=2'
