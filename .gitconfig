@@ -87,7 +87,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
   hooksPath = ~/.config/git_template/hooks
-  pager = delta --side-by-side --width ${COLUMNS} --wrap-max-lines unlimited
+  pager = delta --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
 
 [push]
   default = current
@@ -100,7 +100,7 @@
 
 [delta]
   hyperlinks = true
-  line-numbers = true
+  line-numbers = false
   line-numbers-right-format = "│ "
   navigate = true
   side-by-side = true

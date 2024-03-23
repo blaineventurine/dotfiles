@@ -24,7 +24,6 @@ wk.register({
       d = {
         '+Diff',
         f = { '<cmd>DiffviewFileHistory %<CR>', 'History for current file' },
-        c = { '<cmd>DiffviewClose<CR>', 'Open Diffview' },
         o = { '<cmd>DiffviewOpen<CR>', 'Open Diffview' },
       },
       g = { '<cmd>LazyGit<CR>', 'LazyGit' },
@@ -123,6 +122,8 @@ wk.register({
 })
 
 wk.register({
+  ['>'] = { '>>', 'Indent right' },
+  ['<'] = { '<<', 'Indent left' },
   q = {
     [':'] = { '<cmd>Telescope command_history<CR>', 'Search command history' },
   },
@@ -185,6 +186,18 @@ wk.register({
   },
 }, { mode = 't' })
 
+-- visual mode mappings
+wk.register({
+  ['<'] = { '<gv', 'Indent left' },
+  ['>'] = { '>gv', 'Indent right' },
+}, { mode = 'v' })
+
+-- command mode mappings
+wk.register({
+  bd = { 'Bdelete', 'Close buffer' },
+  bw = { 'Bdelete', 'Close buffer' },
+}, { mode = 'c', silent = true })
+
 -- this was in the nvim-autopairs config
 key('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
 -- Git
@@ -211,13 +224,6 @@ key('i', 'jk', '<ESC>', noremap)
 -- increment/decrement numbers
 key('n', '+', '<c-a>', silent_no_remap)
 key('n', '-', '<c-x>', silent_no_remap)
--- in/de-dent lines and remember the selection
-key('v', '<', '<gv', silent_no_remap)
-key('v', '>', '>gv', silent_no_remap)
-key('v', 'H', '<gv', silent_no_remap)
-key('v', 'L', '>gv', silent_no_remap)
-key('n', '>', '>>', silent_no_remap)
-key('n', '<', '<<', silent_no_remap)
 -- Move up and down wrapped lines intuitively, not literally
 key('n', 'j', 'gj', silent_no_remap)
 key('n', 'k', 'gk', silent_no_remap)
@@ -252,5 +258,3 @@ key('n', '<leader>db', ":lua require'dap'.toggle_breakpoint()<CR>", { silent = t
 -- key('n', '<leader>dlb', '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
 -- key('n', '<leader>dv', '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
 -- key('n', '<leader>df', '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
-key('c', 'bd', 'Bdelete', { silent = true })
-key('c', 'bw', 'Bdelete', { silent = true })
