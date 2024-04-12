@@ -5,10 +5,6 @@ if [ ! -d "$HOME/.local/bin" ]; then
   mkdir -p "$HOME/.local/bin"
 fi
 
-# install_github_cli
-install_nb
-install_git_delta
-install_fzf
 install_mise
 install_ripgrep_all
 install_marksman
