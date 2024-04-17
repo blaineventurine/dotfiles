@@ -7,6 +7,11 @@ dark-mode() {
   kitty +kitten themes --reload-in=all Tokyo Night Moon
 }
 
+kill-dashboard() {
+  ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM
+  kill $(lsof -t -i:3000)
+}
+
 # # stdio encryption and decryption
 # encrypt() {
 #   openssl aes-256-cbc

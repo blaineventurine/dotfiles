@@ -24,6 +24,6 @@
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
 --style=numbers
---color=always
+# --color=always
 --tabs=2
 

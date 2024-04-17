@@ -26,7 +26,6 @@ plugins=(
   zsh-autosuggestions
   extract
   zsh-syntax-highlighting
-  # tmux
   fzf-tab
   autoupdate
   taskwarrior
@@ -62,7 +61,8 @@ done
 compinit -C
 
 # I think fzf needs to be below completion init
-[[ -f "$HOME"/.fzf.zsh ]] && source "$HOME"/.fzf.zsh
+# [[ -f "$HOME"/.fzf.zsh ]] && source "$HOME"/.fzf.zsh
+eval "$(fzf --zsh)"
 
 # zsh-like keybindings
 bindkey -v
