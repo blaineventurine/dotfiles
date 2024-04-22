@@ -8,8 +8,8 @@ dark-mode() {
 }
 
 kill-dashboard() {
+  kill $(lsof -wni tcp:3000)
   ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM
-  kill $(lsof -t -i:3000)
 }
 
 # # stdio encryption and decryption
