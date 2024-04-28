@@ -199,28 +199,18 @@ return {
     lspconfig.eslint.setup({
       on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = true
-        -- vim.cmd('autocmd BufWritePre <buffer> Prettier')
-        -- vim.cmd('autocmd BufWritePre <buffer> EslintFixAll')
-
-        on_attach(client, bufnr)
+        default_config.on_attach(client, bufnr)
       end,
-      capabilities = capabilities,
+      capabilities = default_config.capabilities,
       -- cmd = { unpack(eslint_config.default_config.cmd) },
       settings = {
         --   format = { enable = true },
         packageManage = 'yarn',
       },
-      -- root_dir = function(fname)
-      --     -- return '~/repos/AlgoliaWeb/_client'
-      --   return lspconfig.util.find_package_json_ancestor(fname)
-      -- end
     })
   end,
   lua_ls = function()
     lspconfig.lua_ls.setup({
-      -- on_attach = function(client, bufnr)
-      --   client.server_capabilities.document_formatting = false
-      -- end,
       on_attach = default_config.on_attach,
       capabilities = default_config.capabilities,
       settings = {
