@@ -10,5 +10,7 @@ kill "$(lsof -wni tcp:3000 | awk 'NR>1 {print $2}')" &>/dev/null
 kill "$(lsof -wni tcp:3001 | awk 'NR>1 {print $2}')" &>/dev/null
 kill "$(lsof -wni tcp:8000 | awk 'NR>1 {print $2}')" &>/dev/null
 kill "$(lsof -wni tcp:8080 | awk 'NR>1 {print $2}')" &>/dev/null
-kill "$(ps aux | grep "bin/rails c" | awk 'NR>1 {print $2}')" &>/dev/null
+
+ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM
+
 kitty --session sessions/"${1}".conf </dev/null &>/dev/null &

@@ -5,6 +5,3 @@ rubocop
 rubocop-rails
 rubocop-rspec
 rubocop-performance
-solargraph
-solargraph-rails
-tmuxinator

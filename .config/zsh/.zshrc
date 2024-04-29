@@ -3,7 +3,7 @@
 #
 # zmodload zsh/zprof
 
-# Keep this near the top otherwise there's an non-zero exit code for some reason
+# Keep this near the top otherwise there's a non-zero exit code for some reason
 [[ ! -f "$HOME"/.envrc ]] && printf '\e[1mYou forgot your .envrc\e[0m\n'
 
 ssh-add -K 2>/dev/null
@@ -43,7 +43,6 @@ helper_files=(
   "$ZDOTDIR"/aliases.zsh
   "$ZDOTDIR"/.p10k.zsh
   "$ZDOTDIR"/kube.zsh
-  "$ZDOTDIR"/scripts/utility-functions.zsh
   "$ZDOTDIR"/.zsh_opts
   "$ZDOTDIR"/zsh-helpers.zsh
   )
@@ -59,11 +58,8 @@ for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
-
 # I think fzf needs to be below completion init
-# [[ -f "$HOME"/.fzf.zsh ]] && source "$HOME"/.fzf.zsh
 eval "$(fzf --zsh)"
-
 # zsh-like keybindings
 bindkey -v
 # This turns off direnv printing variables on every directory change
