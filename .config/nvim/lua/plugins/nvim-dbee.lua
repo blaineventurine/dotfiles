@@ -11,6 +11,16 @@ return {
     require('dbee').install()
   end,
   config = function()
-    require('dbee').setup( --[[optional config]])
+    require('dbee').setup({
+      -- [{"id": "file_source_/Users/blaineventurine/.local/state/nvim/dbee/persistence.jsonsnDnMZ8EaN", "url": "root@tcp(localhost:3306)/algoliaweb_dev", "name": "algoliaweb_dev", "type": "mysql"}]
+     -- is what the connection string looks like in the persistence file
+      connections = {
+        {
+          name = 'algoliaweb_dev',
+          type = 'mysql',
+          url = 'root@tcp(localhost:3306)/algoliaweb_dev',
+        },
+      },
+    })
   end,
 }
