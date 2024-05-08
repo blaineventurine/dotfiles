@@ -9,6 +9,7 @@ setopt BANG_HIST # Treat the '!' character specially during expansion.
 # setopt CORRECT                    # try to correct the spelling of our commands
 # setopt CORRECT_ALL
 setopt EXTENDED_HISTORY # Save each command's epoch timestamps and the duration in seconds.
+setopt EXTENDED_GLOB          # more powerful globbing
 setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
 setopt HIST_FIND_NO_DUPS          # do not display a line previously found
 setopt HIST_IGNORE_ALL_DUPS       # delete old recorded entry if new entry is a duplicate

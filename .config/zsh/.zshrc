@@ -65,4 +65,5 @@ bindkey -v
 # This turns off direnv printing variables on every directory change
 export DIRENV_LOG_FORMAT=""
 
+[[ -f ~/.config/zsh/p10k.mise.zsh ]] && source ~/.config/zsh/p10k.mise.zsh
 # zprof
