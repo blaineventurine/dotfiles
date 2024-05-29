@@ -49,11 +49,15 @@ return {
     local nls = require('null-ls')
     nls.setup({
       sources = {
+        nls.builtins.diagnostics.erb_lint,
         nls.builtins.diagnostics.haml_lint,
         nls.builtins.diagnostics.markdownlint,
-        nls.builtins.diagnostics.rubocop,
+        nls.builtins.diagnostics.rubocop.with({
+          extra_filetypes = { 'eruby' },
+        }),
         nls.builtins.diagnostics.vale,
 
+        nls.builtins.formatting.erb_format,
         nls.builtins.formatting.gofumpt,
         nls.builtins.formatting.goimports,
         require('none-ls.formatting.jq'),

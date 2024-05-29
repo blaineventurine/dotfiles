@@ -7,8 +7,16 @@ dark-mode() {
   kitty +kitten themes --reload-in=all Tokyo Night Moon
 }
 
+function ghpr() {
+  gh pr list --limit 100 --json number,title,updatedAt,author --template \
+    '{{range .}}{{tablerow .number .title .author.name (timeago .updatedAt)}}{{end}}' |
+    fzf --height 25% --reverse |
+    cut -f1 -d ' ' |
+    xargs gh pr checkout
+  }
+
 kill-dashboard() {
-  kill $(lsof -wni tcp:3000)
+  kill "$(lsof -wni tcp:3000)"
   ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM
 }
 

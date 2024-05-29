@@ -27,11 +27,11 @@ aucmd('BufEnter', {
   command = 'silent! set filetype=sh',
 })
 
-aucmd('FileType', {
-  pattern = { 'eruby.yaml' },
-  group = augroup('eruby_as_yaml'),
-  command = 'silent! set filetype=yaml',
-})
+-- aucmd('FileType', {
+--   pattern = { 'eruby.yaml' },
+--   group = augroup('eruby_as_yaml'),
+--   command = 'silent! set filetype=yaml',
+-- })
 
 -- Check if we need to reload the file when it changed
 aucmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {

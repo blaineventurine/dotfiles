@@ -8,7 +8,6 @@ M.servers = {
   'diagnostic-languageserver',
   'docker-compose-language-service',
   'dockerfile-language-server',
-  'erb-lint',
   'eslint-lsp',
   'gopls',
   'haml-lint',
@@ -22,6 +21,8 @@ M.servers = {
 }
 
 M.linters = {
+  'erb-formatter',
+  'erb-lint',
   'haml_lint',
   'jq',
   'jsonlint',

@@ -54,9 +54,10 @@ return {
     })
   end,
 
-  jsonls = require('lsp-config.servers.jsonls')(lspconfig, default_config),
-  ruby_lsp = require('lsp-config.servers.ruby-lsp')(lspconfig, default_config),
-  yamlls = require('lsp-config.servers.yamlls')(lspconfig, default_config),
   eslint = require('lsp-config.servers.eslint')(lspconfig, default_config),
+  jsonls = require('lsp-config.servers.jsonls')(lspconfig, default_config),
   lua_ls = require('lsp-config.servers.lua_ls')(lspconfig, default_config),
+  ruby_lsp = require('lsp-config.servers.ruby-lsp')(lspconfig, default_config),
+  tailwindcss = require('lsp-config.servers.tailwindcss')(lspconfig, default_config),
+  yamlls = require('lsp-config.servers.yamlls')(lspconfig, default_config),
 }
