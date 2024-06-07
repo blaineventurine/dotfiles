@@ -31,4 +31,4 @@ disable_default_shorthands = false # disable the default shorthands, see `MISE_D
 env_file = '.env' # load env vars from a dotenv file, see `MISE_ENV_FILE`
 experimental = true # enable experimental features
 # configure messages displayed when entering directories with config files
-status = {missing_tools = "if_other_versions_installed", show_env = false, show_tools = false}
+status = {missing_tools = "always", show_env = false, show_tools = false}
