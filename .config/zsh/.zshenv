@@ -30,6 +30,7 @@ export PATH="$HOME/.local/bin:$HOME/bin:$FLYPATH:$DOTNETPATH:$CARGOPATH:$PATH"
 export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/openssl@3.0/bin:$PATH"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
 	--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
