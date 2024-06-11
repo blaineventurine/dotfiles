@@ -2,10 +2,11 @@
 
 direnv = 'latest'
 golang = '1.21.5'
-nodejs = '20'
+nodejs = '22'
 python = '3.12.1'
-ruby = '3.1.5'
+ruby = '3.3.2'
 rust = '1.75.0'
+yarn = '4.2.2'
 
 [settings]
 legacy_version_file = true                     # enabled by default (unlike asdf)
