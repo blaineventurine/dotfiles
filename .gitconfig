@@ -92,6 +92,7 @@
 [push]
   default = current
   folowTags = true
+	autoSetupRemote = true
 
 [pull]
   ff = only
