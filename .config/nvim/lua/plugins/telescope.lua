@@ -60,7 +60,6 @@ return {
           '**deps/',
           '**dist/',
           '**__snapshots__/',
-          '**public/',
           '**.git/',
           '**.next/',
           '**.yarn/',

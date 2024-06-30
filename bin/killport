@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
-set -euxo pipefail
+set -euo pipefail
 
-pid=$(port "$1" | awk '{print $2}')
-if [[ $pid ]]; then
-  kill -9 "$pid"
-else
-  echo "No process found on port ${1}"
-fi
+# pid=$(port "$1" | awk '{print $2}')
+# if [[ $pid ]]; then
+#   kill -9 "$pid"
+# else
+#   echo "No process found on port ${1}"
+# fi
+
+kill $(lsof -wni tcp:$1)
