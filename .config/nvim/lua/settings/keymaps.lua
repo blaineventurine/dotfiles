@@ -219,6 +219,7 @@ key('v', '<A-l>', ':MoveHBlock(1)<CR>', silent_no_remap)
 key('v', '<A-h>', ':MoveHBlock(-1)<CR>', silent_no_remap)
 -- NeoTree
 key('n', '<C-e>', ':Neotree toggle<CR>', { noremap = false })
+key('n', '<C-b>', ':Neotree toggle buffers<CR>', { noremap = false })
 -- General
 key('i', 'jk', '<ESC>', noremap)
 -- increment/decrement numbers
