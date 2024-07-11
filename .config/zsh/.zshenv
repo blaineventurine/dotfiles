@@ -10,9 +10,6 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=true
 export EDITOR='nvim'
 export FLYCTL_INSTALL="$HOME/.fly"
 export FLYPATH="$FLYCTL_INSTALL/bin:$PATH"
-export FZF_COMPLETION_TRIGGER=',,'
-export FZF_DEFAULT_COMMAND='rga --files --hidden -g "!{node_modules,.git,.vscode,.cache,.terraform,.DS_Store,.Trash,.terraform.d,.npm,.dotfiles,.nvm}"'
-export FZF_PREVIEW_COLUMNS
 export GPG_TTY=$TTY
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -32,13 +29,33 @@ export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3.0/bin:$PATH"
 
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
-	--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
-	--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
-	--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff 
-	--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a
-  --preview-window=top,70%:wrap' 
-  #
+export FZF_COMPLETION_TRIGGER=',,'
+export FZF_DEFAULT_COMMAND='rga --files --hidden -g "!{node_modules,.git,.vscode,.cache,.terraform,.DS_Store,.Trash,.terraform.d,.npm,.dotfiles,.nvm}"'
+export FZF_PREVIEW_COLUMNS
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --highlight-line \
+  --info=inline-right \
+  --ansi \
+  --border=none
+  --color=bg+:#283457 \
+  --color=bg:#16161e \
+  --color=border:#27a1b9 \
+  --color=fg:#c0caf5 \
+  --color=gutter:#16161e \
+  --color=header:#ff9e64 \
+  --color=hl+:#2ac3de \
+  --color=hl:#2ac3de \
+  --color=info:#545c7e \
+  --color=marker:#ff007c \
+  --color=pointer:#ff007c \
+  --color=prompt:#2ac3de \
+  --color=query:#c0caf5:regular \
+  --color=scrollbar:#27a1b9 \
+  --color=separator:#ff9e64 \
+  --color=spinner:#ff007c \
+  --preview-window=top,70%:wrap \
+  "
+
 export FORGIT_FZF_DEFAULT_OPTS="
 --cycle
 --preview-window 'top:wrap'
