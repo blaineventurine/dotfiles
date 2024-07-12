@@ -3,8 +3,14 @@ zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt '%e'
 zstyle :compinstall filename '"$HOME"/.config/zsh/.zshrc'
 
+# Automatically update PATH entries
+zstyle ':completion:*' rehash true
+
+# Use menu completion
 zstyle ':completion:*:*:*:*:*' menu yes select
+
 zstyle ':completion:*' list-dirs-first true
+
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*' group-name ''
 

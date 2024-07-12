@@ -53,15 +53,20 @@ done
 
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz compinit
+
 # only check it once a day to see if it's changed
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
-# I think fzf needs to be below completion init
+
+# Tab completions need to be below compinit
+source <(kubectl completion zsh)
 eval "$(fzf --zsh)"
+
 # zsh-like keybindings
 bindkey -v
+
 # This turns off direnv printing variables on every directory change
 export DIRENV_LOG_FORMAT=""
 
