@@ -1,6 +1,4 @@
 # . "$HOME/.cargo/env"
-export UPDATE_ZSH_DAYS=1
-export TERM="xterm-256color" # This sets up colors properly
 export CARGOPATH="$HOME/.cargo/bin"
 export COLUMNS
 export COMPLETION_WAITING_DOTS="true"
@@ -11,12 +9,15 @@ export EDITOR='nvim'
 export FLYCTL_INSTALL="$HOME/.fly"
 export FLYPATH="$FLYCTL_INSTALL/bin:$PATH"
 export GPG_TTY=$TTY
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LS_COLORS="$(vivid generate tokyonight-moon)"
 export PAGER='bat'
+export TERM="xterm-256color" # This sets up colors properly
+export UPDATE_ZSH_DAYS=1
 export VISUAL='nvim' # editor to be opened from $PAGER
 export VI_MODE_SET_CURSOR=true
+export XDG_CONFIG_HOME=$HOME/.config
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="powerlevel10k/powerlevel10k"
 
