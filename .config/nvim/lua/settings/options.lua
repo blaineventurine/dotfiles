@@ -1,5 +1,6 @@
 local o = vim.opt
 local g = vim.g
+
 -- Global
 o.backup = false
 o.backupcopy = 'yes'
@@ -29,6 +30,7 @@ o.title = true
 o.undolevels = 1000
 o.wrapscan = true
 o.writebackup = false
+
 -- Buffer
 o.expandtab = true
 o.fileformat = 'unix'
@@ -38,6 +40,7 @@ o.spelllang = 'en_us'
 o.swapfile = false
 o.tabstop = 2
 o.undofile = false
+
 -- Window
 o.colorcolumn = '+1'
 o.cursorline = true
@@ -61,6 +64,7 @@ o.diffopt = { -- Option settings for diff mode.
   'foldcolumn:0', -- Set the 'foldcolumn' option to 0.
   'algorithm:histogram', -- Use the specified diff algorithm.
 }
+
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 g.skip_ts_context_commentstring_module = true

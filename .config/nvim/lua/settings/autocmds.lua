@@ -79,18 +79,18 @@ aucmd('FileType', {
   group = augroup('close_with_q'),
   pattern = {
     'PlenaryTestPopup',
+    'checkhealth',
     'help',
     'lspinfo',
     'man',
+    'neotest-output',
+    'neotest-output-panel',
+    'neotest-summary',
     'notify',
     'qf',
     'spectre_panel',
     'startuptime',
     'tsplayground',
-    'neotest-output',
-    'checkhealth',
-    'neotest-summary',
-    'neotest-output-panel',
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -124,7 +124,7 @@ aucmd({ 'BufWritePre' }, {
 aucmd({ 'BufRead' }, {
   pattern = '.env',
   callback = function()
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false)
   end,
 })
 
@@ -141,7 +141,7 @@ aucmd({ 'BufNewFile', 'BufRead' }, {
   group = augroup('DisableEslintOnNodeModules'),
   pattern = { '**/node_modules/**', 'node_modules', '/node_modules/*' },
   callback = function()
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false)
   end,
 })
 
@@ -155,3 +155,12 @@ aucmd({ 'BufNewFile', 'BufRead' }, {
 --     vim.cmd.JqxList()
 --   end,
 -- })
+
+-- Don't list quick list in buffer list and so bnext etc dont toggle to it
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup('qf'),
+  pattern = "qf",
+  callback = function()
+    vim.cmd("set nobuflisted")
+  end,
+})
