@@ -1,3 +1,5 @@
+# vim: ft=zsh
+
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt '%e'
