@@ -16,8 +16,8 @@ function ghpr() {
   }
 
 kill-dashboard() {
-  kill "$(lsof -wni tcp:3000)"
-  ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM
+  ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM &> /dev/null
+  kill $(lsof -wni tcp:3000) &> /dev/null
 }
 
 # # stdio encryption and decryption
