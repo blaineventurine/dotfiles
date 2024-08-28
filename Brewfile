@@ -45,6 +45,7 @@ brew "vale"
 brew "vivid"
 
 cask "firefox"
+cask "font-victor-mono-nerd-font"
 cask "keepassxc"
 cask "raycast"
 cask "xbar"
