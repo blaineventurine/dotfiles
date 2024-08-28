@@ -79,6 +79,7 @@ end
 
 return function(lspconfig, default_config)
   lspconfig.ruby_lsp.setup({
+    cmd = {'mise x -- ruby-lsp'},
     capabilities = default_config.capabilities,
     on_attach = function(client, buffer)
       setup_diagnostics(client, buffer)

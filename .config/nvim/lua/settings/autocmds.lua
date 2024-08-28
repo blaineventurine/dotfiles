@@ -5,11 +5,16 @@ local aucmd = vim.api.nvim_create_autocmd
 
 -- Format typescript files on save
 aucmd('BufWritePre', {
-  pattern = { '*.tsx', '*.ts' },
+  pattern = { '*.tsx', '*.ts', '*.js', '*.jsx' },
   group = augroup('typsecript_format'),
   callback = function()
-    vim.lsp.buf.format({ timeout_ms = 2000 })
-  end,
+      local file_type = vim.bo.filetype
+      if file_type == 'typescript' or file_type == 'typescriptreact' or file_type == 'javascript' or file_type == 'javascriptreact' then
+        vim.cmd([[:EslintFixAll]])
+      else
+        vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 2000})]])
+      end
+    end,
 })
 
 -- Format go files on save

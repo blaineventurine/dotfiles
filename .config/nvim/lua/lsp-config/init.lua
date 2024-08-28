@@ -41,6 +41,12 @@ local default_config = {
         buffer = bufnr,
       })
     end
+
+    if client.name == 'eslint' then
+      client.server_capabilities.documentFormattingProvider = true
+    elseif client.name == 'tsserver' or client.name == 'typescript-tools' then
+      client.server_capabilities.documentFormattingProvider = false
+    end
   end,
   capabilities = client_capabilities,
   flags = { debounce_text_changes = 200 },

@@ -64,7 +64,9 @@ wk.add(
     { "<leader>np",       "<cmd>lua require('package-info').change_version()<cr>",                       desc = "Change package version" },
     { "<leader>o",        "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>", desc = "Search within open files" },
     { "<leader>p",        "<cmd>lua require('telescope').extensions.project.project{}<CR>",              desc = "Find file in different project" },
-    { "<leader>r", function()
+    {
+      "<leader>r",
+      function()
         require('telescope').extensions.live_grep_args.live_grep_args({
           vimgrep_arguments = {
             'rg',
@@ -90,22 +92,32 @@ wk.add(
   })
 
 wk.add({
-  { "<", "<<", desc = "Indent left", remap = true },
-  { ">", ">>", desc = "Indent right", remap = true },
-  { "q:", "<cmd>Telescope command_history<CR>", desc = "Search command history", remap = true },
-  { "ss", "ysiW", desc = "Surround current word with character", remap = true },
-  { "z", group = "Folds", remap = true },
-  { "zc", "<cmd>foldclose<CR>", desc = "Close fold", remap = true },
-  { "zo", "<cmd>foldopen<CR>", desc = "Open fold", remap = true },
+  { "<",  "<<",                                 desc = "Indent left",                          remap = true },
+  { ">",  ">>",                                 desc = "Indent right",                         remap = true },
+  { "q:", "<cmd>Telescope command_history<CR>", desc = "Search command history",               remap = true },
+  { "ss", "ysiW",                               desc = "Surround current word with character", remap = true },
+  { "z",  group = "Folds",                      remap = true },
+  { "zc", "<cmd>foldclose<CR>",                 desc = "Close fold",                           remap = true },
+  { "zo", "<cmd>foldopen<CR>",                  desc = "Open fold",                            remap = true },
 }, { noremap = false })
 
 
 wk.add({
-  { "<space>,", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Go to previous diagnostic issue" },
-  { "<space>:", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Go to next diagnostic issue" },
+  { "<space>,", "<cmd>lua vim.diagnostic.goto_prev()<CR>",  desc = "Go to previous diagnostic issue" },
+  { "<space>:", "<cmd>lua vim.diagnostic.goto_next()<CR>",  desc = "Go to next diagnostic issue" },
   { "<space>?", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Show code diagnostics" },
-  { "<space>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Autofix diagnostic issue" },
-  { "<space>d", 
+  { "<space>a", "<cmd>lua vim.lsp.buf.code_action()<CR>",   desc = "Autofix diagnostic issue" },
+  {
+    "<space>c",
+    function()
+      local path = vim.fn.expand("%:p")
+      vim.fn.setreg("+", path)
+      vim.notify('Copied "' .. path .. '" to the clipboard!')
+    end,
+    desc = "Copy file path to clipboard"
+  },
+  {
+    "<space>d",
     function()
       local file_type = vim.bo.filetype
       print(file_type)
@@ -114,23 +126,36 @@ wk.add({
       else
         vim.cmd([[lua vim.lsp.buf.definition()]])
       end
-    end, desc = "Go to definition" },
-  { "<space>f", "<cmd>lua vim.lsp.buf.format({timeout_ms = 2000})<CR>", desc = "Format buffer" },
-  { "<space>h", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "Show hover info" },
-  { "<space>m", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename item" },
-  { "<space>r", "<cmd>Telescope lsp_references<CR>", desc = "Show references" },
-  { "<space>s", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", desc = "Show document symbol" },
-  { "<space>t", group = "Neotest" },
+    end,
+    desc = "Go to definition"
+  },
+  {
+    "<space>f",
+    function()
+      local file_type = vim.bo.filetype
+      if file_type == 'typescript' or file_type == 'typescriptreact' or file_type == 'javascript' or file_type == 'javascriptreact' then
+        vim.cmd([[:EslintFixAll]])
+      else
+        vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 2000})]])
+      end
+    end,
+    desc = "Format buffer"
+  },
+  { "<space>h",  "<cmd>lua vim.lsp.buf.hover()<CR>",                                                desc = "Show hover info" },
+  { "<space>m",  "<cmd>lua vim.lsp.buf.rename()<CR>",                                               desc = "Rename item" },
+  { "<space>r",  "<cmd>Telescope lsp_references<CR>",                                               desc = "Show references" },
+  { "<space>s",  "<cmd>lua vim.lsp.buf.document_symbol()<CR>",                                      desc = "Show document symbol" },
+  { "<space>t",  group = "Neotest" },
   { "<space>tF", "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", desc = "Debug File" },
-  { "<space>tL", "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", desc = "Debug Last" },
-  { "<space>tN", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", desc = "Debug Nearest" },
-  { "<space>tS", "<cmd>lua require('neotest').run.stop()<cr>", desc = "Stop" },
-  { "<space>ta", "<cmd>lua require('neotest').run.attach()<cr>", desc = "Attach" },
-  { "<space>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = "Run File" },
-  { "<space>tl", "<cmd>lua require('neotest').run.run_last()<cr>", desc = "Run Last" },
-  { "<space>tn", "<cmd>lua require('neotest').run.run()<cr>", desc = "Run Nearest" },
-  { "<space>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>", desc = "Output" },
-  { "<space>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", desc = "Summary" },
+  { "<space>tL", "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>",              desc = "Debug Last" },
+  { "<space>tN", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>",                     desc = "Debug Nearest" },
+  { "<space>tS", "<cmd>lua require('neotest').run.stop()<cr>",                                      desc = "Stop" },
+  { "<space>ta", "<cmd>lua require('neotest').run.attach()<cr>",                                    desc = "Attach" },
+  { "<space>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",                     desc = "Run File" },
+  { "<space>tl", "<cmd>lua require('neotest').run.run_last()<cr>",                                  desc = "Run Last" },
+  { "<space>tn", "<cmd>lua require('neotest').run.run()<cr>",                                       desc = "Run Nearest" },
+  { "<space>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>",                   desc = "Output" },
+  { "<space>ts", "<cmd>lua require('neotest').summary.toggle()<cr>",                                desc = "Summary" },
 })
 
 -- terminal mode mappings
@@ -140,7 +165,7 @@ wk.add({
 
 -- visual mode mappings
 wk.add({
-  { "<", "<gv", desc = "Indent left", mode = "v" },
+  { "<", "<gv", desc = "Indent left",  mode = "v" },
   { ">", ">gv", desc = "Indent right", mode = "v" },
 }, { mode = 'v' })
 
