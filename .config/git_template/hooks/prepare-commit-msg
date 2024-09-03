@@ -10,7 +10,7 @@ fi
 
 call_lefthook()
 {
-  if test "$LEFTHOOK_BIN" != ""
+  if test -n "$LEFTHOOK_BIN"
   then
     "$LEFTHOOK_BIN" "$@"
   elif lefthook -h >/dev/null 2>&1
