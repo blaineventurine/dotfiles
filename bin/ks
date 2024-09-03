@@ -6,11 +6,11 @@
 
 # I exit kitty a lot by just quitting the window, so I need to kill the server and console
 # until I figure out how to tell kitty to do this on it's own
-kill "$(lsof -wni tcp:3000 | awk 'NR>1 {print $2}')" &>/dev/null
-kill "$(lsof -wni tcp:3001 | awk 'NR>1 {print $2}')" &>/dev/null
-kill "$(lsof -wni tcp:8000 | awk 'NR>1 {print $2}')" &>/dev/null
-kill "$(lsof -wni tcp:8080 | awk 'NR>1 {print $2}')" &>/dev/null
+# kill "$(lsof -wni tcp:3000 | awk 'NR>1 {print $2}')" # &>/dev/null
+# kill "$(lsof -wni tcp:3001 | awk 'NR>1 {print $2}')" #&>/dev/null
+# kill "$(lsof -wni tcp:8000 | awk 'NR>1 {print $2}')" #&>/dev/null
+# kill "$(lsof -wni tcp:8080 | awk 'NR>1 {print $2}')" #&>/dev/null
 
-ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM
-
+# ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM # &>/dev/null
+pkill -f AlgoliaWeb
 kitty --session sessions/"${1}".conf </dev/null &>/dev/null &

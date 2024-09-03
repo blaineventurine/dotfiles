@@ -16,7 +16,8 @@ function ghpr() {
   }
 
 kill-dashboard() {
-  ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM &> /dev/null
+  pkill -f "AlgoliaWeb" &> /dev/null
+  # ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM &> /dev/null
   kill $(lsof -wni tcp:3000) &> /dev/null
 }
 
