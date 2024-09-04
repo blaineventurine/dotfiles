@@ -12,8 +12,27 @@ return {
   },
   config = function()
     local actions = require('telescope.actions')
-    local lga_actions = require("telescope-live-grep-args.actions")
+    local lga_actions = require('telescope-live-grep-args.actions')
+    local multiopen = function(prompt_bufnr)
+      local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+      local multi = picker:get_multi_selection()
 
+      if vim.tbl_isempty(multi) then
+        require('telescope.actions').select_default(prompt_bufnr)
+        return
+      end
+
+      require('telescope.actions').close(prompt_bufnr)
+      for _, entry in pairs(multi) do
+        local filename = entry.filename or entry.value
+        local lnum = entry.lnum or 1
+        local lcol = entry.col or 1
+        if filename then
+          vim.cmd(string.format('tabnew +%d %s', lnum, filename))
+          vim.cmd(string.format('normal! %dG%d|', lnum, lcol))
+        end
+      end
+    end
     require('telescope').setup({
       defaults = {
         mappings = {
@@ -21,6 +40,7 @@ return {
             ['<c-e>'] = actions.to_fuzzy_refine,
             ['<c-h>'] = 'which_key',
             ['<esc>'] = actions.close,
+            ['<CR>'] = multiopen
           },
         },
         sorting_strategy = 'ascending',
@@ -81,25 +101,25 @@ return {
       },
       pickers = {
         find_files = {
-          hidden = true
+          hidden = true,
           -- theme = "dropdown",
-        }
+        },
       },
       extensions = {
         live_grep_args = {
           auto_quoting = true,
           mappings = {
             i = {
-              ["<C-k>"] = lga_actions.quote_prompt(),
-              ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob *.rb --iglob !**/spec/**/*.rb" }),
+              ['<C-k>'] = lga_actions.quote_prompt(),
+              ['<C-i>'] = lga_actions.quote_prompt({ postfix = ' --iglob *.rb --iglob !**/spec/**/*.rb' }),
             },
           },
         },
         fzf = {
-          fuzzy = true,                   -- false will only do exact matching
+          fuzzy = true, -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true,    -- override the file sorter
-          case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
+          override_file_sorter = true, -- override the file sorter
+          case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
           -- the default case_mode is "smart_case"
         },
         project = {

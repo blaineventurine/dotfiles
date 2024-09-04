@@ -1,7 +1,8 @@
-awesome_print
+amazing_print
 haml_lint
 neovim
 rubocop
 rubocop-rails
 rubocop-rspec
 rubocop-performance
+ruby-lsp-rspec
