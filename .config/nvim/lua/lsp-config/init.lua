@@ -44,7 +44,7 @@ local default_config = {
 
     if client.name == 'eslint' then
       client.server_capabilities.documentFormattingProvider = true
-    elseif client.name == 'tsserver' or client.name == 'typescript-tools' then
+    elseif client.name == 'ts_ls' or client.name == 'typescript-tools' then
       client.server_capabilities.documentFormattingProvider = false
     end
   end,
