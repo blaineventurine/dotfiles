@@ -2,7 +2,8 @@ alias -s {js,json,yaml,html,css,toml}='bat'
 alias -s md='glow'
 alias -s git='git clone'
 
-alias -g G='| rga --hyperlink-format=kitty'
+alias -g G='| rga --hyperlink-format=kitty' # [G]rep
+alias -g C="| wc -l"                 # [C]ount
 
 alias cat='bat'
 alias co='checkout_branch'
@@ -34,8 +35,8 @@ alias py='python3'
 alias python='python3'
 alias rm='rm -dIv'
 alias rsync='rsync -az --info=progress2'
-alias spec='bundle exec rspec'
 alias shutdown='sudo shutdown -h now'
+alias spec='bundle exec rspec'
 alias sudo='sudo '
 alias tf='terraform'
 alias update='update_global_packages'
