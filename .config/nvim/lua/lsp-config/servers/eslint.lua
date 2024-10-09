@@ -8,7 +8,7 @@ return function(lspconfig, default_config)
     -- cmd = { unpack(eslint_config.default_config.cmd) },
     settings = {
       --   format = { enable = true },
-      packageManage = 'yarn',
+      packageManager = 'yarn',
     },
   })
 end

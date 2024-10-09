@@ -5,7 +5,6 @@ local aucmd = vim.api.nvim_create_autocmd
 
 -- Format typescript files on save
 aucmd('BufWritePre', {
-  pattern = { '*.tsx', '*.ts', '*.js', '*.jsx' },
   group = augroup('typsecript_format'),
   callback = function()
       local file_type = vim.bo.filetype
