@@ -7,13 +7,20 @@ local aucmd = vim.api.nvim_create_autocmd
 aucmd('BufWritePre', {
   group = augroup('typsecript_format'),
   callback = function()
-      local file_type = vim.bo.filetype
-      if file_type == 'typescript' or file_type == 'typescriptreact' or file_type == 'javascript' or file_type == 'javascriptreact' then
-        vim.cmd([[:EslintFixAll]])
-      else
-        vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 2000})]])
-      end
-    end,
+    local file_type = vim.bo.filetype
+    if
+      file_type == 'typescript'
+      or file_type == 'typescriptreact'
+      or file_type == 'javascript'
+      or file_type == 'javascriptreact'
+    then
+      vim.cmd([[:EslintFixAll]])
+    elseif file_type == 'go' then
+      require('go.format').goimports()
+    else
+      vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 2000})]])
+    end
+  end,
 })
 
 -- Format go files on save
@@ -161,10 +168,10 @@ aucmd({ 'BufNewFile', 'BufRead' }, {
 -- })
 
 -- Don't list quick list in buffer list and so bnext etc dont toggle to it
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd('FileType', {
   group = augroup('qf'),
-  pattern = "qf",
+  pattern = 'qf',
   callback = function()
-    vim.cmd("set nobuflisted")
+    vim.cmd('set nobuflisted')
   end,
 })

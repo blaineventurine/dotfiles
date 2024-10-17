@@ -1,7 +1,7 @@
 [tools]
 
 direnv = 'latest'
-golang = '1.21.5'
+golang = '1.23.2'
 nodejs = '22'
 python = '3.12.1'
 ruby = '3.3.3'
