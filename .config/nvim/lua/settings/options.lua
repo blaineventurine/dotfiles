@@ -73,3 +73,12 @@ if vim.fn.has('nvim-0.9.0') == 1 then
   o.splitkeep = 'screen'
   o.shortmess:append({ C = true })
 end
+
+vim.filetype.add({
+  filename = {
+    ['docker-compose.yml'] = 'yaml.docker-compose',
+    ['docker-compose.yaml'] = 'yaml.docker-compose',
+    ['compose.yml'] = 'yaml.docker-compose',
+    ['compose.yaml'] = 'yaml.docker-compose',
+  },
+})
