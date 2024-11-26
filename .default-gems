@@ -1,5 +1,6 @@
 amazing_print
 haml_lint
+erb_lint
 neovim
 rubocop
 rubocop-rails

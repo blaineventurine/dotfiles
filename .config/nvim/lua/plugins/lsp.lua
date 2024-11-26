@@ -5,13 +5,10 @@ return {
     'mihyaeru21/nvim-lspconfig-bundler',
     'b0o/schemastore.nvim',
     'folke/neodev.nvim',
-    { 'nvimtools/none-ls.nvim',
-      dependencies = { 'nvimtools/none-ls-extras.nvim' },
-    },
+    { 'nvimtools/none-ls.nvim', dependencies = { 'nvimtools/none-ls-extras.nvim' } },
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'jay-babu/mason-null-ls.nvim',
-    { 'WhoIsSethDaniel/mason-tool-installer.nvim', build = ':MasonToolsInstall' },
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/nvim-cmp',
   },
@@ -25,10 +22,6 @@ return {
         plugins = { 'neotest' },
         types = true,
       },
-    })
-    require('mason-tool-installer').setup({
-      ensure_installed = require('utils').servers,
-      auto_update = true,
     })
     require('mason-null-ls').setup({
       automatic_installation = true,
@@ -55,9 +48,16 @@ return {
         nls.builtins.diagnostics.rubocop.with({
           extra_filetypes = { 'eruby' },
         }),
+        nls.builtins.diagnostics.semgrep.with({
+          -- args = { 'lsp' }, --, '--config', 'auto', '--json', '$FILENAME' },
+          args = { '--config', 'auto', '-q', '--json', '$FILENAME' },
+          method = nls.methods.DIAGNOSTICS_ON_SAVE,
+        }),
         nls.builtins.diagnostics.vale,
+        nls.builtins.diagnostics.yamllint,
 
-        nls.builtins.formatting.erb_format,
+        nls.builtins.formatting.codespell,
+        nls.builtins.formatting.erb_lint,
         nls.builtins.formatting.gofumpt,
         nls.builtins.formatting.goimports,
         require('none-ls.formatting.jq'),
