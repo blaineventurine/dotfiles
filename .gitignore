@@ -61,6 +61,8 @@
 
 !bin/
 !bin/**/*
+bin/docker*
+bin/orb*
 
 !.default-cargo-crates
 !.default-gems

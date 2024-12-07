@@ -1,5 +1,5 @@
 return {
-  'git@github.com:blaineventurine/sessionable',
+  'blaineventurine/sessionable',
   cmd = {
     'SaveSession',
     'CreateGitSession',
