@@ -44,6 +44,7 @@ brew "shellcheck"
 brew "terraform"
 brew "vale"
 brew "vivid"
+brew "zsh-completions"
 
 cask "firefox"
 cask "font-victor-mono-nerd-font"

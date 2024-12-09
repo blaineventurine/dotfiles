@@ -51,6 +51,10 @@ for file in $helper_files; do
   [[ -f $file ]] && source $file
 done
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz compinit
 
