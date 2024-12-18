@@ -1,6 +1,6 @@
  # === EDITOR ===
 Pry.editor = 'nvim'
-require 'awesome_print'
+require 'amazing_print'
 
 # == Pry-Nav - Using pry as a debugger ==
 Pry.commands.alias_command('c', 'continue') if Pry::Commands["continue"]
@@ -37,7 +37,7 @@ Pry.config.ls.protected_method_color = :yellow
 Pry.config.ls.private_method_color = :bright_black
 
 begin
-  require 'awesome_print'
+  require 'amazing_print'
   # The following line enables awesome_print for all pry output,
   # and it also enables paging
   Pry.config.print = proc { |output, value|
@@ -49,7 +49,7 @@ begin
     # output.puts formatted
     # Pry::Helpers::BaseHelpers.stagger_output("#{BLACK}=>#{WHITE} #{value.ai}", output)
   }
-  AwesomePrint.defaults = {
+  AmazingPrint.defaults = {
     :string_limit => 80,
     :indent => 2,
     :multiline => true,
