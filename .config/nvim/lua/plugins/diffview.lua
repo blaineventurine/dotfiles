@@ -4,6 +4,9 @@ return {
   config = function()
     require('diffview').setup({
       enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
+      default_args = {
+        DiffviewOpen = { '--imply-local' },
+      },
     })
   end,
 }

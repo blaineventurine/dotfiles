@@ -56,7 +56,7 @@ return {
         nls.builtins.diagnostics.vale,
         nls.builtins.diagnostics.yamllint,
 
-        nls.builtins.formatting.codespell,
+        -- nls.builtins.formatting.codespell,
         nls.builtins.formatting.erb_lint,
         nls.builtins.formatting.gofumpt,
         nls.builtins.formatting.goimports,

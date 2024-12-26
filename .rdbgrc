@@ -1,2 +1,2 @@
-config set irb_console 0
+config set irb_console 1
 config set use_short_path true
