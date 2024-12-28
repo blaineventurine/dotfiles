@@ -14,7 +14,7 @@
 [mergetool "nvimmerge"]
   ; cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
   ; cmd = nvim -f -c \"DiffviewOpen\" \"$MERGED\"
-  cmd = "!nvim -c DiffviewOpen"
+  cmd = "nvim -c DiffviewOpen"
   ; cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 	; cmd = nvim -d "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
 
@@ -32,7 +32,7 @@
   prompt = false
 
 [difftool "nvimdiff"]
-  cmd = "!nvim -c DiffviewOpen"
+  cmd = "nvim -c DiffviewOpen"
   ; cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 
 [alias]

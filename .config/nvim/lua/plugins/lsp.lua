@@ -57,13 +57,15 @@ return {
         nls.builtins.diagnostics.yamllint,
 
         -- nls.builtins.formatting.codespell,
-        nls.builtins.formatting.erb_lint,
+        nls.builtins.formatting.erb_format,
         nls.builtins.formatting.gofumpt,
         nls.builtins.formatting.goimports,
         require('none-ls.formatting.jq'),
         nls.builtins.formatting.markdownlint,
         nls.builtins.formatting.prettier,
-        nls.builtins.formatting.rubocop,
+        nls.builtins.formatting.rubocop.with({
+          extra_filetypes = { 'eruby' },
+        }),
         nls.builtins.formatting.shellharden,
         nls.builtins.formatting.stylua,
 

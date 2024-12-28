@@ -10,7 +10,7 @@ M.servers = {
   'docker-compose-language-service',
   'dockerfile-language-server',
   'eslint-lsp',
-  'erb-lint',
+  -- 'erb-lint',
   'haml-lint',
   'html-lsp',
   'json-lsp',
@@ -26,7 +26,7 @@ M.servers = {
 
 M.linters = {
   'erb-formatter',
-  'erb-lint',
+  -- 'erb-lint',
   'haml_lint',
   'jq',
   'jsonlint',
@@ -36,6 +36,7 @@ M.linters = {
   'shellcheck',
   'shellharden',
   'stylua',
+  'yamllint',
 }
 
 -- Treesitter
