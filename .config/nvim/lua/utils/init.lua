@@ -17,6 +17,7 @@ M.servers = {
   'lua-language-server',
   'ruby_lsp',
   'semgrep',
+  'stimulus-language-server',
   'tailwindcss-language-server',
   'taplo',
   'terraform-ls',

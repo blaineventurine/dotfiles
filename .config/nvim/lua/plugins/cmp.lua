@@ -108,11 +108,12 @@ return {
         { name = 'buffer', keyword_length = 5 },
         { name = 'luasnip' },
         -- { name = 'crates' },
+        { name = 'copilot' },
         { name = 'emoji' },
         { name = 'calc' },
-        { name = 'copilot' },
         { name = 'path' },
         { name = 'nvim_lua' },
+        { name = 'ecolog' },
       }, {
         {
           name = 'buffer',

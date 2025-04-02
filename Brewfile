@@ -3,6 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 tap "homebrew/services"
 
+brew "atuin"
 brew "bat"
 brew "coreutils"
 brew "curl"
