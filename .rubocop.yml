@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
@@ -6,14 +6,14 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
-    - 'vendor/**/*'
-    - 'test/fixtures/**/*'
-    - 'db/**/*'
-    - 'bin/**/*'
-    - 'log/**/*'
-    - 'tmp/**/*'
-    - 'config/environments/*'
-    - 'node_modules/**/*'
+    - "vendor/**/*"
+    - "test/fixtures/**/*"
+    - "db/**/*"
+    - "bin/**/*"
+    - "log/**/*"
+    - "tmp/**/*"
+    - "config/environments/*"
+    - "node_modules/**/*"
 
 Style/FrozenStringLiteralComment:
   Description: To help transition from Ruby 2.3.0 to Ruby 3.0.
