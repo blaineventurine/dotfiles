@@ -6,6 +6,9 @@
 ; [include]
 ;  path = ~/.gitconfig.local
 
+[includeIf "gitdir:~/Library/Application Support/wezterm/plugins/"]
+    path = ~/.config/wezterm/.gitconfig
+
 [merge]
   tool = nvimmerge
   conflictstyle = zdiff3

@@ -1,6 +1,7 @@
 return {
   'hiphish/rainbow-delimiters.nvim',
   event = 'VeryLazy',
+  submodules = false,
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },

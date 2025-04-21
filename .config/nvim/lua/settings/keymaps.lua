@@ -86,6 +86,7 @@ wk.add(
     { "<leader>s",  "<cmd>lua require('sessionable').SearchSession()<CR>", desc = "Find a session" },
     { "<leader>t",  "<cmd>lua require('FTerm').toggle()<CR>",              desc = "Toggle terminal" },
     { "<leader>to", "<cmd>TodoTelescope<CR>",                              desc = "Show all TODOs" },
+    { "<leader>u",  "<cmd>Telescope undo<cr>",                             desc = "Show undos" },
     { "<leader>v",  "<cmd>vsplit<CR>",                                     desc = "Vertical split" },
     { "<leader>y",  "<cmd>Telescope neoclip<CR>",                          desc = "Search clipboard, <C-p> to paste" },
 

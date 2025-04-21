@@ -8,6 +8,7 @@ return {
     'nvim-telescope/telescope-dap.nvim',
     'nvim-telescope/telescope-project.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim',
+    'debugloop/telescope-undo.nvim',
     'rcarriga/nvim-notify',
   },
   config = function()
@@ -40,7 +41,7 @@ return {
             ['<c-e>'] = actions.to_fuzzy_refine,
             ['<c-h>'] = 'which_key',
             ['<esc>'] = actions.close,
-            ['<CR>'] = multiopen
+            ['<CR>'] = multiopen,
           },
         },
         sorting_strategy = 'ascending',
@@ -106,6 +107,28 @@ return {
         },
       },
       extensions = {
+        undo = {
+          mappings = {
+            i = {
+              ['<cr>'] = require('telescope-undo.actions').yank_additions,
+              ['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+              ['<C-cr>'] = require('telescope-undo.actions').restore,
+              -- alternative defaults, for users whose terminals do questionable things with modified <cr>
+              ['<C-y>'] = require('telescope-undo.actions').yank_deletions,
+              ['<C-r>'] = require('telescope-undo.actions').restore,
+            },
+            n = {
+              ['y'] = require('telescope-undo.actions').yank_additions,
+              ['Y'] = require('telescope-undo.actions').yank_deletions,
+              ['u'] = require('telescope-undo.actions').restore,
+            },
+          },
+          side_by_side = true,
+          layout_strategy = 'vertical',
+          layout_config = {
+            preview_height = 0.8,
+          },
+        },
         live_grep_args = {
           auto_quoting = true,
           mappings = {
