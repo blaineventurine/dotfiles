@@ -12,16 +12,19 @@ history_filter = [
   "^g nc",
   "^dots ",
   "^brew ",
+  "^bundle update ",
   "^g(it)? commit",
   "^g(it)? push",
   "^g(it)? pull",
   "^g(it)? fetch",
 ]
 
-history_format = "{duration} | {time} |  {command}  | {host}/{directory} | "
+history_format = "{time} | {host}/{directory} | {command}"
 filter_mode_shell_up_key_binding = "directory"
 inline_height = 40
-store_failed = false
+# store_failed = false
+keymap_mode = "vim-normal"
+style = "auto"
 
 ## prevent commands run with cwd matching any of these regexes from being written
 ## to history. Note that these regular expressions are unanchored, i.e. if they don't
