@@ -6,8 +6,8 @@ return {
     'b0o/schemastore.nvim',
     'folke/neodev.nvim',
     { 'nvimtools/none-ls.nvim', dependencies = { 'nvimtools/none-ls-extras.nvim' } },
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
     'jay-babu/mason-null-ls.nvim',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/nvim-cmp',
@@ -31,7 +31,7 @@ return {
 
     local mason_lspconfig = require('mason-lspconfig')
     mason_lspconfig.setup()
-    mason_lspconfig.setup_handlers(require('lsp-config'))
+    -- mason_lspconfig.setup_handlers(require('lsp-config'))
 
     local signs = require('utils.icons').diagnostics
     for type, icon in pairs(signs) do

@@ -6,6 +6,7 @@ export DISABLE_AUTO_TITLE=true
 export DOTNETPATH="$HOME/.dotnet/tools"
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
 export EDITOR='nvim'
+export EZA_CONFIG_DIR="$HOME/.config/eza"
 export FLYCTL_INSTALL="$HOME/.fly"
 export FLYPATH="$FLYCTL_INSTALL/bin:$PATH"
 export GPG_TTY=$TTY
