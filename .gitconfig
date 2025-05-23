@@ -158,3 +158,6 @@
 
 [log]
   date = iso
+
+[blame]
+  date = short

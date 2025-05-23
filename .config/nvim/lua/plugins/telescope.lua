@@ -134,6 +134,7 @@ return {
           mappings = {
             i = {
               ['<C-k>'] = lga_actions.quote_prompt(),
+              ['<C-w>'] = lga_actions.quote_prompt({ postfix = ' --iglob app/**/*.rb' }),
               ['<C-i>'] = lga_actions.quote_prompt({ postfix = ' --iglob *.rb --iglob !**/spec/**/*.rb' }),
             },
           },
