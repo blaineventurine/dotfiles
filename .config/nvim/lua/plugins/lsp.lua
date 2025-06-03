@@ -48,11 +48,23 @@ return {
         nls.builtins.diagnostics.rubocop.with({
           extra_filetypes = { 'eruby' },
         }),
-        nls.builtins.diagnostics.semgrep.with({
-          -- args = { 'lsp' }, --, '--config', 'auto', '--json', '$FILENAME' },
-          args = { '--config', 'auto', '-q', '--json', '$FILENAME' },
-          method = nls.methods.DIAGNOSTICS_ON_SAVE,
-        }),
+        -- nls.builtins.diagnostics.semgrep.with({
+        --   -- args = { 'lsp' }, --, '--config', 'auto', '--json', '$FILENAME' },
+        --   args = {
+        --     '--metrics=off',
+        --     '--config',
+        --     'p/trailofbits',
+        --     '--config',
+        --     'p/ruby',
+        --     '--config',
+        --     'p/typescript',
+        --     '-q',
+        --     '--json',
+        --     '$FILENAME',
+        --   },
+        --   -- args = { '--config', 'auto', '-q', '--json', '$FILENAME', '--metrics=off' },
+        --   method = nls.methods.DIAGNOSTICS_ON_SAVE,
+        -- }),
         nls.builtins.diagnostics.vale,
         nls.builtins.diagnostics.yamllint,
 

@@ -137,7 +137,7 @@ wk.add({
       if file_type == 'typescript' or file_type == 'typescriptreact' or file_type == 'javascript' or file_type == 'javascriptreact' then
         vim.cmd([[:EslintFixAll]])
       else
-        vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 2000})]])
+        vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 5000})]])
       end
     end,
     desc = "Format buffer"
