@@ -13,6 +13,7 @@ return function(lspconfig, default_config)
   if string.find(cwd, '_client_admin') then
     opts.rulePaths = { './eslint_rules' }
   end
+
   lspconfig.eslint.setup({
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = true

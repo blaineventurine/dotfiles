@@ -1,5 +1,6 @@
 amazing_print
 haml_lint
+hookup
 erb_lint
 neovim
 rubocop

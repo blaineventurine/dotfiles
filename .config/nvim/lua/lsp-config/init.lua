@@ -20,9 +20,9 @@ local highlight_cmd_group = vim.api.nvim_create_augroup('Highlight', {
 local default_config = {
   on_attach = function(client, bufnr)
     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
-    if client.server_capabilities.documentFormattingProvider then
-      vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
-    end
+    -- if client.server_capabilities.documentFormattingProvider then
+    -- vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+    -- end
     if client.server_capabilities.documentSymbolProvider then
       require('nvim-navic').attach(client, bufnr)
     end
@@ -42,11 +42,11 @@ local default_config = {
       })
     end
 
-    if client.name == 'eslint' then
-      client.server_capabilities.documentFormattingProvider = true
-    elseif client.name == 'ts_ls' or client.name == 'typescript-tools' then
-      client.server_capabilities.documentFormattingProvider = false
-    end
+    -- if client.name == 'eslint' then
+    --   client.server_capabilities.documentFormattingProvider = true
+    -- elseif client.name == 'ts_ls' or client.name == 'typescript-tools' then
+    --   client.server_capabilities.documentFormattingProvider = false
+    -- end
   end,
   capabilities = client_capabilities,
   flags = { debounce_text_changes = 200 },

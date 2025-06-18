@@ -6,3 +6,5 @@ eslint-plugin-prettier
 markdownlint-cli
 neovim
 prettier
+typescript
+typescript-language-server

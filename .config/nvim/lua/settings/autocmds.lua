@@ -14,7 +14,8 @@ aucmd('BufWritePre', {
       or file_type == 'javascript'
       or file_type == 'javascriptreact'
     then
-      vim.cmd([[:EslintFixAll]])
+      vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 2000})]])
+      -- vim.cmd([[:EslintFixAll]])
     elseif file_type == 'go' then
       require('go.format').goimports()
     else

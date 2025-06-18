@@ -93,7 +93,7 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
-  hooksPath = ~/.config/git_template/hooks
+  ; hooksPath = ~/.config/git_template/hooks
   pager = delta --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
 
 [push]
