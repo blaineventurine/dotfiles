@@ -45,6 +45,7 @@ return {
         nls.builtins.diagnostics.erb_lint,
         nls.builtins.diagnostics.haml_lint,
         nls.builtins.diagnostics.markdownlint,
+        nls.builtins.diagnostics.mypy,
         nls.builtins.diagnostics.rubocop.with({
           extra_filetypes = { 'eruby' },
         }),

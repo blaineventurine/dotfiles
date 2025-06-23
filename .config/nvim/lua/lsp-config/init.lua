@@ -3,6 +3,7 @@ local client_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 require('lspconfig-bundler').setup()
+require('lspconfig.configs').vtsls = require('vtsls').lspconfig
 
 client_capabilities.textDocument.completion.completionItem.snippetSupport = true
 client_capabilities.textDocument.completion.completionItem.resolveSupport = {

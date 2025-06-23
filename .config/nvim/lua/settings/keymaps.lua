@@ -122,11 +122,11 @@ wk.add({
     function()
       local file_type = vim.bo.filetype
       print(file_type)
-      if file_type == 'typescript' or file_type == 'typescriptreact' then
-        vim.cmd([[:TSToolsGoToSourceDefinition]])
-      else
+      -- if file_type == 'typescript' or file_type == 'typescriptreact' then
+      --   vim.cmd([[:TSToolsGoToSourceDefinition]])
+      -- else
         vim.cmd([[lua vim.lsp.buf.definition()]])
-      end
+      -- end
     end,
     desc = "Go to definition"
   },
@@ -137,7 +137,7 @@ wk.add({
       -- if file_type == 'typescript' or file_type == 'typescriptreact' or file_type == 'javascript' or file_type == 'javascriptreact' then
       --   vim.cmd([[:EslintFixAll]])
       -- else
-      vim.cmd([[lua vim.lsp.buf.format({timeout_ms = 5000})]])
+      vim.cmd([[lua vim.lsp.buf.format()]])
       -- end
     end,
     desc = "Format buffer"

@@ -22,6 +22,7 @@ M.servers = {
   'taplo',
   'terraform-ls',
   'vale',
+  'vtsls',
   'yaml-language-server',
 }
 
