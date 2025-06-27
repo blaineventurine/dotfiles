@@ -107,7 +107,7 @@ wk.add({
   { "<space>,", "<cmd>lua vim.diagnostic.goto_prev()<CR>",  desc = "Go to previous diagnostic issue" },
   { "<space>:", "<cmd>lua vim.diagnostic.goto_next()<CR>",  desc = "Go to next diagnostic issue" },
   { "<space>?", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Show code diagnostics" },
-  { "<space>a", "<cmd>lua vim.lsp.buf.code_action()<CR>",   desc = "Autofix diagnostic issue" },
+  { "<space>a", "<cmd>lua vim.lsp.buf.code_action()<CR>",   desc = "Show code actions" },
   {
     "<space>c",
     function()
@@ -125,7 +125,7 @@ wk.add({
       -- if file_type == 'typescript' or file_type == 'typescriptreact' then
       --   vim.cmd([[:TSToolsGoToSourceDefinition]])
       -- else
-        vim.cmd([[lua vim.lsp.buf.definition()]])
+      vim.cmd([[lua vim.lsp.buf.definition()]])
       -- end
     end,
     desc = "Go to definition"

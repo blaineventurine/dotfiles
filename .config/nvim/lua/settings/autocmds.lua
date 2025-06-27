@@ -3,34 +3,15 @@ local function augroup(name)
 end
 local aucmd = vim.api.nvim_create_autocmd
 
--- Format typescript files on save
-aucmd('BufWritePre', {
-  group = augroup('typsecript_format'),
+-- Set the working directory to that of the opened file
+aucmd('BufEnter', {
+  group = augroup('set_cwd'),
   callback = function()
-    -- local file_type = vim.bo.filetype
-    -- if
-    --   file_type == 'typescript'
-    --   or file_type == 'typescriptreact'
-    --   or file_type == 'javascript'
-    --   or file_type == 'javascriptreact'
-    -- then
-    --   vim.cmd([[lua vim.lsp.buf.format()]])
-    --   -- vim.cmd([[:EslintFixAll]])
-    -- elseif file_type == 'go' then
-    --   require('go.format').goimports()
-    -- else
-    vim.cmd([[lua vim.lsp.buf.format()]])
-    -- end
+    local cwd = vim.fn.expand('%:p:h')
+    if cwd ~= '' then
+      vim.cmd('lcd ' .. cwd)
+    end
   end,
-})
-
--- Format go files on save
-aucmd('BufWritePre', {
-  pattern = '*.go',
-  callback = function()
-    require('go.format').goimport()
-  end,
-  group = augroup('go_format'),
 })
 
 aucmd('BufEnter', {

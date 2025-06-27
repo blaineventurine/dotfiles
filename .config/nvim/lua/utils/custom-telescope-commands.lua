@@ -1,6 +1,6 @@
 -- Implement delta as previewer for diffs
-local previewers = require('telescope.previewers')
 local builtin = require('telescope.builtin')
+local previewers = require('telescope.previewers')
 local M = {}
 
 local delta = previewers.new_termopen_previewer({
@@ -36,10 +36,6 @@ M.my_git_status = function(opts)
   opts.previewer = delta
 
   builtin.git_status(opts)
-end
-
-M.my_note = function()
-  builtin.live_grep({ prompt_title = ' Notes ', cwd = '~/.nb' })
 end
 
 M.project_files = function(opts)

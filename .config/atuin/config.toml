@@ -14,7 +14,6 @@ history_filter = [
   # "^brew ",
   "^bundle update ",
   "^g(it)? commit",
-  "^g(it)? push",
   "^g(it)? pull",
   "^g(it)? fetch",
 ]

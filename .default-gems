@@ -3,6 +3,7 @@ haml_lint
 hookup
 erb_lint
 neovim
+reek
 rubocop
 rubocop-rails
 rubocop-rspec
