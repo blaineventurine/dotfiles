@@ -4,15 +4,15 @@ end
 local aucmd = vim.api.nvim_create_autocmd
 
 -- Set the working directory to that of the opened file
-aucmd('BufEnter', {
-  group = augroup('set_cwd'),
-  callback = function()
-    local cwd = vim.fn.expand('%:p:h')
-    if cwd ~= '' then
-      vim.cmd('lcd ' .. cwd)
-    end
-  end,
-})
+-- aucmd('BufEnter', {
+--   group = augroup('set_cwd'),
+--   callback = function()
+--     local cwd = vim.fn.expand('%:p:h')
+--     if cwd ~= '' then
+--       vim.cmd('lcd ' .. cwd)
+--     end
+--   end,
+-- })
 
 aucmd('BufEnter', {
   pattern = { '*.sh', '*.zsh' },

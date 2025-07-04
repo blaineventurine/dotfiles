@@ -2,6 +2,7 @@
 export CARGOPATH="$HOME/.cargo/bin"
 export COLUMNS
 export COMPLETION_WAITING_DOTS="true"
+export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export DISABLE_AUTO_TITLE=true
 export DOTNETPATH="$HOME/.dotnet/tools"
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
@@ -13,7 +14,9 @@ export GPG_TTY=$TTY
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export PAGER='bat'
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 export TERM="xterm-256color" # This sets up colors properly
 export UPDATE_ZSH_DAYS=1
 export VISUAL='nvim' # editor to be opened from $PAGER
