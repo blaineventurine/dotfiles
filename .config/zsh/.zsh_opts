@@ -4,6 +4,7 @@ typeset -g HISTSIZE=10000000 # The maximum number of events stored in the intern
 typeset -g SAVEHIST=$HISTSIZE # The maximum number of history events to save in the history file.
 typeset -g DIRSTACKSIZE=10 # The maximum size of the directory stack for `pushd` and `popd`.
 typeset -gU cdpath fpath mailpath path # Ensure path arrays do not contain duplicates (except manpath, which needs gnuman placed at the start)
+
 setopt AUTOCD                     # automatically swap to a directory without requiring to type `cd`
 setopt AUTO_PUSHD # Make cd push the old directory onto the directory stack.
 setopt BANG_HIST # Treat the '!' character specially during expansion.
@@ -22,7 +23,7 @@ setopt HIST_SUBST_PATTERN # Allow pattern matching in glob qualifiers
 setopt HIST_VERIFY # Don't execute the line directly instead perform history expansion.
 setopt INC_APPEND_HISTORY # Write to the history file immediately, not when the shell exits.
 setopt NO_LIST_BEEP               # don't beep on an ambiguous completion
-setopt PROMPT_SUBST               # enable parameter expansion, command substituion, and arithmetic expansion in prompts
+setopt PROMPT_SUBST               # enable parameter expansion, command substitution, and arithmetic expansion in prompts
 setopt PUSHD_IGNORE_DUPS # Don't push multiple copies of the same directory onto the stack.
 setopt PUSHD_MINUS # Exchanges  the  meanings of `+` and `-` for pushd.
 setopt PUSHD_SILENT # Do not print the directory stack after pushd or popd.

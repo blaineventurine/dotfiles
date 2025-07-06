@@ -8,7 +8,7 @@ require("keymaps").setup(config)
 -- local appearance = require("appearance")
 
 config.font = wezterm.font("VictorMono Nerd Font Mono")
-config.font_size = 15.0
+config.font_size = 18.0
 config.bold_brightens_ansi_colors = true
 config.color_scheme_dirs = { wezterm.home_dir }
 

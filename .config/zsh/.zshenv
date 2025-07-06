@@ -66,5 +66,3 @@ export FORGIT_FZF_DEFAULT_OPTS="
 --preview-window 'top:wrap'
 --height '90%'
 "
-
-# vault login -method=userpass username=$VAULT_USERNAME password=$VAULT_PASSWORD

@@ -1,6 +1,4 @@
 [tools]
-
-direnv = 'latest'
 golang = '1.23.2'
 nodejs = { version = '22', postinstall = 'corepack enable' }
 # python = '3.12.1'
@@ -27,8 +25,11 @@ paranoid = false              # see MISE_PARANOID
 
 # shorthands_file = '~/.config/mise/shorthands.toml' # path to the shorthands file, see `MISE_SHORTHANDS_FILE`
 disable_default_shorthands = false                 # disable the default shorthands, see `MISE_DISABLE_DEFAULT_SHORTHANDS`
-env_file = '.env'                                  # load env vars from a dotenv file, see `MISE_ENV_FILE`
+# env_file = '~/.env'                                  # load env vars from a dotenv file, see `MISE_ENV_FILE`
 experimental = true                                # enable experimental features
 # configure messages displayed when entering directories with config files
 status = { missing_tools = "always", show_env = false, show_tools = false }
 idiomatic_version_file_enable_tools = ["node"]
+
+[env]
+_.file = '~/.env'

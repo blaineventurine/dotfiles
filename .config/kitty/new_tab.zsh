@@ -2,7 +2,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Integrates direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 
 # $current_dir = $(pwd)
 
