@@ -16,7 +16,7 @@ if [[ -r "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
 fi
 
 # mise for managing language/tool versions
-eval "$(~/.local/bin/mise activate zsh)"
+eval "$($(brew --prefix)/bin/mise activate zsh)"
 eval "$(mise hook-env)"
 
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle

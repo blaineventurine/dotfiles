@@ -45,7 +45,7 @@
     status                  # exit code of the last command
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
-    direnv                  # direnv status (https://direnv.net/)
+    # direnv                  # direnv status (https://direnv.net/)
     # mise - this prompt is ridiculously large
     # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
@@ -62,7 +62,7 @@
     # php_version           # php version (https://www.php.net/)
     # laravel_version       # laravel php framework version (https://laravel.com/)
     # java_version          # java version (https://www.java.com/)
-    package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
+    # package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
     # rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
     # rvm                     # ruby version from rvm (https://rvm.io)
     #fvm                     # flutter version management (https://github.com/leoafarias/fvm)
@@ -362,7 +362,7 @@
     if [[ -n $P9K_CONTENT ]]; then
       # If P9K_CONTENT is not empty, use it. It's either "loading" or from vcs_info (not from
       # gitstatus plugin). VCS_STATUS_* parameters are not available in this case.
-      typeset -g my_git_format=$P9K_CONTENT
+      typeset -g my_git_format="$P9K_CONTENT"
       return
     fi
 
@@ -439,7 +439,7 @@
     # in this case.
     (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+=" ${modified}─"
 
-    typeset -g my_git_format=$res
+    typeset -g my_git_format="$res"
   }
   functions -M my_git_formatter 2>/dev/null
 
@@ -1537,15 +1537,15 @@
       _maybe_notebook_name=$(
         nb notebooks current --skip-git 2>/dev/null | head -1
       )
-      if [[ -n "${_maybe_notebook_name:-}" ]] && [[ ! "${_maybe_notebook_name}" =~ \-\-\-\-\- ]]
+      if [[ -n "${_maybe_notebook_name:-}" ]] && [[ ! "$_maybe_notebook_name" =~ \-\-\-\-\- ]]
       then
         local _notebook_prefix="📖 "
-        local _notebook_value="${_maybe_notebook_name}"
+        local _notebook_value="$_maybe_notebook_name"
         local _notebook_string="${_notebook_prefix}${_notebook_value}"
       else
         _notebook_string=""
       fi
-      p10k segment -t "${_notebook_string}"
+      p10k segment -t "$_notebook_string"
     fi
   }
 
@@ -1609,5 +1609,5 @@
 # Tell `p10k configure` which file it should overwrite.
 typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
 
-(( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
+(( ${#p10k_config_opts} )) && setopt "${p10k_config_opts[@]}"
 'builtin' 'unset' 'p10k_config_opts'

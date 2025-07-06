@@ -4,23 +4,23 @@ set -euo pipefail
 zshCustom=$HOME/.oh-my-zsh/custom
 
 if [ ! -d "$zshCustom/plugins/zsh-syntax-highlighting" ]; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$zshCustom/plugins/zsh-syntax-highlighting"
+  git clone git@github.com:zsh-users/zsh-syntax-highlighting.git "$zshCustom/plugins/zsh-syntax-highlighting"
 fi
 if [ ! -d "$zshCustom/plugins/zsh-autosuggestions" ]; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions "$zshCustom/plugins/zsh-autosuggestions"
+  git clone git@github.com:zsh-users/zsh-autosuggestions "$zshCustom/plugins/zsh-autosuggestions"
 fi
 if [ ! -d "$zshCustom/themes/powerlevel10k" ]; then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$zshCustom/themes/powerlevel10k"
+  git clone --depth=1 git@github.com:romkatv/powerlevel10k.git "$zshCustom/themes/powerlevel10k"
 fi
 if [ ! -d "$zshCustom/plugins/zsh-interactive-cd" ]; then
-  git clone https://github.com/changyuheng/zsh-interactive-cd "$zshCustom/plugins/zsh-interactive-cd"
+  git clone git@github.com:changyuheng/zsh-interactive-cd "$zshCustom/plugins/zsh-interactive-cd"
 fi
 if [ ! -d "$zshCustom/plugins/fzf-tab" ]; then
-  git clone https://github.com/Aloxaf/fzf-tab "$zshCustom/plugins/fzf-tab"
+  git clone git@github.com:Aloxaf/fzf-tab "$zshCustom/plugins/fzf-tab"
 fi
 if [ ! -d "$zshCustom/plugins/autoupdate" ]; then
-  git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins "$zshCustom/plugins/autoupdate"
+  git clone git@github.com:TamCore/autoupdate-oh-my-zsh-plugins "$zshCustom/plugins/autoupdate"
 fi
 if [ ! -d "$zshCustom/plugins/forgit" ]; then
-  git clone https://github.com/wfxr/forgit "$zshCustom/plugins/forgit"
+  git clone git@github.com:wfxr/forgit "$zshCustom/plugins/forgit"
 fi

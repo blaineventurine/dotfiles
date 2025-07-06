@@ -44,6 +44,7 @@ brew "vivid"
 brew "zsh-completions"
 
 cask "firefox"
+cask "font-codicon"
 cask "font-victor-mono-nerd-font"
 cask "keepassxc"
 cask "kitty"
