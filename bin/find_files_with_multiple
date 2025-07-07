@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-# finds files that have any occurence of all the strings you specify
+# finds files that have any occurrence of all the strings you specify
 # usage: find-files-with-multiple button div test
 # will find files where all three words exist somewhere
 results="rg -0 -l $1"
