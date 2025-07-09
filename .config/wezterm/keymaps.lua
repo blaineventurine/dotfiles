@@ -5,6 +5,7 @@ local M = {}
 
 M.mod = wezterm.target_triple:find("windows") and "SHIFT|CTRL" or "SHIFT|SUPER"
 function M.setup(config)
+	config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 	config.keys = {
 
 		{

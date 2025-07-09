@@ -2,6 +2,9 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 
+-- this plugin messes with the colorscheme somehow
+-- modal.apply_to_config(config)
+
 require("tabs").setup(config)
 require("keymaps").setup(config)
 
@@ -13,7 +16,7 @@ config.bold_brightens_ansi_colors = true
 config.color_scheme_dirs = { wezterm.home_dir }
 
 -- if appearance.is_dark() then
-config.color_scheme = "tokyonight_night"
+config.color_scheme = "tokyonight_moon"
 -- else
 -- 	config.color_scheme = "Tokyo Night Day"
 -- end
@@ -22,7 +25,8 @@ config.set_environment_variables = {
 	PATH = "/opt/homebrew/bin:" .. os.getenv("PATH"),
 }
 
+config.term = "wezterm"
+
 wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
-modal.apply_to_config(config)
 
 return config
