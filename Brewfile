@@ -1,4 +1,5 @@
 brew "atuin"
+brew "awscli"
 brew "bat"
 brew "coreutils"
 brew "curl"
