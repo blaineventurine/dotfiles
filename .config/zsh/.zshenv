@@ -17,6 +17,7 @@ export LC_ALL=en_US.UTF-8
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export PAGER='bat'
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export TERM="xterm-256color" # This sets up colors properly
 export UPDATE_ZSH_DAYS=1
 export VISUAL='nvim' # editor to be opened from $PAGER

@@ -11,9 +11,9 @@ ssh-add -K 2>/dev/null
 # Enable Powerlevel10k instant prompt. Should stay close to the top of "$HOME"/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -65,7 +65,7 @@ brew_zsh_plugins=(
   "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   "opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
   # this has to be after vi-mode, otherwise the righthand side prompt doesn't work
-  "share/powerlevel10k/powerlevel10k.zsh-theme"
+  # "share/powerlevel10k/powerlevel10k.zsh-theme"
   "share/forgit/forgit.plugin.zsh"
 )
 
@@ -75,7 +75,6 @@ for plugin in $brew_zsh_plugins; do
   brew_plugin_paths[$plugin]="$HOMEBREW_PREFIX/$plugin"
 done
 
-# Then source them in the required order
 for plugin in $brew_zsh_plugins; do
   [[ -f ${brew_plugin_paths[$plugin]} ]] && source ${brew_plugin_paths[$plugin]}
 done
@@ -83,6 +82,8 @@ done
 zvm_after_init_commands+=('eval "$(fzf --zsh)"')
 zvm_after_init_commands+=('eval "$(atuin init zsh)"')
 
-[[ -f "$ZDOTDIR"/.p10k.mise.zsh ]] && source "$ZDOTDIR"/.p10k.mise.zsh
-[[ -f "$ZDOTDIR"/.p10k.tokyonight-moon.zsh ]] && source "$ZDOTDIR"/.p10k.tokyonight-moon.zsh
+eval "$(starship init zsh)"
+
+# [[ -f "$ZDOTDIR"/.p10k.mise.zsh ]] && source "$ZDOTDIR"/.p10k.mise.zsh
+# [[ -f "$ZDOTDIR"/.p10k.tokyonight-moon.zsh ]] && source "$ZDOTDIR"/.p10k.tokyonight-moon.zsh
 # zprof

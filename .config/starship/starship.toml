@@ -1,0 +1,121 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[  ](bg:#c8d3f5 fg:#222436)\
+[](bg:#82aaff fg:#c8d3f5)\
+$directory\
+[](fg:#82aaff bg:#2f334d)\
+$git_branch\
+$git_status\
+[](fg:#2f334d bg:#1e2030)\
+$nodejs\
+$rust\
+$golang\
+$php\
+$ruby\
+$python\
+$docker_context\
+[](fg:#1e2030 bg:#1b1d2b)\
+$aws\
+$gcloud\
+$kubernetes\
+$azure\
+[](fg:#1b1d2b bg:#191a2e)\
+$time\
+[ ](fg:#191a2e)\
+\n$character"""
+
+[directory]
+style = "fg:#222436 bg:#82aaff"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"repos" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#2f334d"
+format = '[[ $symbol $branch ](fg:#c8d3f5 bg:#2f334d)]($style)'
+
+[git_status]
+style = "bg:#2f334d"
+format = '[[($all_status$ahead_behind )](fg:#ffc777 bg:#2f334d)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#68d391 bg:#1e2030)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#ff9500 bg:#1e2030)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#00add8 bg:#1e2030)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#8892bf bg:#1e2030)]($style)'
+
+[ruby]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#e74c3c bg:#1e2030)]($style)'
+
+[python]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#ffd43b bg:#1e2030)]($style)'
+
+[java]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#f89820 bg:#1e2030)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol $context ](fg:#0db7ed bg:#1e2030)]($style)'
+
+[aws]
+symbol = "󰒋 "
+style = "bg:#1b1d2b"
+format = '[[ $symbol ($profile )($region )($duration )](fg:#ff9900 bg:#1b1d2b)]($style)'
+
+[gcloud]
+symbol = "󱇶 "
+style = "bg:#1b1d2b"
+format = '[[ $symbol $account(@$domain)(\($region\)) ](fg:#4285f4 bg:#1b1d2b)]($style)'
+
+[kubernetes]
+symbol = "☸ "
+style = "bg:#1b1d2b"
+format = '[[ $symbol $context( \($namespace\)) ](fg:#326ce5 bg:#1b1d2b)]($style)'
+disabled = false
+
+[azure]
+symbol = "󰠅 "
+style = "bg:#1b1d2b"
+format = '[[ $symbol ($subscription) ](fg:#0078d4 bg:#1b1d2b)]($style)'
+disabled = false
+
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#191a2e"
+format = '[[  $time ](fg:#86e1fc bg:#191a2e)]($style)'
+
+[character]
+success_symbol = "[❯](bold #c8d3f5)"
+error_symbol = "[❯](bold #ff757f)"
