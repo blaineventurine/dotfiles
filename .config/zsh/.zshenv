@@ -23,8 +23,8 @@ export VISUAL='nvim' # editor to be opened from $PAGER
 export VI_MODE_SET_CURSOR=true
 export XDG_CONFIG_HOME=$HOME/.config
 export ZSH="$HOME/.oh-my-zsh"
-export ZSH_THEME="powerlevel10k/powerlevel10k"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="/opt/homebrew/share/zsh-syntax-highlighting/highlighters"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 export ZVM_VI_ESCAPE_BINDKEY=jk
 
 # Path is searched beginning to end, with first match being used - set my bin folders first so any
