@@ -20,9 +20,14 @@ $aws\
 $gcloud\
 $kubernetes\
 $azure\
+$terraform\
+$pulumi\
+$helm\
 [](fg:#1b1d2b bg:#191a2e)\
 $time\
 [ ](fg:#191a2e)\
+$cmd_duration\
+$jobs\
 \n$character"""
 
 [directory]
@@ -45,7 +50,19 @@ format = '[[ $symbol $branch ](fg:#c8d3f5 bg:#2f334d)]($style)'
 
 [git_status]
 style = "bg:#2f334d"
-format = '[[($all_status$ahead_behind )](fg:#ffc777 bg:#2f334d)]($style)'
+format = '[[($conflicted$ahead_behind$staged$modified$untracked$renamed$deleted$stashed)](bg:#2f334d)]($style)'
+conflicted = "⚡[${count} ](fg:#ff757f bg:#2f334d)"
+ahead = "[⇡${count} ](fg:#c3e88d bg:#2f334d)"
+behind = "[⇣${count} ](fg:#ffc777 bg:#2f334d)"
+diverged = "[⇕${ahead_count}⇣${behind_count} ](fg:#ffc777 bg:#2f334d)"
+up_to_date = ""
+untracked = "[?${count} ](fg:#82aaff bg:#2f334d)"
+stashed = "[📦${count} ](fg:#c099ff bg:#2f334d)"
+modified = "[!${count} ](fg:#ff9e64 bg:#2f334d)"
+staged = "[+${count} ](fg:#c3e88d bg:#2f334d)"
+renamed = "[»${count} ](fg:#86e1fc bg:#2f334d)"
+deleted = "[✘${count} ](fg:#ff757f bg:#2f334d)"
+
 
 [nodejs]
 symbol = ""
@@ -109,6 +126,30 @@ style = "bg:#1b1d2b"
 format = '[[ $symbol ($subscription) ](fg:#0078d4 bg:#1b1d2b)]($style)'
 disabled = false
 
+[terraform]
+symbol = "󱁢 "
+style = "bg:#1e2030"
+format = '[[ $symbol $workspace ](fg:#7c3aed bg:#1e2030)]($style)'
+
+[pulumi]
+symbol = ""
+style = "bg:#1e2030"
+format = '[[ $symbol $stack ](fg:#8a63d2 bg:#1e2030)]($style)'
+
+[helm]
+symbol = "⎈ "
+style = "bg:#1e2030"
+format = '[[ $symbol ($version) ](fg:#0f1689 bg:#1e2030)]($style)'
+
+[cmd_duration]
+min_time = 2_000
+style = "bg:#191a2e"
+format = '[[ ⏱️  $duration ](fg:#ff9e64 bg:#191a2e)]($style)'
+
+[jobs]
+symbol = "⚙️ "
+style = "bg:#191a2e"
+format = '[[ $symbol $number ](fg:#c3e88d bg:#191a2e)]($style)'
 
 [time]
 disabled = false
