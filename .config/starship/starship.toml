@@ -18,16 +18,16 @@ $docker_context\
 [](fg:#1e2030 bg:#1b1d2b)\
 $aws\
 $gcloud\
-$kubernetes\
+$env_var\
 $azure\
 $terraform\
 $pulumi\
 $helm\
 [](fg:#1b1d2b bg:#191a2e)\
 $time\
-[ ](fg:#191a2e)\
 $cmd_duration\
 $jobs\
+[ ](fg:#191a2e)\
 \n$character"""
 
 [directory]
@@ -119,6 +119,11 @@ symbol = "☸ "
 style = "bg:#1b1d2b"
 format = '[[ $symbol $context( \($namespace\)) ](fg:#326ce5 bg:#1b1d2b)]($style)'
 disabled = false
+
+[env_var.KUBECTL_ACTIVE]
+symbol = "☸ "
+style = "bg:#1b1d2b"
+format = '[[ $symbol $context( \($namespace\)) ](fg:#326ce5 bg:#1b1d2b)]($style)'
 
 [azure]
 symbol = "󰠅 "
