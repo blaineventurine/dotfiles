@@ -1,23 +1,35 @@
 # vim: ft=zsh
 
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+
+# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+# To make fzf-tab follow FZF_DEFAULT_OPTS.
+# NOTE: This may lead to unexpected behavior since some flags break this plugin. See Aloxaf/fzf-tab#455.
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt '%e'
+
+# Smart case matching (lowercase matches both, uppercase matches only uppercase)
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh/.zcompcache"
 zstyle :compinstall filename '"$HOME"/.config/zsh/.zshrc'
 
 # Automatically update PATH entries
 zstyle ':completion:*' rehash true
 
 # Use menu completion
-zstyle ':completion:*:*:*:*:*' menu yes select
+# zstyle ':completion:*:*:*:*:*' menu yes select
 
 zstyle ':completion:*' list-dirs-first true
 
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*' group-name ''
-
-# matches case insensitive for lowercase
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -42,5 +54,3 @@ zstyle ':fzf-tab:complete:vim:*' fzf-preview 'bat --color=always --style=numbers
 # preview files when typing 'cat <TAB>'
 zstyle ':fzf-tab:complete:bat:*' fzf-min-height 90
 zstyle ':fzf-tab:complete:bat:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath'
-
-zstyle ':omz:update' frequency 7

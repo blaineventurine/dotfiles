@@ -15,27 +15,14 @@ if [[ -r "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
   source "${XDG_CACHE_HOME:-"$HOME"/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # mise for managing language/tool versions
-eval "$($(brew --prefix)/bin/mise activate zsh)"
+eval "$($HOMEBREW_PREFIX/bin/mise activate zsh)"
 eval "$(mise hook-env)"
 
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle
 
-plugins=(
-  zsh-autosuggestions
-  extract
-  zsh-syntax-highlighting
-  fzf-tab
-  autoupdate
-  taskwarrior
-  vi-mode
-  zsh-interactive-cd
-  forgit
-  # evalcache
-  kubectl
-  )
-
-[[ -f "$ZSH"/oh-my-zsh.sh ]] && source "$ZSH"/oh-my-zsh.sh
 autoload -U add-zsh-hook
 
 helper_files=(
@@ -44,15 +31,12 @@ helper_files=(
   "$ZDOTDIR"/kube.zsh
   "$ZDOTDIR"/.zsh_opts
   "$ZDOTDIR"/zsh-helpers.zsh
+  "$ZDOTDIR"/zsh-interactive-cd.zsh
   )
 
 for file in $helper_files; do
   [[ -f $file ]] && source $file
 done
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz compinit
@@ -65,14 +49,40 @@ compinit -C
 
 # Tab completions need to be below compinit
 source <(kubectl completion zsh)
-eval "$(fzf --zsh)"
 
 # zsh-like keybindings
 bindkey -v
 
 export LS_COLORS="$(vivid generate tokyonight-moon)"
 
-eval "$(atuin init zsh)"
+# fzf-tab needs to be loaded after compinit, but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
+[[ ! -f "$ZDOTDIR"/fzf-tab/fzf-tab.plugin.zsh ]] && git clone https://github.com/Aloxaf/fzf-tab "$ZDOTDIR"/fzf-tab
+
+source "$ZDOTDIR"/fzf-tab/fzf-tab.plugin.zsh
+
+brew_zsh_plugins=(
+  "share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  "opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+  # this has to be after vi-mode, otherwise the righthand side prompt doesn't work
+  "share/powerlevel10k/powerlevel10k.zsh-theme"
+  "share/forgit/forgit.plugin.zsh"
+)
+
+# Precompute full paths for Homebrew plugins
+typeset -A brew_plugin_paths
+for plugin in $brew_zsh_plugins; do
+  brew_plugin_paths[$plugin]="$HOMEBREW_PREFIX/$plugin"
+done
+
+# Then source them in the required order
+for plugin in $brew_zsh_plugins; do
+  [[ -f ${brew_plugin_paths[$plugin]} ]] && source ${brew_plugin_paths[$plugin]}
+done
+
+zvm_after_init_commands+=('eval "$(fzf --zsh)"')
+zvm_after_init_commands+=('eval "$(atuin init zsh)"')
 
 [[ -f ~/.config/zsh/p10k.mise.zsh ]] && source ~/.config/zsh/p10k.mise.zsh
+
 # zprof

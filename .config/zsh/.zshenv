@@ -24,6 +24,8 @@ export VI_MODE_SET_CURSOR=true
 export XDG_CONFIG_HOME=$HOME/.config
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="powerlevel10k/powerlevel10k"
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="/opt/homebrew/share/zsh-syntax-highlighting/highlighters"
+export ZVM_VI_ESCAPE_BINDKEY=jk
 
 # Path is searched beginning to end, with first match being used - set my bin folders first so any
 # overrides I have are used
@@ -33,6 +35,8 @@ export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3.0/bin:$PATH"
+
+export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
 export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rga --files --hidden -g "!{node_modules,.git,.vscode,.cache,.terraform,.DS_Store,.Trash,.terraform.d,.npm,.dotfiles,.nvm}"'

@@ -1,12 +1,24 @@
 () {
 function prompt_mise() {
-  local plugins=("${(@f)$(mise ls --current 2>/dev/null | awk '!/\(symlink\)/ && $3!="~/.tool-versions" && $3!="~/.config/mise/config.toml" {print $1, $2}')}")
+ # Cache the mise output to avoid running it on every prompt refresh
+  local cache_file="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-mise-cache"
+  local cache_timeout=300  # 5 minutes in seconds
+  
+  # Check if cache exists and is recent enough
+  if [[ -f "$cache_file" && $(( $(date +%s) - $(stat -f %m "$cache_file" 2>/dev/null || stat -c %Y "$cache_file" 2>/dev/null) )) -lt $cache_timeout ]]; then
+    local plugins=("${(@f)$(cat "$cache_file")}")
+  else
+    # Update the cache
+    mise ls --current 2>/dev/null | awk '!/\(symlink\)/ && $3!="~/.tool-versions" && $3!="~/.config/mise/config.toml" {print $1, $2}' > "$cache_file"
+    local plugins=("${(@f)$(cat "$cache_file")}")
+  fi
+
   local plugin
-  for plugin in ${(k)plugins}; do
+  for plugin in "${(k)plugins}"; do
     local parts=("${(@s/ /)plugin}")
     local tool=${(U)parts[1]}
     local version=${parts[2]}
-    p10k segment -r -i "${tool}_ICON" -s $tool -t "$version"
+    p10k segment -r -i "${tool}_ICON" -s "$tool" -t "$version"
   done
 }
   typeset -g POWERLEVEL9K_MISE_FOREGROUND=66

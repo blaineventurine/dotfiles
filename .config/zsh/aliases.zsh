@@ -16,7 +16,7 @@ alias dots='dotfiles'
 alias f='fzf | xargs -I{} nvim {}'
 alias fif='find_in_file'
 alias fim='find_files_with_multiple'
-alias fzf='fzf --preview "([[ -f {} ]] && (bat --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200"'
+alias fz='fzf_custom'
 alias g='git'
 alias gdm='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias gnc='ga && new-commit'
@@ -28,7 +28,7 @@ alias k='kubectl'
 alias l='eza -lbha -o --icons --group-directories-first --hyperlink --color-scale=size' # list, size, type, git
 alias less='bat'
 alias lg='lazygit'
-alias lt='eza -TlbFha --git --icons --group-directories-first --level=2'
+alias lt='eza -Tlbha --git --icons --group-directories-first --level=2'
 alias mv='mv -iv'
 alias pip='pip3'
 alias py='python3'
@@ -43,3 +43,8 @@ alias update='update_global_packages'
 alias updatep10k='git -C $ZSH_CUSTOM/themes/powerlevel10k pull'
 alias vi='nvim'
 alias vim='nvim'
+
+
+fzf_custom() {
+  fzf --preview "([[ -f {} ]] && (bat --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200"
+}
