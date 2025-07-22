@@ -83,6 +83,6 @@ done
 zvm_after_init_commands+=('eval "$(fzf --zsh)"')
 zvm_after_init_commands+=('eval "$(atuin init zsh)"')
 
-[[ -f ~/.config/zsh/p10k.mise.zsh ]] && source ~/.config/zsh/p10k.mise.zsh
-
+[[ -f "$ZDOTDIR"/.p10k.mise.zsh ]] && source "$ZDOTDIR"/.p10k.mise.zsh
+[[ -f "$ZDOTDIR"/.p10k.tokyonight-moon.zsh ]] && source "$ZDOTDIR"/.p10k.tokyonight-moon.zsh
 # zprof
