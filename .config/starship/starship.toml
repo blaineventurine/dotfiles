@@ -25,9 +25,10 @@ $pulumi\
 $helm\
 [](fg:#1b1d2b bg:#16161e)\
 $time\
+[](fg:#16161e bg:#191a2e)\
 $cmd_duration\
 $jobs\
-[ ](fg:#16161e)\
+[ ](fg:#191a2e)\
 \n$character"""
 
 [directory]
