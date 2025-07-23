@@ -49,39 +49,3 @@ decrypt() {
     "$2/$3".gpg \
     && rm -rf "$2/$3".gpg > /dev/null
 }
-# Kubernetes session tracking
-kubectl() {
-    # Get current context and namespace
-    local ctx=$(command kubectl config current-context 2>/dev/null)
-    local ns=$(command kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
-    
-    if [[ -n "$ctx" ]]; then
-        if [[ -n "$ns" ]]; then
-            export KUBECTL_ACTIVE="$ctx ($ns)"
-        else
-            export KUBECTL_ACTIVE="$ctx"
-        fi
-    fi
-    
-    command kubectl "$@"
-}
-
-# Manual controls
-kon() {
-    local ctx=$(kubectl config current-context 2>/dev/null)
-    local ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
-    
-    if [[ -n "$ctx" ]]; then
-        if [[ -n "$ns" ]]; then
-            export KUBECTL_ACTIVE="$ctx ($ns)"
-        else
-            export KUBECTL_ACTIVE="$ctx"
-        fi
-    fi
-    echo "Kubernetes context shown in prompt"
-}
-
-koff() {
-    unset KUBECTL_ACTIVE
-    echo "Kubernetes context hidden from prompt"
-}

@@ -64,8 +64,6 @@ brew_zsh_plugins=(
   "share/zsh-autosuggestions/zsh-autosuggestions.zsh"
   "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   "opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-  # this has to be after vi-mode, otherwise the righthand side prompt doesn't work
-  # "share/powerlevel10k/powerlevel10k.zsh-theme"
   "share/forgit/forgit.plugin.zsh"
 )
 
@@ -81,9 +79,6 @@ done
 
 zvm_after_init_commands+=('eval "$(fzf --zsh)"')
 zvm_after_init_commands+=('eval "$(atuin init zsh)"')
+zvm_after_init_commands+=('eval "$(starship init zsh)"')
 
-eval "$(starship init zsh)"
-
-# [[ -f "$ZDOTDIR"/.p10k.mise.zsh ]] && source "$ZDOTDIR"/.p10k.mise.zsh
-# [[ -f "$ZDOTDIR"/.p10k.tokyonight-moon.zsh ]] && source "$ZDOTDIR"/.p10k.tokyonight-moon.zsh
 # zprof

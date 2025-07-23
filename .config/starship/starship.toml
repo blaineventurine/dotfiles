@@ -14,20 +14,20 @@ $golang\
 $php\
 $ruby\
 $python\
-$docker_context\
+$dotnet\
 [](fg:#1e2030 bg:#1b1d2b)\
 $aws\
 $gcloud\
-$env_var\
+$kubernetes\
 $azure\
 $terraform\
 $pulumi\
 $helm\
-[](fg:#1b1d2b bg:#191a2e)\
+[](fg:#1b1d2b bg:#16161e)\
 $time\
 $cmd_duration\
 $jobs\
-[ ](fg:#191a2e)\
+[ ](fg:#16161e)\
 \n$character"""
 
 [directory]
@@ -99,6 +99,11 @@ symbol = ""
 style = "bg:#1e2030"
 format = '[[ $symbol ($version) ](fg:#f89820 bg:#1e2030)]($style)'
 
+[dotnet]
+symbol = "󰪮 "
+style = "bg:#1e2030" 
+format = '[[ $symbol ($version) ](fg:#512bd4 bg:#1e2030)]($style)'
+
 [docker_context]
 symbol = ""
 style = "bg:#1e2030"
@@ -119,11 +124,6 @@ symbol = "☸ "
 style = "bg:#1b1d2b"
 format = '[[ $symbol $context( \($namespace\)) ](fg:#326ce5 bg:#1b1d2b)]($style)'
 disabled = false
-
-[env_var.KUBECTL_ACTIVE]
-symbol = "☸ "
-style = "bg:#1b1d2b"
-format = '[[ $symbol $context( \($namespace\)) ](fg:#326ce5 bg:#1b1d2b)]($style)'
 
 [azure]
 symbol = "󰠅 "
@@ -160,8 +160,9 @@ format = '[[ $symbol $number ](fg:#c3e88d bg:#191a2e)]($style)'
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#191a2e"
-format = '[[  $time ](fg:#86e1fc bg:#191a2e)]($style)'
+format = '[[  $time ](fg:#86e1fc bg:#16161e)]($style)'
 
 [character]
-success_symbol = "[❯](bold #c8d3f5)"
-error_symbol = "[❯](bold #ff757f)"
+success_symbol = "[ ❯](bold #c8d3f5)"
+error_symbol = "[ ❯](bold #ff757f)"
+vimcmd_symbol = "[ ❮](bold #bb9af7)"
