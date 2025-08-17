@@ -20,7 +20,7 @@ history_filter = [
 
 history_format = "{time} | {host}/{directory} | {command}"
 filter_mode_shell_up_key_binding = "directory"
-inline_height = 40
+inline_height = 20
 # store_failed = false
 keymap_mode = "vim-normal"
 style = "auto"
