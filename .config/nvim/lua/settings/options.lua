@@ -16,6 +16,7 @@ o.joinspaces = false
 o.lazyredraw = true
 o.listchars = { tab = '>>>', trail = '·', precedes = '←', extends = '→', eol = '↲', nbsp = '␣' }
 g.mapleader = ','
+g.maplocalleader = ';'
 o.mouse = 'v'
 o.scrolloff = 5
 o.shortmess:append({ c = true, S = true })
@@ -56,15 +57,15 @@ o.number = true
 o.relativenumber = false
 o.ruler = true
 o.signcolumn = 'yes'
-o.laststatus = 3         -- use global statusline
-o.diffopt = {            -- Option settings for diff mode.
-  'filler',              -- Show filler lines.
-  'vertical',            -- Start diff mode with vertical splits.
-  'hiddenoff',           -- Do not use diff mode for a buffer when it becomes hidden.
-  'foldcolumn:0',        -- Set the 'foldcolumn' option to 0.
+o.laststatus = 3 -- use global statusline
+o.diffopt = { -- Option settings for diff mode.
+  'filler', -- Show filler lines.
+  'vertical', -- Start diff mode with vertical splits.
+  'hiddenoff', -- Do not use diff mode for a buffer when it becomes hidden.
+  'foldcolumn:0', -- Set the 'foldcolumn' option to 0.
   'algorithm:histogram', -- Use the specified diff algorithm.
 }
--- o.conceallevel = 2       -- or 1, depending on your preference
+o.conceallevel = 2       -- or 1, depending on your preference
 -- o.concealcursor = "nc"   -- optional: controls when to show concealed text in cursor line
 
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'

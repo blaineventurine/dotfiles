@@ -25,6 +25,7 @@ brew bundle
 
 ```shell
 gh auth login
+gh extension install dlvhdr/gh-dash
 dots submodule update --init --recursive
 bat cache --build
 vale sync

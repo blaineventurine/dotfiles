@@ -94,7 +94,8 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
   ; hooksPath = ~/.config/git_template/hooks
-  pager = delta --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
+  ; pager = delta --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
+  pager = diffnav ; --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
 
 [push]
   default = current
@@ -126,7 +127,7 @@
   true-color = always
 
 [interactive]
-  diffFilter = delta --color-only
+  diffFilter = diffnav ; delta --color-only
 
 [fetch]
   prune = true

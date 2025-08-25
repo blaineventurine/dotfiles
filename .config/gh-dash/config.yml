@@ -1,0 +1,106 @@
+# yaml-language-server: $schema=https://dlvhdr.github.io/gh-dash/configuration/gh-dash/schema.json
+---
+prSections:
+  - title: My PRs
+    filters: is:open author:@me
+    layout:
+      title:
+        width: 6
+        grow: false
+  - title: Review
+    filters: is:open review-requested:@me
+    layout:
+      repo:
+        width: 6
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+  - title: Assigned
+    filters: is:open assignee:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+repo:
+  branchesRefetchIntervalSeconds: 30
+  prsRefetchIntervalSeconds: 60
+repoPaths:
+  algolia/AlgoliaWeb: ~/repos/AlgoliaWeb
+pager:
+  diff: diffnav
+defaults:
+  preview:
+    open: true
+    width: 50
+  prsLimit: 20
+  prApproveComment: LGTM
+  issuesLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 20
+      author:
+        width: 15
+      authorIcon:
+        hidden: false
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 15
+    issues:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 15
+      creator:
+        width: 10
+      creatorIcon:
+        hidden: false
+      assignees:
+        width: 20
+        hidden: true
+  refetchIntervalMinutes: 30
+keybindings:
+  universal: []
+  issues: []
+  prs:
+    - key: C
+      command: >
+        kitten @ launch --type=tab --tab-title "My Tab" --keep-focus zsh;
+        cd {{.RepoPath}};
+        nvim -c ":silent Octo pr edit {{.PrNumber}}"
+  branches: []
+theme:
+  colors:
+    background:
+      selected: "#3e68d7"
+    border:
+      faint: "#15161e"
+      primary: "#3e68d7"
+      secondary: "#2f334d"
+    text:
+      faint: "#565f89"
+      inverted: "#c8d3f5"
+      primary: "#c8d3f5"
+      secondary: "#a9b1d6"
+      success: "#9ece6a"
+      warning: "#f7768e"
+  ui:
+    sectionsShowCount: true
+    table:
+      showSeparator: true
+      compact: false
+confirmQuit: false
+showAuthorIcons: true
+smartFilteringAtLaunch: true
