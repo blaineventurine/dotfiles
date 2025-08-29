@@ -46,6 +46,8 @@ return {
     })
 
     local nls = require('null-ls')
+    local custom_dict_path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+
     nls.setup({
       sources = {
         nls.builtins.code_actions.gitsigns,
@@ -55,7 +57,9 @@ return {
 
         nls.builtins.diagnostics.actionlint,
         nls.builtins.diagnostics.buf,
-        nls.builtins.diagnostics.codespell,
+        nls.builtins.diagnostics.codespell.with({
+            extra_args = { "--ignore-words", custom_dict_path }
+        }),
         nls.builtins.diagnostics.erb_lint,
         nls.builtins.diagnostics.hadolint,
         nls.builtins.diagnostics.haml_lint,
