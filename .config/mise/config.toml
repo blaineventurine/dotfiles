@@ -4,7 +4,7 @@ nodejs = { version = '22', postinstall = 'corepack enable' }
 # python = '3.12.1'
 ruby = '3.4.4'
 rust = 'latest'
-lua = 'latest'
+# lua = 'latest'
 
 [settings]
 legacy_version_file = true # enabled by default (unlike asdf)
