@@ -3,8 +3,9 @@
   email = blaineventurine@gmail.com
   signingkey = ~/.ssh/id_ed25519.pub
 
-; [include]
+[include]
 ;  path = ~/.gitconfig.local
+  path = ~/.config/delta/config
 
 [includeIf "gitdir:~/Library/Application Support/wezterm/plugins/"]
     path = ~/.config/wezterm/.gitconfig
@@ -94,8 +95,16 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
   ; hooksPath = ~/.config/git_template/hooks
-  ; pager = delta --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
-  pager = diffnav ; --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
+  pager = delta --side-by-side --width $(expr ${COLUMNS} - 10) --wrap-max-lines unlimited
+  ; pager = diffnav
+
+[pager]
+;   log = delta
+;   reflog = delta
+;   show = delta
+;   difftool = true
+;   branch = 
+	diff = diffnav
 
 [push]
   default = current
@@ -106,25 +115,6 @@
   ff = only
   default = current
   ; rebase = true
-
-[delta]
-  hyperlinks = true
-  line-numbers = false
-  line-numbers-minus-style      = "#e26a75"
-  line-numbers-plus-style       = "#b8db87"
-  line-numbers-right-format = "│ "
-  line-numbers-zero-style       = "#3b4261"
-  minus-emph-style              = syntax "#6b2e43"
-  minus-empty-line-marker-style = syntax "#3a273a"
-  minus-non-emph-style          = syntax "#3a273a"
-  minus-style                   = syntax "#3a273a"
-  navigate = true
-  plus-emph-style               = syntax "#305f6f"
-  plus-empty-line-marker-style  = syntax "#273849"
-  plus-non-emph-style           = syntax "#273849"
-  plus-style                    = syntax "#273849"
-  side-by-side = true
-  true-color = always
 
 [interactive]
   diffFilter = diffnav ; delta --color-only

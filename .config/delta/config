@@ -1,0 +1,45 @@
+[delta]
+  file-style = omit
+  file-decoration-style = none
+  hyperlinks = true
+  line-numbers = true
+  navigate = true
+  side-by-side = true
+  true-color = always
+  dark = true
+  tabs = 2
+  
+  syntax-theme = "Enki-Tokyo-Night"
+  
+  line-numbers-left-format = "{nm:>4}│"
+  line-numbers-right-format = "│{np:>4}│"
+  line-numbers-minus-style = "#c53b53"
+  line-numbers-plus-style = "#9ece6a"
+  line-numbers-zero-style = "#565f89"
+  line-numbers-left-style = "#565f89"
+  line-numbers-right-style = "#565f89"
+  
+  # Diff colors
+  minus-style = "syntax #3b2c3a"
+  minus-non-emph-style = "syntax #3b2c3a"
+  minus-emph-style = "syntax #c53b53 bold"
+  minus-empty-line-marker-style = "syntax #3b2c3a"
+  
+  plus-style = "syntax #2a3f42"
+  plus-non-emph-style = "syntax #2a3f42"
+  # plus-emph-style = "syntax #9ece6a bold"
+  plus-empty-line-marker-style = "syntax #2a3f42"
+  
+  # File and hunk headers
+  file-style = "#c8d3f5 bold"
+  file-decoration-style = "#737aa2 ol"
+  hunk-label = "  󰡏 "
+  hunk-header-style = "file line-number syntax"
+  hunk-header-decoration-style = "#737aa2 box"
+  
+  # Commit and meta information
+  commit-style = "#ffc777 bold"
+  commit-decoration-style = "#737aa2 box"
+  
+  # Whitespace error
+  whitespace-error-style = "#c53b53 reverse"
