@@ -13,7 +13,7 @@ o.hidden = true
 o.hlsearch = true
 o.ignorecase = true
 o.joinspaces = false
-o.lazyredraw = true
+-- o.lazyredraw = true
 o.listchars = { tab = '>>>', trail = '·', precedes = '←', extends = '→', eol = '↲', nbsp = '␣' }
 g.mapleader = ','
 g.maplocalleader = ';'
@@ -25,6 +25,7 @@ o.showmatch = true
 o.showmode = false
 o.showtabline = 2
 o.smartcase = true
+o.spellfile = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
 o.splitbelow = true
 o.splitright = true
 o.title = true
@@ -65,7 +66,7 @@ o.diffopt = { -- Option settings for diff mode.
   'foldcolumn:0', -- Set the 'foldcolumn' option to 0.
   'algorithm:histogram', -- Use the specified diff algorithm.
 }
-o.conceallevel = 2       -- or 1, depending on your preference
+o.conceallevel = 2 -- or 1, depending on your preference
 -- o.concealcursor = "nc"   -- optional: controls when to show concealed text in cursor line
 
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
