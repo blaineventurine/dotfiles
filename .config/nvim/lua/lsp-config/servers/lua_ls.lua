@@ -4,6 +4,9 @@ return function(lspconfig, default_config)
     capabilities = default_config.capabilities,
     settings = {
       Lua = {
+        runtime = {
+          version = 'LuaJIT',
+        },
         completion = {
           callSnippet = 'Both',
         },
@@ -12,6 +15,10 @@ return function(lspconfig, default_config)
         },
         workspace = {
           checkThirdParty = false,
+          library = {
+            vim.env.VIMRUNTIME,
+          },
+          -- vim.api.nvim_get_runtime_file("", true)
         },
       },
     },

@@ -31,7 +31,6 @@ return {
 
     local mason_lspconfig = require('mason-lspconfig')
     mason_lspconfig.setup()
-    -- mason_lspconfig.setup_handlers(require('lsp-config'))
 
     local signs = require('utils.icons').diagnostics
     vim.diagnostic.config({
@@ -46,7 +45,7 @@ return {
     })
 
     local nls = require('null-ls')
-    local custom_dict_path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+    local custom_dict_path = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
 
     nls.setup({
       sources = {
@@ -58,7 +57,7 @@ return {
         nls.builtins.diagnostics.actionlint,
         nls.builtins.diagnostics.buf,
         nls.builtins.diagnostics.codespell.with({
-            extra_args = { "--ignore-words", custom_dict_path }
+          extra_args = { '--ignore-words', custom_dict_path },
         }),
         nls.builtins.diagnostics.erb_lint,
         nls.builtins.diagnostics.hadolint,
