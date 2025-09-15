@@ -54,6 +54,9 @@ local servers = {
   lua_ls = function()
     require('lsp-config.servers.lua_ls')(lspconfig, default_config)
   end,
+  pylsp = function()
+    require('lsp-config.servers.pylsp')(lspconfig, default_config)
+  end,
   ruby_lsp = function()
     require('lsp-config.servers.ruby-lsp')(lspconfig, default_config)
   end,

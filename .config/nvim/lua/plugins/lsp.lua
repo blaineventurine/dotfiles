@@ -46,6 +46,19 @@ return {
 
     local nls = require('null-ls')
     local custom_dict_path = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
+    -- R - Refactoring-related checks: Enforces the use of snake_case naming convention.
+    -- C - Convention-related checks: Ensures adherence to established coding standards.
+    -- W0511: Disables the TODO warning.
+    -- W1201, W1202: Disables log format warnings, which may be false positives.
+    -- W0231: Disables the super-init-not-called warning as pylint may not comprehend six.with_metaclass(ABCMeta).
+    -- W0707: Disables the raise-missing-from warning, which is incompatible with Python 2 backward compatibility.
+    -- C0301: Disables the "line too long" warning, as the Black formatter automatically handles long lines.
+    local flake8 = require('none-ls.diagnostics.flake8').with({
+      extra_args = {
+        '--max-line-length=100',
+        '--ignore=R,duplicate-code,W0231,W0511,W1201,W1202,W0707,C0301,no-init',
+      },
+    })
 
     nls.setup({
       sources = {
@@ -60,6 +73,7 @@ return {
           extra_args = { '--ignore-words', custom_dict_path },
         }),
         nls.builtins.diagnostics.erb_lint,
+        flake8,
         nls.builtins.diagnostics.hadolint,
         nls.builtins.diagnostics.haml_lint,
         nls.builtins.diagnostics.markdownlint,
@@ -89,6 +103,10 @@ return {
         nls.builtins.diagnostics.yamllint,
 
         -- nls.builtins.formatting.codespell,
+        nls.builtins.formatting.black.with({
+          extra_args = { '--line-length=100' },
+        }),
+        nls.builtins.formatting.isort,
         nls.builtins.formatting.erb_format,
         nls.builtins.formatting.gofumpt,
         nls.builtins.formatting.goimports,
