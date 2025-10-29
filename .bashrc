@@ -31,7 +31,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+if [ "${debian_chroot:-}" = "" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
@@ -45,7 +45,7 @@ esac
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
 
-if [ -n "$force_color_prompt" ]; then
+if [ "$force_color_prompt" != "" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
@@ -73,18 +73,20 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto --hyperlink=auto'
-fi
+# if [ -x /usr/bin/dircolors ]; then
+#     test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
+    # alias ls='ls --color=auto --hyperlink=auto'
+# fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
+alias l='eza -lbha -o --icons --group-directories-first --hyperlink --color-scale=size' # list, size, type, git
 alias ll='ls -alF'
+alias df='duf'
+alias du='dust'
 alias la='ls -A'
-alias l='ls -lah --color=auto'
+# alias l='ls -lah --color=auto'
 alias cat='batcat'
 alias grep='rg'
 alias sudo='sudo '
@@ -101,5 +103,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.bashrc.local ] && source ~/.bashrc.local
+eval "$(fzf --bash)"
+[ -f "$HOME"/.fzf.bash ] && source "$HOME"/.fzf.bash
+[ -f "$HOME"/.bashrc.local ] && source "$HOME"/.bashrc.local
