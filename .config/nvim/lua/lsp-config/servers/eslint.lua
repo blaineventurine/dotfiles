@@ -1,4 +1,4 @@
-return function(lspconfig, default_config)
+return function(default_config)
   local opts = {}
   local cwd = vim.fn.getcwd()
 
@@ -14,7 +14,7 @@ return function(lspconfig, default_config)
     opts.rulePaths = { './eslint_rules' }
   end
 
-  lspconfig.eslint.setup({
+  return {
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = true
       default_config.on_attach(client, bufnr)
@@ -26,5 +26,5 @@ return function(lspconfig, default_config)
       packageManager = 'yarn',
       options = opts,
     },
-  })
+  }
 end

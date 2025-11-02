@@ -1,5 +1,5 @@
-return function(lspconfig, default_config)
-  lspconfig.jsonls.setup({
+return function(default_config)
+  return {
     capabilities = default_config.capabilities,
     on_attach = default_config.on_attach,
     settings = {
@@ -10,5 +10,5 @@ return function(lspconfig, default_config)
         validate = { enable = true },
       },
     },
-  })
+  }
 end

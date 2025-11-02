@@ -1,5 +1,5 @@
-return function(lspconfig, default_config)
-  lspconfig.lua_ls.setup({
+return function(default_config)
+  return {
     on_attach = default_config.on_attach,
     capabilities = default_config.capabilities,
     settings = {
@@ -22,5 +22,5 @@ return function(lspconfig, default_config)
         },
       },
     },
-  })
+  }
 end

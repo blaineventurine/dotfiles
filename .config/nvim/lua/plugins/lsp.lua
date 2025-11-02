@@ -30,7 +30,11 @@ return {
     })
 
     local mason_lspconfig = require('mason-lspconfig')
-    mason_lspconfig.setup()
+    mason_lspconfig.setup({
+      automatic_enable = true
+    })
+
+    require('lsp-config.init')
 
     local signs = require('utils.icons').diagnostics
     vim.diagnostic.config({

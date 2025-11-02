@@ -1,25 +1,24 @@
-return function(lspconfig, default_config)
+return function(default_config)
   local flake_ignores = {
     'E203', -- whitespace before :
     'W503', -- line break before binary operator
     'E501', -- line too long
-    'C901',
-  } -- mccabe complexity
-  lspconfig.pylsp.setup({
+    'C901', -- mccabe complexity
+  }
+
+  local config = {
     capabilities = default_config.capabilities,
     on_attach = default_config.on_attach,
     settings = {
       pylsp = {
         plugins = {
-          -- formatter options
           black = { enabled = true },
           autopep8 = { enabled = false },
           yapf = { enabled = false },
-          -- linter options
           pylint = { enabled = true, executable = 'pylint', args = { '--max-line-length=100' } },
           pyflakes = { enabled = true },
           pycodestyle = {
-            enabled = true,
+            enabled = false,
             ignore = { 'E501', 'E231' },
             maxLineLength = 100,
           },
@@ -27,14 +26,13 @@ return function(lspconfig, default_config)
             enabled = false,
             ignore = table.concat(flake_ignores, ','),
           },
-          -- type checker
           pylsp_mypy = { enabled = true },
-          -- auto-completion options
           jedi_completion = { fuzzy = true },
-          -- import sorting
           pyls_isort = { enabled = true },
         },
       },
     },
-  })
+  }
+
+  return config
 end

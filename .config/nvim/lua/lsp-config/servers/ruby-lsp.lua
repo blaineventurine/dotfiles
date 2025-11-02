@@ -1,14 +1,11 @@
--- Ruby LSP specific configuration
 local _timers = {}
 
--- Setup diagnostics for Ruby LSP
 local function setup_diagnostics(client, buffer)
   -- Skip if built-in diagnostics are enabled
   if require('vim.lsp.diagnostic')._enable then
     return
   end
 
-  -- Handler function for diagnostics
   local diagnostic_handler = function()
     local params = vim.lsp.util.make_text_document_params(buffer)
     client.request('textDocument/diagnostic', { textDocument = params }, function(err, result)
@@ -18,7 +15,6 @@ local function setup_diagnostics(client, buffer)
         return
       end
 
-      -- Process diagnostic results
       local diagnostic_items = result and result.items or {}
       vim.lsp.diagnostic.on_publish_diagnostics(
         nil,
@@ -28,10 +24,8 @@ local function setup_diagnostics(client, buffer)
     end)
   end
 
-  -- Initial diagnostics request
   diagnostic_handler()
 
-  -- Set up buffer attachment for live diagnostics
   vim.api.nvim_buf_attach(buffer, false, {
     on_lines = function()
       -- Clear existing timer if there is one
@@ -93,9 +87,9 @@ local function add_ruby_deps_command(client, bufnr)
   })
 end
 
-return function(lspconfig, default_config)
-  lspconfig.ruby_lsp.setup({
-    cmd = { 'mise x -- ruby-lsp' },
+return function(default_config)
+  return {
+    cmd = { 'ruby-lsp' },
     capabilities = default_config.capabilities,
     on_attach = function(client, buffer)
       -- Call the default on_attach first
@@ -115,6 +109,6 @@ return function(lspconfig, default_config)
       },
     },
     filetypes = { 'ruby' },
-    root_dir = lspconfig.util.root_pattern('Gemfile', '.git', '.ruby-version'),
-  })
+    -- root_dir = lspconfig.util.root_pattern('Gemfile', '.git', '.ruby-version'),
+  }
 end
