@@ -14,6 +14,24 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$($HOMEBREW_PREFIX/bin/mise activate zsh)"
 eval "$(mise hook-env)"
 
+# Path is searched beginning to end, with first match being used - set my bin folders first so any
+# overrides I have are used
+path=(
+  $CURL_PATH
+  $OPENSSL_PATH
+  $LIBPQ_PATH
+  $SCRIPT_PATH
+  $BIN_PATH
+  $DOTNETPATH
+  $CARGOPATH
+  $FLYPATH
+  $path
+)
+
+# Deduplicate PATH now that everything is set, this has to be in here
+typeset -gU cdpath fpath mailpath path # Ensure path arrays do not contain duplicates (except manpath, which needs gnuman placed at the start)
+export PATH
+
 [[ -f "$ZDOTDIR"/.zstyle ]] && source "$ZDOTDIR"/.zstyle
 
 autoload -U add-zsh-hook

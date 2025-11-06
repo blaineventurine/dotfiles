@@ -1,15 +1,12 @@
 # . "$HOME/.cargo/env"
-export CARGOPATH="$HOME/.cargo/bin"
 export COLUMNS
 export COMPLETION_WAITING_DOTS="true"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export DISABLE_AUTO_TITLE=true
-export DOTNETPATH="$HOME/.dotnet/tools"
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
 export EDITOR='nvim'
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 export FLYCTL_INSTALL="$HOME/.fly"
-export FLYPATH="$FLYCTL_INSTALL/bin:$PATH"
 export GPG_TTY=$TTY
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export LANG=en_US.UTF-8
@@ -23,18 +20,18 @@ export UPDATE_ZSH_DAYS=1
 export VISUAL='nvim' # editor to be opened from $PAGER
 export VI_MODE_SET_CURSOR=true
 export XDG_CONFIG_HOME=$HOME/.config
-export ZSH="$HOME/.oh-my-zsh"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="/opt/homebrew/share/zsh-syntax-highlighting/highlighters"
 export ZVM_VI_ESCAPE_BINDKEY=jk
 
-# Path is searched beginning to end, with first match being used - set my bin folders first so any
-# overrides I have are used
-export PATH="$HOME/.local/bin:$HOME/bin:$FLYPATH:$DOTNETPATH:$CARGOPATH:$PATH"
-# except for some work stuff
-export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
-export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export PATH="/opt/homebrew/opt/openssl@3.0/bin:$PATH"
+# Paths
+export BIN_PATH="$HOME/bin"
+export CARGOPATH="$HOME/.cargo/bin"
+export CURL_PATH="/opt/homebrew/opt/curl/bin"
+export DOTNETPATH="$HOME/.dotnet/tools"
+export FLYPATH="$FLYCTL_INSTALL/bin:$PATH"
+export LIBPQ_PATH="$PATH:/opt/homebrew/opt/libpq/bin"
+export OPENSSL_PATH="/opt/homebrew/opt/openssl@3.0/bin"
+export SCRIPT_PATH="$HOME/.local/bin"
 
 export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
