@@ -9,8 +9,8 @@ return {
         numbers = 'none',
         close_command = 'BWipeout %d',
         indicator = {
-          -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
-          style = 'none', --'icon' | 'underline' | 'none',
+          icon = '▎', -- this should be omitted if indicator style is not 'icon'
+          style = 'icon', --'icon' | 'underline' | 'none',
         },
         buffer_close_icon = '󰅖',
         modified_icon = '● ',
@@ -37,6 +37,8 @@ return {
         --     local modified_b = vim.fn.getftime(buffer_b.path)
         --     return modified_a > modified_b
         -- end,
+        max_name_length = 18,
+        tab_size = 16,
       },
       highlights = {
         fill = {
@@ -60,12 +62,12 @@ return {
           bg = '#2f334d',
         },
         separator_selected = {
-          fg = '#1e2030', -- matches fill background
-          bg = '#82aaff', -- matches selected buffer background
+          fg = '#1e2030',
+          bg = '#82aaff',
         },
         separator_visible = {
-          fg = '#545c7e', -- matches fill
-          bg = '#2f334d', -- matches visible buffer background
+          fg = '#545c7e',
+          bg = '#2f334d',
         },
         modified = {
           fg = '#ff9e64',
@@ -174,6 +176,21 @@ return {
         hint_selected = {
           fg = '#10B981',
           bg = '#82aaff',
+        },
+        duplicate = {
+          fg = '#828bb8',
+          bg = '#545c7e',
+          italic = true,
+        },
+        duplicate_visible = {
+          fg = '#828bb8',
+          bg = '#2f334d',
+          italic = true,
+        },
+        duplicate_selected = {
+          fg = '#1e2030',
+          bg = '#82aaff',
+          italic = true,
         },
       },
     })
