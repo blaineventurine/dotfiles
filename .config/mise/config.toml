@@ -1,9 +1,8 @@
 [tools]
 golang = '1.23.2'
 nodejs = { version = '22', postinstall = 'corepack enable' }
-# python = '3.12.1'
-ruby = '3.4.4'
 rust = 'latest'
+ruby = "4.0.1"
 # lua = 'latest'
 
 [settings]
@@ -30,6 +29,9 @@ experimental = true                                # enable experimental feature
 # configure messages displayed when entering directories with config files
 status = { missing_tools = "always", show_env = false, show_tools = false }
 idiomatic_version_file_enable_tools = ["node"]
+
+[settings.ruby]
+compile = true
 
 # [env]
 # _.file = '.env'

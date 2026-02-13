@@ -1,4 +1,6 @@
 # . "$HOME/.cargo/env"
+export ANTHROPIC_BASE_URL=http://localhost:1234
+export ANTHROPIC_AUTH_TOKEN=lmstudio
 export COLUMNS
 export COMPLETION_WAITING_DOTS="true"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
@@ -32,6 +34,7 @@ export FLYPATH="$FLYCTL_INSTALL/bin:$PATH"
 export LIBPQ_PATH="$PATH:/opt/homebrew/opt/libpq/bin"
 export OPENSSL_PATH="/opt/homebrew/opt/openssl@3.0/bin"
 export SCRIPT_PATH="$HOME/.local/bin"
+export LM_STUDIO_PATH="$HOME/.cache/lm-studio/bin"
 
 export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 

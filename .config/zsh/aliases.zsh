@@ -58,7 +58,6 @@ alias spec='bundle exec rspec'
 alias sudo='sudo '
 alias tf='terraform'
 alias update='update_global_packages'
-alias updatep10k='git -C $ZSH_CUSTOM/themes/powerlevel10k pull'
 alias vi='nvim'
 alias vim='nvim'
 

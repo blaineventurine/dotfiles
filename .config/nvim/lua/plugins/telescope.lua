@@ -89,7 +89,7 @@ return {
           '**yarn.lock',
           '**yarn-error.log',
           '**install_module.log',
-          'vendor',
+          -- 'vendor',
           'sorbet',
           '_client_admin_old',
           '.bundle',
@@ -103,6 +103,7 @@ return {
       pickers = {
         find_files = {
           hidden = true,
+          -- no_ignore = true,
           -- theme = "dropdown",
         },
       },
@@ -136,7 +137,7 @@ return {
               ['<C-k>'] = lga_actions.quote_prompt(),
               ['<C-w>'] = lga_actions.quote_prompt({ postfix = ' --iglob app/**/*.rb' }),
               ['<C-i>'] = lga_actions.quote_prompt({
-                postfix = ' --iglob *.{rb,ts,tsx,js,jsx} --iglob !**/{spec,__tests__,test}/**/*.{rb,js,ts,jsx,tsx}',
+                postfix = ' --iglob *.{rb,ts,tsx,js,jsx,py} --iglob !**/{spec,__tests__,test,tests}/**/*.{rb,js,ts,jsx,tsx,py}',
               }),
             },
           },

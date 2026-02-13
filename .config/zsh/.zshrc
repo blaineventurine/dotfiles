@@ -25,6 +25,7 @@ path=(
   $DOTNETPATH
   $CARGOPATH
   $FLYPATH
+  $LM_STUDIO_PATH
   $path
 )
 

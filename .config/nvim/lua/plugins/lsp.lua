@@ -31,7 +31,7 @@ return {
 
     local mason_lspconfig = require('mason-lspconfig')
     mason_lspconfig.setup({
-      automatic_enable = true
+      automatic_enable = true,
     })
 
     require('lsp-config.init')
@@ -59,7 +59,7 @@ return {
     -- C0301: Disables the "line too long" warning, as the Black formatter automatically handles long lines.
     local flake8 = require('none-ls.diagnostics.flake8').with({
       extra_args = {
-        '--max-line-length=100',
+        '--max-line-length=120',
         '--ignore=R,duplicate-code,W0231,W0511,W1201,W1202,W0707,C0301,no-init',
       },
     })
@@ -76,16 +76,14 @@ return {
         nls.builtins.diagnostics.codespell.with({
           extra_args = { '--ignore-words', custom_dict_path },
         }),
-        nls.builtins.diagnostics.erb_lint,
+        -- nls.builtins.diagnostics.erb_lint,
         flake8,
         nls.builtins.diagnostics.hadolint,
         nls.builtins.diagnostics.haml_lint,
         nls.builtins.diagnostics.markdownlint,
         nls.builtins.diagnostics.mypy,
         nls.builtins.diagnostics.reek,
-        nls.builtins.diagnostics.rubocop.with({
-          extra_filetypes = { 'eruby' },
-        }),
+        -- nls.builtins.diagnostics.rubocop,
         -- nls.builtins.diagnostics.semgrep.with({
         --   -- args = { 'lsp' }, --, '--config', 'auto', '--json', '$FILENAME' },
         --   args = {
@@ -111,15 +109,15 @@ return {
           extra_args = { '--line-length=100' },
         }),
         nls.builtins.formatting.isort,
-        nls.builtins.formatting.erb_format,
+        -- nls.builtins.formatting.erb_format,
         nls.builtins.formatting.gofumpt,
         nls.builtins.formatting.goimports,
         require('none-ls.formatting.jq'),
         nls.builtins.formatting.markdownlint,
         nls.builtins.formatting.prettier,
-        nls.builtins.formatting.rubocop.with({
-          extra_filetypes = { 'eruby' },
-        }),
+        -- nls.builtins.formatting.rubocop.with({
+        --   extra_filetypes = { 'eruby' },
+        -- }),
         nls.builtins.formatting.shellharden,
         nls.builtins.formatting.stylua,
 

@@ -15,7 +15,7 @@ return function(default_config)
           black = { enabled = true },
           autopep8 = { enabled = false },
           yapf = { enabled = false },
-          pylint = { enabled = true, executable = 'pylint', args = { '--max-line-length=100' } },
+          -- pylint = { enabled = true, executable = 'pylint', args = { '--max-line-length=100' } },
           pyflakes = { enabled = true },
           pycodestyle = {
             enabled = false,

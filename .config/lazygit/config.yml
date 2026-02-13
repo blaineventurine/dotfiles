@@ -43,11 +43,11 @@ gui:
   nerdFontsVersion: "3"
   commandLogSize: 8
 git:
-  paging:
-    colorArg: always
-    pager: delta --side-by-side --wrap-max-lines unlimited --paging=never
-    # pager: delta
-    useConfig: false
+  pagers:
+    - colorArg: always
+      pager: delta --side-by-side --wrap-max-lines unlimited --paging=never
+      # pager: delta
+      useConfig: false
   commit:
     signOff: false
   merging:

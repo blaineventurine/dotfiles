@@ -12,6 +12,7 @@ M.servers = {
   'eslint-lsp',
   -- 'erb-lint',
   'haml-lint',
+  'herb_ls',
   'html-lsp',
   'json-lsp',
   'lua-language-server',
@@ -27,14 +28,14 @@ M.servers = {
 }
 
 M.linters = {
-  'erb-formatter',
+  -- 'erb-formatter',
   -- 'erb-lint',
   'haml_lint',
   'jq',
   'jsonlint',
   'markdownlint',
   'prettier',
-  'rubocop',
+  -- 'rubocop',
   'shellcheck',
   'shellharden',
   'stylua',
