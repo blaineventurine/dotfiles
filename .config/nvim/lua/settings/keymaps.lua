@@ -111,6 +111,8 @@ wk.add({
   { 'k',  'gk',                                 desc = 'Up (wrapped lines)',   mode = 'n', noremap = true, silent = true },
   { 'q:', '<cmd>Telescope command_history<CR>', desc = 'Command history',      mode = 'n', remap = true },
   { 'ss', 'ysiW',                               desc = 'Surround word',        mode = 'n', remap = true },
+  { '<C-e>', '<cmd>Neotree toggle<CR>',          desc = 'Toggle file tree',     mode = 'n' },
+  { '<C-b>', '<cmd>Neotree toggle buffers<CR>',  desc = 'Toggle buffer tree',   mode = 'n' },
   { '\\', '<cmd>Neotree reveal<CR>',            desc = 'Reveal in file tree',  mode = 'n' },
   { 'z',  group = 'Folds',                      mode = 'n', remap = true },
   { 'zc', '<cmd>foldclose<CR>',                 desc = 'Close fold',           mode = 'n', remap = true },
