@@ -3,42 +3,44 @@ local M = {}
 -- Mason
 M.servers = {
   'bash-language-server',
-  'codespell',
   'css-lsp',
   'cssmodules-language-server',
-  'diagnostic-languageserver',
   'docker-compose-language-service',
   'dockerfile-language-server',
   'eslint-lsp',
-  -- 'erb-lint',
-  'haml-lint',
   'herb_ls',
   'html-lsp',
   'json-lsp',
   'lua-language-server',
   'ruby_lsp',
-  'semgrep',
   'stimulus-language-server',
   'tailwindcss-language-server',
   'taplo',
   'terraform-ls',
-  'vale',
   'vtsls',
   'yaml-language-server',
 }
 
-M.linters = {
-  -- 'erb-formatter',
-  -- 'erb-lint',
-  'haml_lint',
+M.tools = {
+  -- formatters
+  'black',
+  'isort',
+  'gofumpt',
+  'goimports',
   'jq',
-  'jsonlint',
   'markdownlint',
   'prettier',
-  -- 'rubocop',
-  'shellcheck',
   'shellharden',
   'stylua',
+  -- linters
+  'actionlint',
+  'buf',
+  'codespell',
+  'flake8',
+  'hadolint',
+  'haml-lint',
+  'mypy',
+  'vale',
   'yamllint',
 }
 

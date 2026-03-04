@@ -4,18 +4,28 @@ set -euo pipefail
 # finds files that have any occurrence of all the strings you specify
 # usage: find-files-with-multiple button div test
 # will find files where all three words exist somewhere
-results="rg -0 -l $1"
-if [ $# -gt 2 ]; then
-  for arg in "${@:2: -1}"; do
-    results="$results | xargs -r0 -I % rg -l -0 $arg %"
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: find_files_with_multiple <term1> [term2 ...]"
+  exit 1
+fi
+
+first="${(q)1}"
+results="rg -0 -l $first"
+
+if [[ $# -gt 2 ]]; then
+  for arg in "${@:2:-1}"; do
+    qarg="${(q)arg}"
+    results="$results | xargs -0 -I % rg -l -0 $qarg %"
   done
-  results="$results | xargs -r0 -I % rg -H -l ${@: -1} %"
-fi
-if [ $# -eq 2 ]; then
-  results="$results | xargs -r0 -I % rg -H -l ${@:2} %"
-fi
-if [ $# -eq 1 ]; then
-  results="rg -H -l $1"
+  last="${@: -1}"
+  qlast="${(q)last}"
+  results="$results | xargs -0 -I % rg -H -l $qlast %"
+elif [[ $# -eq 2 ]]; then
+  second="${(q)2}"
+  results="$results | xargs -0 -I % rg -H -l $second %"
+elif [[ $# -eq 1 ]]; then
+  results="rg -H -l $first"
 fi
 
 eval "$results" | fzf

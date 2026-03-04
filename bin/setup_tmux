@@ -2,7 +2,9 @@
 set -euo pipefail
 
 # if [ ! -e "$HOME/.tmux.conf" ]; then
-  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+  if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+  fi
   # ln -sf .tmux/tmux.conf "$HOME"/.tmux.conf;
   printf "Install TPM plugins\n"
   tmux new -d -s __noop >/dev/null 2>&1 || true

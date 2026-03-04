@@ -1,218 +1,210 @@
 local wk = require('which-key')
-local key = vim.api.nvim_set_keymap
-local silent_no_remap = { noremap = true, silent = true }
-local noremap = { noremap = true }
 
--- normal mode mappings
-wk.add(
-  {
-    { "<leader><leader>", "<C-^>",                                                                       desc = "Switch to last used buffer" },
-    { "<leader>b",        group = "Buffers" },
-    { "<leader>bb",       "<cmd>lua require('telescope.builtin').buffers()<CR>",                         desc = "Find open buffer" },
-    { "<leader>bc",       "<cmd>BufferClose<CR>",                                                        desc = "Close current buffer" },
-    { "<leader>bd",       "<cmd>BufferCloseAllButCurrent<CR>",                                           desc = "Close all other buffers" },
-    { "<leader>bp",       "<cmd>BufferPick<CR>",                                                         desc = "Pick buffer" },
-    { "<leader>c",        "<cmd>lua require('telescope.builtin').commands()<CR>",                        desc = "Find command" },
-    { "<leader>d",        "<cmd>lua require('dbee').toggle()<CR>",                                       desc = "Toggle DBee" },
-    { "<leader>e",        "<cmd>lua require('telescope.builtin').resume()<CR>",                          desc = "Resume last Telescope search" },
-    { "<leader>f",        "<cmd>lua require('telescope.builtin').find_files()<CR>",                      desc = "Find file by name" },
-    { "<leader>g",        group = "Git" },
-    { "<leader>gb",      "<cmd>GhBlameCurrentLine<CR>",                                                  desc = "GitHub blame current line" },
-
-    { "<leader>gc",       "<cmd>lua require('utils.custom-telescope-commands').my_git_commits()<CR>",    desc = "Show commits" },
-    { "<leader>gd",       desc = "+Diff" },
-    { "<leader>gdf",      "<cmd>DiffviewFileHistory %<CR>",                                              desc = "History for current file" },
-    { "<leader>gdo",      "<cmd>DiffviewOpen<CR>",                                                       desc = "Open Diffview" },
-    { "<leader>gdc",      "<cmd>DiffviewClose<CR>",                                                      desc = "Close Diffview" },
-    { "<leader>gg",       "<cmd>LazyGit<CR>",                                                            desc = "LazyGit" },
-
-    { "<leader>gi",       "<cmd>Octo issue list<CR>",                                                    desc = "List Issues (Octo)" },
-    { "<leader>gI",       "<cmd>Octo issue search<CR>",                                                  desc = "Search Issues (Octo)" },
-    { "<leader>gp",       "<cmd>Octo pr list<CR>",                                                       desc = "List PRs (Octo)" },
-    { "<leader>gP",       "<cmd>Octo pr search<CR>",                                                     desc = "Search PRs (Octo)" },
-    { "<leader>gr",       "<cmd>Octo repo list<CR>",                                                     desc = "List Repos (Octo)" },
-    { "<leader>gS",       "<cmd>Octo search<CR>",                                                        desc = "Search (Octo)" },
-
-    { "<leader>gs",       "<cmd>lua require('utils.custom-telescope-commands').my_git_status()<CR>",     desc = "Show git status" },
-    { "<leader>h",        "<cmd>CybuPrev<CR>",                                                           desc = "Switch to previous buffer in list" },
-    { "<leader>l",        "<cmd>CybuNext<CR>",                                                           desc = "Switch to next buffer in list" },
-    { "<leader>m",        "<cmd>lua require('telescope.builtin').marks()<CR>",                           desc = "Find marks" },
-    { "<leader>n",        "<cmd>lua require('utils.custom-telescope-commands').my_note()<CR>",           desc = "Search notes" },
-    { "<leader>ni",       "<cmd>lua require('package-info').install()<cr>",                              desc = "Install package" },
-    { "<leader>nm",       "<cmd>Dispatch npm start",                                                     desc = "Run NPM" },
-    { "<leader>np",       "<cmd>lua require('package-info').change_version()<cr>",                       desc = "Change package version" },
-    { "<leader>o",        "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>", desc = "Search within open files" },
-    { "<leader>p",        "<cmd>lua require('telescope').extensions.project.project{}<CR>",              desc = "Find file in different project" },
-    {
-      "<leader>r",
-      function()
-        require('telescope').extensions.live_grep_args.live_grep_args({
-          vimgrep_arguments = {
-            'rg',
-            '--hidden',
-            '-L',
-            '--color=never',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-          },
-        })
-      end,
-      desc = "Find inside files"
-    },
-    { "<leader>s",  "<cmd>lua require('sessionable').SearchSession()<CR>", desc = "Find a session" },
-    { "<leader>t",  "<cmd>lua require('FTerm').toggle()<CR>",              desc = "Toggle terminal" },
-    { "<leader>to", "<cmd>TodoTelescope<CR>",                              desc = "Show all TODOs" },
-    { "<leader>u",  "<cmd>Telescope undo<cr>",                             desc = "Show undos" },
-    { "<leader>v",  "<cmd>vsplit<CR>",                                     desc = "Vertical split" },
-    { "<leader>y",  "<cmd>Telescope neoclip<CR>",                          desc = "Search clipboard, <C-p> to paste" },
-
-  })
-
+-- ── Leader mappings ────────────────────────────────────────────────────────────
 wk.add({
-  { "<",  "<<",                                 desc = "Indent left",                          remap = true },
-  { ">",  ">>",                                 desc = "Indent right",                         remap = true },
-  { "q:", "<cmd>Telescope command_history<CR>", desc = "Search command history",               remap = true },
-  { "ss", "ysiW",                               desc = "Surround current word with character", remap = true },
-  { "z",  group = "Folds",                      remap = true },
-  { "zc", "<cmd>foldclose<CR>",                 desc = "Close fold",                           remap = true },
-  { "zo", "<cmd>foldopen<CR>",                  desc = "Open fold",                            remap = true },
-}, { noremap = false })
+  { '<leader><leader>', '<C-^>', desc = 'Switch to last buffer' },
 
+  -- Buffers
+  { '<leader>b',  group = 'Buffers' },
+  { '<leader>bb', '<cmd>lua require("telescope.builtin").buffers()<CR>',  desc = 'Find open buffer' },
+  { '<leader>bc', '<cmd>Bwipeout<CR>',                                    desc = 'Close current buffer' },
+  { '<leader>bd', '<cmd>BufferLineCloseOthers<CR>',                       desc = 'Close other buffers' },
+  { '<leader>bp', '<cmd>BufferLinePick<CR>',                              desc = 'Pick buffer' },
 
-wk.add({
-  { "<space>,", "<cmd>lua vim.diagnostic.goto_prev()<CR>",  desc = "Go to previous diagnostic issue" },
-  { "<space>:", "<cmd>lua vim.diagnostic.goto_next()<CR>",  desc = "Go to next diagnostic issue" },
-  { "<space>?", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Show code diagnostics" },
-  { "<space>a", "<cmd>lua vim.lsp.buf.code_action()<CR>",   desc = "Show code actions" },
+  -- Commands / find
+  { '<leader>c', '<cmd>lua require("telescope.builtin").commands()<CR>', desc = 'Find command' },
+
+  -- Debug (DAP)
+  { '<leader>d',  group = 'Debug' },
+  { '<leader>db', '<cmd>lua require("dap").toggle_breakpoint()<CR>', desc = 'Toggle breakpoint' },
+
+  -- DBee (uppercase avoids the Debug group conflict)
+  { '<leader>D', '<cmd>lua require("dbee").toggle()<CR>', desc = 'Toggle DBee' },
+
+  -- Resume last telescope search
+  { '<leader>e', '<cmd>lua require("telescope.builtin").resume()<CR>', desc = 'Resume last Telescope search' },
+
+  -- Find files
+  { '<leader>f', '<cmd>lua require("telescope.builtin").find_files()<CR>', desc = 'Find file by name' },
+
+  -- Git
+  { '<leader>g',   group = 'Git' },
+  { '<leader>gb',  '<cmd>GhBlameCurrentLine<CR>',                                                          desc = 'Blame current line' },
+  { '<leader>gc',  '<cmd>lua require("utils.custom-telescope-commands").my_git_commits()<CR>',             desc = 'Show commits' },
+  { '<leader>gd',  group = 'Diff' },
+  { '<leader>gdc', '<cmd>DiffviewClose<CR>',                                                               desc = 'Close Diffview' },
+  { '<leader>gdf', '<cmd>DiffviewFileHistory %<CR>',                                                       desc = 'File history' },
+  { '<leader>gdo', '<cmd>DiffviewOpen<CR>',                                                                desc = 'Open Diffview' },
+  { '<leader>gg',  '<cmd>LazyGit<CR>',                                                                     desc = 'LazyGit' },
+  { '<leader>gh',  group = 'Hunks' },
+  { '<leader>gi',  '<cmd>Octo issue list<CR>',                                                             desc = 'List issues' },
+  { '<leader>gI',  '<cmd>Octo issue search<CR>',                                                           desc = 'Search issues' },
+  { '<leader>gp',  '<cmd>Octo pr list<CR>',                                                                desc = 'List PRs' },
+  { '<leader>gP',  '<cmd>Octo pr search<CR>',                                                              desc = 'Search PRs' },
+  { '<leader>gr',  '<cmd>Octo repo list<CR>',                                                              desc = 'List repos' },
+  { '<leader>gs',  '<cmd>lua require("utils.custom-telescope-commands").my_git_status()<CR>',              desc = 'Show git status' },
+  { '<leader>gS',  '<cmd>Octo search<CR>',                                                                 desc = 'Search (Octo)' },
+
+  -- Buffer cycling
+  { '<leader>h', '<cmd>CybuPrev<CR>', desc = 'Previous buffer' },
+  { '<leader>l', '<cmd>CybuNext<CR>', desc = 'Next buffer' },
+
+  -- Marks
+  { '<leader>m', '<cmd>lua require("telescope.builtin").marks()<CR>', desc = 'Find marks' },
+
+  -- Notes (pure action — no sub-group collision)
+  { '<leader>n', '<cmd>lua require("utils.custom-telescope-commands").my_note()<CR>', desc = 'Search notes' },
+
+  -- NPM / package-info (uppercase N keeps <leader>n free as an action)
+  { '<leader>N',  group = 'NPM' },
+  { '<leader>Ni', '<cmd>lua require("package-info").install()<CR>',            desc = 'Install package' },
+  { '<leader>Nm', '<cmd>Dispatch npm start<CR>',                               desc = 'Run npm start' },
+  { '<leader>Np', '<cmd>lua require("package-info").change_version()<CR>',     desc = 'Change package version' },
+
+  -- Search open files
+  { '<leader>o', '<cmd>lua require("telescope.builtin").live_grep({grep_open_files=true})<CR>', desc = 'Search open files' },
+
+  -- Projects
+  { '<leader>p', '<cmd>lua require("telescope").extensions.project.project{}<CR>', desc = 'Switch project' },
+
+  -- Find inside files (live grep with args)
   {
-    "<space>c",
+    '<leader>r',
     function()
-      local path = vim.fn.expand("%:p")
-      vim.fn.setreg("+", path)
-      vim.notify('Copied "' .. path .. '" to the clipboard!')
+      require('telescope').extensions.live_grep_args.live_grep_args({
+        vimgrep_arguments = {
+          'rg', '--hidden', '-L', '--color=never',
+          '--no-heading', '--with-filename', '--line-number',
+          '--column', '--smart-case',
+        },
+      })
     end,
-    desc = "Copy file path to clipboard"
+    desc = 'Find inside files',
   },
-  {
-    "<space>d",
-    function()
-      local file_type = vim.bo.filetype
-      print(file_type)
-      -- if file_type == 'typescript' or file_type == 'typescriptreact' then
-      --   vim.cmd([[:TSToolsGoToSourceDefinition]])
-      -- else
-      vim.cmd([[lua vim.lsp.buf.definition()]])
-      -- end
-    end,
-    desc = "Go to definition"
-  },
-  {
-    "<space>f",
-    function()
-      -- local file_type = vim.bo.filetype
-      -- if file_type == 'typescript' or file_type == 'typescriptreact' or file_type == 'javascript' or file_type == 'javascriptreact' then
-      --   vim.cmd([[:EslintFixAll]])
-      -- else
-      vim.cmd([[lua vim.lsp.buf.format()]])
-      -- end
-    end,
-    desc = "Format buffer"
-  },
-  { "<space>h",  "<cmd>lua vim.lsp.buf.hover()<CR>",                                                desc = "Show hover info" },
-  { "<space>m",  "<cmd>lua vim.lsp.buf.rename()<CR>",                                               desc = "Rename item" },
-  { "<space>r",  "<cmd>Telescope lsp_references<CR>",                                               desc = "Show references" },
-  { "<space>s",  "<cmd>lua vim.lsp.buf.document_symbol()<CR>",                                      desc = "Show document symbol" },
-  { "<space>t",  group = "Neotest" },
-  { "<space>tF", "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", desc = "Debug File" },
-  { "<space>tL", "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>",              desc = "Debug Last" },
-  { "<space>tN", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>",                     desc = "Debug Nearest" },
-  { "<space>tS", "<cmd>lua require('neotest').run.stop()<cr>",                                      desc = "Stop" },
-  { "<space>ta", "<cmd>lua require('neotest').run.attach()<cr>",                                    desc = "Attach" },
-  { "<space>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",                     desc = "Run File" },
-  { "<space>tl", "<cmd>lua require('neotest').run.run_last()<cr>",                                  desc = "Run Last" },
-  { "<space>tn", "<cmd>lua require('neotest').run.run()<cr>",                                       desc = "Run Nearest" },
-  { "<space>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>",                   desc = "Output" },
-  { "<space>ts", "<cmd>lua require('neotest').summary.toggle()<cr>",                                desc = "Summary" },
+
+  -- Sessions
+  { '<leader>s', '<cmd>lua require("sessionable").SearchSession()<CR>', desc = 'Find session' },
+
+  -- Terminal (pure action — no sub-group collision with <leader>T)
+  { '<leader>t', '<cmd>lua require("FTerm").toggle()<CR>', desc = 'Toggle terminal' },
+
+  -- TODOs (moved out of <leader>to to free the t prefix as a clean action)
+  { '<leader>T', '<cmd>TodoTelescope<CR>', desc = 'Show all TODOs' },
+
+  -- Undos
+  { '<leader>u', '<cmd>Telescope undo<CR>', desc = 'Show undos' },
+
+  -- Vertical split
+  { '<leader>v', '<cmd>vsplit<CR>', desc = 'Vertical split' },
+
+  -- Clipboard history
+  { '<leader>y', '<cmd>Telescope neoclip<CR>', desc = 'Search clipboard' },
 })
 
--- terminal mode mappings
+-- ── Normal mode — misc ─────────────────────────────────────────────────────────
 wk.add({
-  { "<leader>t", "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>", desc = "Toggle terminal closed", mode = "t" },
-}, { mode = 't' })
+  { '<',  '<<',                                 desc = 'Indent left',          mode = 'n', remap = true },
+  { '>',  '>>',                                 desc = 'Indent right',         mode = 'n', remap = true },
+  { '+',  '<C-a>',                              desc = 'Increment number',     mode = 'n', noremap = true, silent = true },
+  { '-',  '<C-x>',                              desc = 'Decrement number',     mode = 'n', noremap = true, silent = true },
+  { 'j',  'gj',                                 desc = 'Down (wrapped lines)', mode = 'n', noremap = true, silent = true },
+  { 'k',  'gk',                                 desc = 'Up (wrapped lines)',   mode = 'n', noremap = true, silent = true },
+  { 'q:', '<cmd>Telescope command_history<CR>', desc = 'Command history',      mode = 'n', remap = true },
+  { 'ss', 'ysiW',                               desc = 'Surround word',        mode = 'n', remap = true },
+  { '\\', '<cmd>Neotree reveal<CR>',            desc = 'Reveal in file tree',  mode = 'n' },
+  { 'z',  group = 'Folds',                      mode = 'n', remap = true },
+  { 'zc', '<cmd>foldclose<CR>',                 desc = 'Close fold',           mode = 'n', remap = true },
+  { 'zo', '<cmd>foldopen<CR>',                  desc = 'Open fold',            mode = 'n', remap = true },
+})
 
--- visual mode mappings
+-- ── Move.nvim ──────────────────────────────────────────────────────────────────
 wk.add({
-  { "<", "<gv", desc = "Indent left",  mode = "v" },
-  { ">", ">gv", desc = "Indent right", mode = "v" },
-}, { mode = 'v' })
+  { '<A-j>', '<cmd>MoveLine(1)<CR>',    desc = 'Move line down',    mode = 'n', noremap = true, silent = true },
+  { '<A-k>', '<cmd>MoveLine(-1)<CR>',   desc = 'Move line up',      mode = 'n', noremap = true, silent = true },
+  { '<A-l>', '<cmd>MoveHChar(1)<CR>',   desc = 'Move char right',   mode = 'n', noremap = true, silent = true },
+  { '<A-h>', '<cmd>MoveHChar(-1)<CR>',  desc = 'Move char left',    mode = 'n', noremap = true, silent = true },
+  { '<A-j>', '<cmd>MoveBlock(1)<CR>',   desc = 'Move block down',   mode = 'v', noremap = true, silent = true },
+  { '<A-k>', '<cmd>MoveBlock(-1)<CR>',  desc = 'Move block up',     mode = 'v', noremap = true, silent = true },
+  { '<A-l>', '<cmd>MoveHBlock(1)<CR>',  desc = 'Move block right',  mode = 'v', noremap = true, silent = true },
+  { '<A-h>', '<cmd>MoveHBlock(-1)<CR>', desc = 'Move block left',   mode = 'v', noremap = true, silent = true },
+})
 
--- command mode mappings
+-- ── DAP F-key mappings ─────────────────────────────────────────────────────────
 wk.add({
-  { "bd", "Bwipeout", desc = "Close buffer", mode = "c" },
-  { "bw", "Bwipeout", desc = "Close buffer", mode = "c" },
-}, { mode = 'c', silent = true })
+  { '<F5>',  '<cmd>lua require("dap").continue()<CR>',  desc = 'DAP: Continue',   mode = 'n', silent = true },
+  { '<F10>', '<cmd>lua require("dap").step_over()<CR>',  desc = 'DAP: Step over',  mode = 'n', silent = true },
+  { '<F11>', '<cmd>lua require("dap").step_into()<CR>',  desc = 'DAP: Step into',  mode = 'n', silent = true },
+  { '<F12>', '<cmd>lua require("dap").step_out()<CR>',   desc = 'DAP: Step out',   mode = 'n', silent = true },
+})
 
--- this was in the nvim-autopairs config
-key('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
--- Git
--- HlsLens
-key('n', 'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", silent_no_remap)
-key('n', 'N', "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", silent_no_remap)
-key('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", noremap)
-key('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", noremap)
-key('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", noremap)
-key('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", noremap)
--- Move.nvim
-key('n', '<A-j>', ':MoveLine(1)<CR>', silent_no_remap)
-key('n', '<A-k>', ':MoveLine(-1)<CR>', silent_no_remap)
-key('v', '<A-j>', ':MoveBlock(1)<CR>', silent_no_remap)
-key('v', '<A-k>', ':MoveBlock(-1)<CR>', silent_no_remap)
-key('n', '<A-l>', ':MoveHChar(1)<CR>', silent_no_remap)
-key('n', '<A-h>', ':MoveHChar(-1)<CR>', silent_no_remap)
-key('v', '<A-l>', ':MoveHBlock(1)<CR>', silent_no_remap)
-key('v', '<A-h>', ':MoveHBlock(-1)<CR>', silent_no_remap)
--- NeoTree
-key('n', '<C-e>', ':Neotree toggle<CR>', { noremap = false })
-key('n', '<C-b>', ':Neotree toggle buffers<CR>', { noremap = false })
--- General
-key('i', 'jk', '<ESC>', noremap)
--- increment/decrement numbers
-key('n', '+', '<c-a>', silent_no_remap)
-key('n', '-', '<c-x>', silent_no_remap)
--- Move up and down wrapped lines intuitively, not literally
-key('n', 'j', 'gj', silent_no_remap)
-key('n', 'k', 'gk', silent_no_remap)
--- debugging
-key('n', '<F5>', ":lua require'dap'.continue()<CR>", { silent = true })
-key('n', '<F10>', ":lua require'dap'.step_over()<CR>", { silent = true })
-key('n', '<F11>', ":lua require'dap'.step_into()<CR>", { silent = true })
-key('n', '<F12>', ":lua require'dap'.step_out()<CR>", { silent = true })
-key('n', '<leader>db', ":lua require'dap'.toggle_breakpoint()<CR>", { silent = true })
+-- ── LSP / Space mappings ───────────────────────────────────────────────────────
+wk.add({
+  { '<space>,', '<cmd>lua vim.diagnostic.goto_prev()<CR>',  desc = 'Previous diagnostic' },
+  { '<space>:', '<cmd>lua vim.diagnostic.goto_next()<CR>',  desc = 'Next diagnostic' },
+  { '<space>?', '<cmd>lua vim.diagnostic.open_float()<CR>', desc = 'Show diagnostics' },
+  { '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>',   desc = 'Code actions' },
+  {
+    '<space>c',
+    function()
+      local path = vim.fn.expand('%:p')
+      vim.fn.setreg('+', path)
+      vim.notify('Copied "' .. path .. '" to the clipboard!')
+    end,
+    desc = 'Copy file path',
+  },
+  { '<space>d', function() vim.lsp.buf.definition() end,    desc = 'Go to definition' },
+  {
+    '<space>f',
+    function()
+      require('conform').format({ async = true, lsp_format = 'fallback' })
+    end,
+    desc = 'Format buffer',
+  },
+  { '<space>h', '<cmd>lua vim.lsp.buf.hover()<CR>',            desc = 'Hover info' },
+  { '<space>m', '<cmd>lua vim.lsp.buf.rename()<CR>',           desc = 'Rename symbol' },
+  { '<space>r', '<cmd>Telescope lsp_references<CR>',           desc = 'References' },
+  { '<space>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>',  desc = 'Document symbols' },
 
--- key('n', '<leader>dct', '<cmd>lua require"dap".continue()<CR>')
--- key('n', '<leader>dsv', '<cmd>lua require"dap".step_over()<CR>')
--- key('n', '<leader>dsi', '<cmd>lua require"dap".step_into()<CR>')
--- key('n', '<leader>dso', '<cmd>lua require"dap".step_out()<CR>')
--- key('n', '<leader>dtb', '<cmd>lua require"dap".toggle_breakpoint()<CR>')
+  -- Neotest
+  { '<space>t',  group = 'Test' },
+  { '<space>tF', '<cmd>lua require("neotest").run.run({vim.fn.expand("%"), strategy = "dap"})<CR>', desc = 'Debug file' },
+  { '<space>tL', '<cmd>lua require("neotest").run.run_last({ strategy = "dap" })<CR>',              desc = 'Debug last' },
+  { '<space>tN', '<cmd>lua require("neotest").run.run({strategy = "dap"})<CR>',                     desc = 'Debug nearest' },
+  { '<space>tS', '<cmd>lua require("neotest").run.stop()<CR>',                                      desc = 'Stop' },
+  { '<space>ta', '<cmd>lua require("neotest").run.attach()<CR>',                                    desc = 'Attach' },
+  { '<space>tf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>',                     desc = 'Run file' },
+  { '<space>tl', '<cmd>lua require("neotest").run.run_last()<CR>',                                  desc = 'Run last' },
+  { '<space>tn', '<cmd>lua require("neotest").run.run()<CR>',                                       desc = 'Run nearest' },
+  { '<space>to', '<cmd>lua require("neotest").output.open({ enter = true })<CR>',                   desc = 'Show output' },
+  { '<space>ts', '<cmd>lua require("neotest").summary.toggle()<CR>',                                desc = 'Toggle summary' },
+})
 
--- key('n', '<leader>dsc', '<cmd>lua require"dap.ui.variables".scopes()<CR>')
--- key('n', '<leader>dhh', '<cmd>lua require"dap.ui.variables".hover()<CR>')
--- key('v', '<leader>dhv', '<cmd>lua require"dap.ui.variables".visual_hover()<CR>')
+-- ── Insert mode ────────────────────────────────────────────────────────────────
+wk.add({
+  { 'jk', '<ESC>', desc = 'Exit insert mode', mode = 'i', noremap = true },
+})
 
--- key('n', '<leader>duh', '<cmd>lua require"dap.ui.widgets".hover()<CR>')
--- key('n', '<leader>duf', "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>")
+-- ── Visual mode ────────────────────────────────────────────────────────────────
+wk.add({
+  { '<', '<gv', desc = 'Indent left',  mode = 'v' },
+  { '>', '>gv', desc = 'Indent right', mode = 'v' },
+})
 
--- key('n', '<leader>dsbr', '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>')
--- key('n', '<leader>dsbm', '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>')
--- key('n', '<leader>dro', '<cmd>lua require"dap".repl.open()<CR>')
--- key('n', '<leader>drl', '<cmd>lua require"dap".repl.run_last()<CR>')
+-- ── Terminal mode ──────────────────────────────────────────────────────────────
+wk.add({
+  { '<leader>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', desc = 'Close terminal', mode = 't' },
+})
 
--- -- telescope-dap
--- key('n', '<leader>dcc', '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
--- key('n', '<leader>dco', '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>')
--- key('n', '<leader>dlb', '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
--- key('n', '<leader>dv', '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
--- key('n', '<leader>df', '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
+-- ── Command mode ───────────────────────────────────────────────────────────────
+wk.add({
+  { 'bd', 'Bwipeout', desc = 'Close buffer', mode = 'c' },
+  { 'bw', 'Bwipeout', desc = 'Close buffer', mode = 'c' },
+})
+
+-- ── HlsLens search navigation ──────────────────────────────────────────────────
+-- n/N are remapped in nvim-ufo.lua to integrate hlslens with fold preview.
+-- Only the non-fold variants need wiring here.
+vim.keymap.set('n', '*',  "*<Cmd>lua require('hlslens').start()<CR>",  { noremap = true })
+vim.keymap.set('n', '#',  "#<Cmd>lua require('hlslens').start()<CR>",  { noremap = true })
+vim.keymap.set('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", { noremap = true })
+vim.keymap.set('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", { noremap = true })

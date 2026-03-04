@@ -6,29 +6,26 @@ set -euo pipefail
 # if no argument is passed, it filters based on file contents while open
 # find-in-file - usage: find-in-file <searchTerm?>
 
-local RG_PREFIX="rga --files-with-matches"
-local file
+RG_PREFIX="rga --files-with-matches"
+file=""
 
-if [ ! "$#" -gt 0 ]; 
-  then
-    file="$(FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" | \
-      fzf --ansi \
-          --preview "bat --style=numbers --color=always {} 2> /dev/null | \
-                    rga --colors 'match:bg:yellow' --ignore-case --pretty --context 5 {q} || \
-                    rga --ignore-case --pretty --context 5 {q} {}" \
-          --query "$1" \
-          --phony -q "$1" \
-          --bind "change:reload:$RG_PREFIX  {q}" \
-          )"
-  else
-    file="$(rga --files-with-matches --no-messages "$1" | \
-        fzf --preview "bat --style=numbers --color=always {} 2> /dev/null | \
-                        rga --colors 'match:bg:yellow' --ignore-case --pretty --context 5 '$1' || \
-                        rga --ignore-case --pretty --context 5'$1' {}" 
-      )"
+if [ ! "$#" -gt 0 ]; then
+  file="$(FZF_DEFAULT_COMMAND="$RG_PREFIX" \
+    fzf --ansi \
+        --preview "bat --style=numbers --color=always {} 2>/dev/null | \
+                  rga --colors 'match:bg:yellow' --ignore-case --pretty --context 5 {q} || \
+                  rga --ignore-case --pretty --context 5 {q} {}" \
+        --disabled \
+        --bind "change:reload:$RG_PREFIX {q}" \
+        )"
+else
+  file="$(rga --files-with-matches --no-messages "$1" | \
+      fzf --preview "bat --style=numbers --color=always {} 2>/dev/null | \
+                      rga --colors 'match:bg:yellow' --ignore-case --pretty --context 5 '$1' || \
+                      rga --ignore-case --pretty --context 5 '$1' {}" \
+    )"
 fi
 
-if [ "$file" ];
- then
-   vi "$file"
+if [ "$file" ]; then
+  vi "$file"
 fi

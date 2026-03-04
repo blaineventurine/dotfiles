@@ -1,7 +1,4 @@
 # . "$HOME/.cargo/env"
-export ANTHROPIC_BASE_URL=http://localhost:1234
-export ANTHROPIC_AUTH_TOKEN=lmstudio
-export COLUMNS
 export COMPLETION_WAITING_DOTS="true"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export DISABLE_AUTO_TITLE=true
@@ -30,13 +27,13 @@ export BIN_PATH="$HOME/bin"
 export CARGOPATH="$HOME/.cargo/bin"
 export CURL_PATH="/opt/homebrew/opt/curl/bin"
 export DOTNETPATH="$HOME/.dotnet/tools"
-export FLYPATH="$FLYCTL_INSTALL/bin:$PATH"
-export LIBPQ_PATH="$PATH:/opt/homebrew/opt/libpq/bin"
-export OPENSSL_PATH="/opt/homebrew/opt/openssl@3.0/bin"
+export FLYPATH="$FLYCTL_INSTALL/bin"
+export LIBPQ_PATH="/opt/homebrew/opt/libpq/bin"
+export OPENSSL_PATH="/opt/homebrew/opt/openssl@3/bin"
 export SCRIPT_PATH="$HOME/.local/bin"
 export LM_STUDIO_PATH="$HOME/.cache/lm-studio/bin"
 
-export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+export FPATH="/opt/homebrew/share/zsh-completions:$FPATH"
 
 export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rga --files --hidden -g "!{node_modules,.git,.vscode,.cache,.terraform,.DS_Store,.Trash,.terraform.d,.npm,.dotfiles,.nvm}"'

@@ -2,5 +2,10 @@
 set -euxo pipefail
 
 # compare two files and remove lines that exist in both
-# usage: remove-duplicates-from-two-files removethese.txt main.txt
-awk 'FNR==NR {a[$0];next} !($0 in a)' "$1" "$2" > output.txt
+# usage: remove-duplicates-from-two-files removethese.txt main.txt [output.txt]
+# if no output file is specified, writes to stdout
+if [[ -n "${3:-}" ]]; then
+  awk 'FNR==NR {a[$0];next} !($0 in a)' "$1" "$2" > "$3"
+else
+  awk 'FNR==NR {a[$0];next} !($0 in a)' "$1" "$2"
+fi

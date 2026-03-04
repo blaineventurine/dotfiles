@@ -87,9 +87,6 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
 # Man page completion preview
 zstyle ':fzf-tab:complete:man:*' fzf-preview 'man ${(Q)word} | bat -l man --color=always'
 
-# SSH host completion preview
-zstyle ':fzf-tab:complete:ssh:*' fzf-preview 'ping -c1 -t1 ${(Q)word}'
-zstyle ':fzf-tab:complete:scp:*' fzf-preview 'ping -c1 -t1 ${(Q)word}'
 
 # Kubernetes resource previews
 zstyle ':fzf-tab:complete:kubectl:argument-1' fzf-preview \

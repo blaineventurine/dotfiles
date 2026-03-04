@@ -58,9 +58,7 @@ return {
       open_files_in_last_window = true, -- false = open files in top left window
       open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
       popup_border_style = 'NC', -- "double", "none", "rounded", "shadow", "single" or "solid"
-      resize_timer_interval = 500, -- in ms, needed for containers to redraw right aligned and faded content
-      -- set to -1 to disable the resize timer entirely
-      --                           -- NOTE: this will speed up to 50 ms for 1 second following a resize
+      resize_timer_interval = -1, -- disabled; was causing toggle delay
       sort_case_insensitive = false, -- used when sorting files and directories in the tree
       sort_function = nil, -- uses a custom function for sorting files and directories in the tree
       use_popups_for_input = true, -- If false, inputs will use vim.ui.input() instead of custom floats.
@@ -531,6 +529,5 @@ return {
       },
     })
 
-    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
   end,
 }

@@ -8,4 +8,9 @@ set -euo pipefail
 #   echo "No process found on port ${1}"
 # fi
 
-kill $(lsof -wni tcp:$1)
+pids=$(lsof -wni "tcp:$1" | awk 'NR>1 {print $2}')
+if [[ -z "$pids" ]]; then
+  echo "No process found on port $1"
+  exit 1
+fi
+echo "$pids" | xargs kill

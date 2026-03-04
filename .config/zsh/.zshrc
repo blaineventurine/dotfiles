@@ -6,13 +6,12 @@
 # Keep this near the top otherwise there's a non-zero exit code for some reason
 [[ ! -f "$HOME"/.env ]] && printf '\e[1mYou forgot your .env\e[0m\n'
 
-ssh-add -K 2>/dev/null
+ssh-add --apple-use-keychain 2>/dev/null
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # mise for managing language/tool versions
 eval "$($HOMEBREW_PREFIX/bin/mise activate zsh)"
-eval "$(mise hook-env)"
 
 # Path is searched beginning to end, with first match being used - set my bin folders first so any
 # overrides I have are used
@@ -25,7 +24,6 @@ path=(
   $DOTNETPATH
   $CARGOPATH
   $FLYPATH
-  $LM_STUDIO_PATH
   $path
 )
 
@@ -53,19 +51,28 @@ done
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz compinit
 
-# only check it once a day to see if it's changed
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+# only regenerate once a day; use cached dump otherwise
+if [[ -n $ZDOTDIR/.zcompdump(N.mh+24) ]]; then
+  compinit -d "$ZDOTDIR/.zcompdump"
+else
+  compinit -C -d "$ZDOTDIR/.zcompdump"
+fi
 
 # Tab completions need to be below compinit
-source <(kubectl completion zsh)
+# Cache kubectl completion — regenerate when kubectl is newer than the cache
+mkdir -p "$HOME/.cache/zsh"
+_kube_comp="$HOME/.cache/zsh/kubectl_completion"
+if [[ ! -f $_kube_comp || /usr/local/bin/kubectl -nt $_kube_comp || /opt/homebrew/bin/kubectl -nt $_kube_comp ]] 2>/dev/null; then
+  kubectl completion zsh >| $_kube_comp
+fi
+source $_kube_comp
 
 # zsh-like keybindings
 bindkey -v
 
-export LS_COLORS="$(vivid generate tokyonight-moon)"
+_vivid_cache="$HOME/.cache/zsh/ls_colors"
+[[ ! -f $_vivid_cache ]] && vivid generate tokyonight-moon >| $_vivid_cache
+export LS_COLORS="$(<$_vivid_cache)"
 
 # fzf-tab needs to be loaded after compinit, but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
 [[ ! -f "$ZDOTDIR"/fzf-tab/fzf-tab.plugin.zsh ]] && git clone https://github.com/Aloxaf/fzf-tab "$ZDOTDIR"/fzf-tab

@@ -9,8 +9,7 @@ return {
         numbers = 'none',
         close_command = 'BWipeout %d',
         indicator = {
-          icon = '▎', -- this should be omitted if indicator style is not 'icon'
-          style = 'icon', --'icon' | 'underline' | 'none',
+          style = 'none',
         },
         buffer_close_icon = '󰅖',
         modified_icon = '● ',
@@ -28,9 +27,7 @@ return {
         },
         show_buffer_close_icons = false,
         show_close_icon = false,
-        -- separator_style = { '\u{e0b6}', '\u{e0b4} ' },
-        -- separator_style = { '', '' }, -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
-        separator_style = 'thin', -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+        separator_style = 'thin',
         sort_by = 'insert_after_current', -- |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
         -- add custom logic
         --     local modified_a = vim.fn.getftime(buffer_a.path)
@@ -45,8 +42,8 @@ return {
           bg = '#222436',
         },
         background = {
-          -- fg = '#828bb8',
-          bg = '#545c7e', -- same as fill for seamless background
+          fg = '#545c7e',
+          bg = '#2f334d',
         },
         buffer_selected = {
           fg = '#1e2030', -- dark text on light background for contrast
@@ -58,20 +55,20 @@ return {
           bg = '#2f334d',
         },
         separator = {
-          fg = '#545c7e',
+          fg = '#2f334d',
           bg = '#2f334d',
         },
         separator_selected = {
-          fg = '#1e2030',
-          bg = '#82aaff',
+          fg = '#82aaff',
+          bg = '#2f334d',
         },
         separator_visible = {
-          fg = '#545c7e',
+          fg = '#2f334d',
           bg = '#2f334d',
         },
         modified = {
           fg = '#ff9e64',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         modified_selected = {
           fg = '#ff9e64',
@@ -83,7 +80,7 @@ return {
         },
         error_diagnostic = {
           fg = '#ff6c6b',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         error_diagnostic_selected = {
           fg = '#ff6c6b',
@@ -95,7 +92,7 @@ return {
         },
         error = {
           fg = '#ff6c6b',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         error_visible = {
           fg = '#ff6c6b',
@@ -107,7 +104,7 @@ return {
         },
         warning_diagnostic = {
           fg = '#e0af68',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         warning_diagnostic_selected = {
           fg = '#e0af68',
@@ -119,7 +116,7 @@ return {
         },
         warning = {
           fg = '#e0af68',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         warning_visible = {
           fg = '#e0af68',
@@ -131,7 +128,7 @@ return {
         },
         info_diagnostic = {
           fg = '#0db9d7',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         info_diagnostic_selected = {
           fg = '#0db9d7',
@@ -143,7 +140,7 @@ return {
         },
         info = {
           fg = '#0db9d7',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         info_visible = {
           fg = '#0db9d7',
@@ -155,7 +152,7 @@ return {
         },
         hint_diagnostic = {
           fg = '#10B981',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         hint_diagnostic_selected = {
           fg = '#10B981',
@@ -167,7 +164,7 @@ return {
         },
         hint = {
           fg = '#10B981',
-          bg = '#545c7e',
+          bg = '#2f334d',
         },
         hint_visible = {
           fg = '#10B981',
@@ -179,7 +176,7 @@ return {
         },
         duplicate = {
           fg = '#828bb8',
-          bg = '#545c7e',
+          bg = '#2f334d',
           italic = true,
         },
         duplicate_visible = {

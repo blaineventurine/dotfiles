@@ -2,5 +2,5 @@
 set -euo pipefail
 
 # find a subfolder and cd into it - requires 'tree' is installed
-DIR=$(find * -maxdepth 3 -type d -print 2> /dev/null | fzf) \
-  && cd "$DIR" || exit
+DIR=$(find . -mindepth 1 -maxdepth 4 -type d -print 2>/dev/null | fzf) \
+  && cd "$DIR" || return

@@ -2,4 +2,4 @@
 set -euxo pipefail
 
 # Changes the current working directory to the running script.
-cd "$(dirname "$(readlink -f "$0")")" || return
+cd "$(cd "$(dirname "$0")" && pwd)" || return

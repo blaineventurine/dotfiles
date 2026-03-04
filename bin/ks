@@ -1,8 +1,16 @@
 #! /usr/bin/env bash
-# set -euo pipefail
+set -euo pipefail
 
-[ "$1" = "" ] && "No argument supplied" && exit 1
-[ ! -f "${HOME}/.config/kitty/sessions/${1}.conf" ] && echo "Session not found" && exit
+if [[ -z "${1:-}" ]]; then
+  echo "No argument supplied"
+  exit 1
+fi
+
+session_file="${HOME}/.config/kitty/sessions/${1}.conf"
+if [[ ! -f "$session_file" ]]; then
+  echo "Session not found"
+  exit 1
+fi
 
 # I exit kitty a lot by just quitting the window, so I need to kill the server and console
 # until I figure out how to tell kitty to do this on it's own
@@ -11,6 +19,5 @@
 # kill "$(lsof -wni tcp:8000 | awk 'NR>1 {print $2}')" #&>/dev/null
 # kill "$(lsof -wni tcp:8080 | awk 'NR>1 {print $2}')" #&>/dev/null
 
-# ps aux | grep "repos/AlgoliaWeb" | awk '{print $2}' | xargs kill -SIGTERM # &>/dev/null
-pkill -f AlgoliaWeb
-kitty --session sessions/"${1}".conf </dev/null &>/dev/null &
+pkill -f AlgoliaWeb || true
+kitty --session "$session_file" </dev/null &>/dev/null &

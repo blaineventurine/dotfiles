@@ -18,7 +18,7 @@ type=$(file --dereference --mime -- "$file")
 
 if [[ ! $type =~ image/ ]]; then
   if [[ $type =~ =binary ]]; then
-    file "$1"
+    file "$file"
     exit
   fi
 
